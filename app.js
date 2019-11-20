@@ -1,10 +1,16 @@
-var app = require('express')();
-var http = require('http').createServer(app);
+const express = require('express');
+const socket = require('socket.io');
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/views/index.html');
+const app = express();
+const server = app.listen(5000, () => {
+    console.log('[Express] Server running')
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+app.use(express.static('client'));
+
+// Websocket
+const io = socket(server);
+
+io.on('connection', (connection) => {
+    console.log('New socket-connection established: ' +  connection.id)
 });
