@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "server:start": "nodemon app.js",
+    "sass": "sass --watch client/sass/app.sass:client/css/main.css"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

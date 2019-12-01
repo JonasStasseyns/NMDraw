@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+html, body {
+  overflow: hidden;
+  position: fixed;
+}
+
+.colors {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.color {
+  display: inline-block;
+  height: 2vw;
+  width: 2vw;
+}
+
+.color.black {
+  background-color: black;
+}
+
+.color.red {
+  background-color: red;
+}
+
+.color.green {
+  background-color: green;
+}
+
+.color.blue {
+  background-color: blue;
+}
+
+.color.yellow {
+  background-color: yellow;
+}
+
+/*# sourceMappingURL=main.css.map */

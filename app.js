@@ -11,6 +11,8 @@ app.use(express.static('client'));
 // Websocket
 const io = socket(server);
 
-io.on('connection', (connection) => {
-    console.log('New socket-connection established: ' +  connection.id)
-});
+function onConnection(socket){
+    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+}
+
+io.on('connection', onConnection);
