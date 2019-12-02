@@ -12,6 +12,7 @@ app.use(express.static('client'));
 const io = socket(server);
 
 function onConnection(socket){
+    console.log('connected a client')
     socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
 }
 
