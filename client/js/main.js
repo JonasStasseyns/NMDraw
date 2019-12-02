@@ -22,12 +22,15 @@ startDrawing = () => {
 }
 
 stopDrawing = () => {
+
     isDrawing = false
     context.beginPath()
-    socket.emit('drawing', { data: canvas.toDataURL() });
+    socket.emit('drawing', { data: canvas.toDataURL('svg') });
 }
 
 drawLine = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     if(isDrawing){
         context.lineWidth = 5
         context.lineCap = 'round'
