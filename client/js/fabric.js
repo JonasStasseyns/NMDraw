@@ -7,7 +7,7 @@ fabric.Object.prototype.set({
 });
 
 // initialize fabric canvas and assign to global windows object for debug
-var canvas = window._canvas = new fabric.Canvas('c');
+const canvas = window._canvas = new fabric.Canvas('c');
 
 canvas.add(new fabric.Circle({
     radius: 50,
@@ -23,3 +23,4 @@ canvas.add(new fabric.Triangle({
     top: 200,
     fill: '#00AF64'
 }));
+
