@@ -1,75 +1,20 @@
-let can = new fabric.Canvas('c')
-
 const socket = io()
-    //
-    // socket.on('drawing', (data) => {
-    //     console.log(data);
-    //     console.log('any')
-    // });
-    //
-    // const canvas = document.querySelector('.canvas')
-    // const context = canvas.getContext('2d')
-    // const display = document.querySelector('.display')
-    //
-    // let currentColor = 'black'
-    //
-    // canvas.width = window.innerWidth
-    // canvas.height = window.innerHeight
-    //
-    // let isDrawing = false
-    //
-    // startDrawing = () => {
-    //     isDrawing = true
-    // }
-    //
-    // stopDrawing = () => {
-    //     isDrawing = false
-    //     context.beginPath()
-    //     sendCanvas()
-    // }
-    //
-    // drawLine = (e) => {
-    //     e.preventDefault()
-    //     e.stopPropagation()
-    //     if (isDrawing) {
-    //         context.lineWidth = 5
-    //         context.lineCap = 'round'
-    //         context.lineTo(e.clientX, e.clientY)
-    //         context.stroke()
-    //         context.strokeStyle = currentColor
-    //         context.beginPath()
-    //         context.moveTo(e.clientX, e.clientY)
-    //     }
-    // }
-    //
-    // setColor = (e) => {
-    //     currentColor = e.target.className.split(' ')[1]
-    // }
-    //
-    // canvas.addEventListener('mousedown', startDrawing)
-    // canvas.addEventListener('mouseup', stopDrawing)
-    // canvas.addEventListener('mousemove', drawLine)
-    //
-    // const colors = document.querySelectorAll('.color')
-    // colors.forEach((color) => {
-    //     color.addEventListener('click', setColor)
-    // })
-    //
-    // sendCanvas = () => {
-    //     socket.emit('drawing', context)
-    // }
-    // Do some initializing stuff
+
 fabric.Object.prototype.set({
     transparentCorners: false,
     cornerColor: 'rgba(102,153,255,0.5)',
-    cornerSize: 12,
+    cornerSize: 20,
     padding: 5
 });
 
 // initialize fabric canvas and assign to global windows object for debug
 const canvas = window._canvas = new fabric.Canvas('c');
-canvas.setWidth(1000)
-canvas.setHeight(1000)
+canvas.setWidth(window.innerWidth)
+canvas.setHeight(window.innerHeight)
+
+document.querySelector('h1').addEventListener('click', (e) => {
+    canvas.remove(canvas.getActiveObject())
+})
 
 canvas.add(new fabric.Circle({
     radius: 50,
@@ -104,6 +49,6 @@ fabric.log('SVG output with viewBox attribute: ', canvas.toSVG({
     }
 }));
 
-document.querySelector('body').addEventListener('click', (evt) => {
+document.querySelector('body').addEventListener('click', () => {
     socket.emit('drawing', canvas.toSVG())
 })
