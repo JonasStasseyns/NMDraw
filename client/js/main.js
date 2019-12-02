@@ -37,7 +37,7 @@ stopDrawing = () => {
 drawLine = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    if(isDrawing){
+    if (isDrawing) {
         context.lineWidth = 5
         context.lineCap = 'round'
         context.lineTo(e.clientX, e.clientY)
