@@ -1,6 +1,5 @@
 let can = new fabric.Canvas('c')
 
-
 const socket = io()
 
 socket.on('drawing', (data) => {
@@ -27,11 +26,6 @@ startDrawing = () => {
 stopDrawing = () => {
     isDrawing = false
     context.beginPath()
-    let drawData
-    canvas.getObjects().clone(function(cloned) {
-        drawData = cloned;
-    });
-    socket.emit('drawing', { data: drawData });
 }
 
 drawLine = (e) => {
