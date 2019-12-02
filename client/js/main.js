@@ -22,6 +22,7 @@ startDrawing = () => {
 stopDrawing = () => {
     isDrawing = false
     context.beginPath()
+    socket.emit('drawing', { data: canvas.toDataURL() });
 }
 
 drawLine = (e) => {
