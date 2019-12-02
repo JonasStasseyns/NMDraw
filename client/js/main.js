@@ -1,3 +1,6 @@
+let can = new fabric.Canvas('c')
+
+
 const socket = io()
 
 socket.on('drawing', (data) => {
@@ -24,11 +27,17 @@ startDrawing = () => {
 stopDrawing = () => {
     isDrawing = false
     context.beginPath()
-    socket.emit('drawing', { data: canvas.toDataURL() });
+    let drawData
+    canvas.getObjects().clone(function(cloned) {
+        drawData = cloned;
+    });
+    socket.emit('drawing', { data: drawData });
 }
 
 drawLine = (e) => {
-    if (isDrawing) {
+    e.preventDefault()
+    e.stopPropagation()
+    if(isDrawing){
         context.lineWidth = 5
         context.lineCap = 'round'
         context.lineTo(e.clientX, e.clientY)
