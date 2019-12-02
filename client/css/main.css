@@ -1,12 +1,10 @@
 * {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 html, body {
-  overflow: hidden;
-  position: fixed;
+  position: relative;
 }
 
 .colors {
@@ -39,6 +37,12 @@ html, body {
 
 .color.yellow {
   background-color: yellow;
+}
+
+.display {
+  border: 5px solid blue;
+  position: absolute;
+  top: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

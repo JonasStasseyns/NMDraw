@@ -1,12 +1,14 @@
 const socket = io()
 
-socket.emit('testPL', {
-    name: 'test payload',
-    author: 'Arvellon'
-})
+socket.on('drawing', (data) => {
+    console.log(data);
+    console.log('any')
+    display.src = data.data;
+});
 
 const canvas = document.querySelector('.canvas')
 const context = canvas.getContext('2d')
+const display = document.querySelector('.display')
 
 let currentColor = 'black'
 
