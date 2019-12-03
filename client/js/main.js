@@ -16,12 +16,7 @@ document.querySelector('h1').addEventListener('click', (e) => {
     canvas.remove(canvas.getActiveObject())
 })
 
-canvas.add(new fabric.Circle({
-    radius: 50,
-    left: 100,
-    top: 100,
-    fill: '#0B61A4'
-}));
+
 
 canvas.add(new fabric.Triangle({
     width: 150,
@@ -48,6 +43,17 @@ fabric.log('SVG output with viewBox attribute: ', canvas.toSVG({
         height: 250
     }
 }));
+
+createShape = () => {
+    canvas.add(new fabric.Circle({
+        radius: document.querySelector('.shape-size').value,
+        left: 100,
+        top: 100,
+        fill: '#0B61A4'
+    }));
+}
+
+document.querySelector('.create-shape-btn').addEventListener('click', createShape)
 
 document.querySelector('body').addEventListener('click', () => {
     socket.emit('drawing', canvas.toSVG())

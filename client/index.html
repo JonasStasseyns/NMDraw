@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NMDraw</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -11,13 +11,21 @@
 
     <canvas id="c"></canvas>
 
-    <div class="colors">
-        <div class="color black"></div>
-        <div class="color red"></div>
-        <div class="color green"></div>
-        <div class="color blue"></div>
-        <div class="color yellow"></div>
+    <div class="create-shape-window-icon">open</div>
+    <div class="create-shape-tool-window">
+        <div class="shape-btn-row">
+            <div class="shape-btn triangle">∆</div>
+            <div class="shape-btn rectangle">rect</div>
+            <div class="shape-btn circle">o</div>
+        </div>
+        <div class="shape-properties">
+            <label>Size
+                <input type="number" value="20" class="shape-size">
+            </label>
+            <button class="create-shape-btn">Create</button>
+        </div>
     </div>
+
     <h1 class="remove">Remove</h1>
      <script src="/socket.io/socket.io.js"></script>
     <script src="js/fabric-ini.js"></script>

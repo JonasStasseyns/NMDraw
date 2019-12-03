@@ -1,59 +1,46 @@
 .cache-img {
-    display: none;
+  display: none;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-html,
-body {
-    position: relative;
-}
-
-canvas {
-    height: 100vh;
-    width: 100%;
+html, body {
+  position: relative;
 }
 
 .colors {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .color {
-    display: inline-block;
-    height: 2vw;
-    width: 2vw;
+  display: inline-block;
+  height: 2vw;
+  width: 2vw;
 }
 
 .color.black {
-    background-color: black;
+  background-color: black;
 }
 
 .color.red {
-    background-color: red;
+  background-color: red;
 }
 
 .color.green {
-    background-color: green;
+  background-color: green;
 }
 
 .color.blue {
-    background-color: blue;
+  background-color: blue;
 }
 
 .color.yellow {
-    background-color: yellow;
+  background-color: yellow;
 }
-
-.display {
-    border: 5px solid blue;
-    position: absolute;
-    top: 0;
-}
-
 
 /*# sourceMappingURL=main.css.map */
