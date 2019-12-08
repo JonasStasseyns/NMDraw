@@ -7,17 +7,31 @@ fabric.Object.prototype.set({
     padding: 5
 });
 
-// initialize fabric canvas and assign to global windows object for debug
+// Global variables
+let isDrawing = false
+
+// Canvas Init
 const canvas = window._canvas = new fabric.Canvas('c');
 canvas.setWidth(window.innerWidth)
 canvas.setHeight(window.innerHeight)
 
+// Remove active shape
 document.querySelector('h1').addEventListener('click', (e) => {
     canvas.remove(canvas.getActiveObject())
 })
 
+// Drawing Test
+toggleDraw = () => {
+    // TODO Change ui button based on isDrawing
+    isDrawing = !isDrawing
+    console.log(isDrawing)
+    canvas.isDrawingMode = (isDrawing) ? 1 : 0;
+    canvas.freeDrawingBrush.color = "purple";
+    canvas.freeDrawingBrush.width = 10;
+    canvas.renderAll();
+}
 
-
+// Create a start shape for debugging
 canvas.add(new fabric.Triangle({
     width: 150,
     height: 100,
@@ -26,24 +40,7 @@ canvas.add(new fabric.Triangle({
     fill: '#00AF64'
 }));
 
-// Normal SVG output
-fabric.log('Normal SVG output: ', canvas.toSVG());
-
-// SVG output without preamble
-fabric.log('SVG output without preamble: ', canvas.toSVG({
-    suppressPreamble: true
-}));
-
-// SVG output with viewBox attribute
-fabric.log('SVG output with viewBox attribute: ', canvas.toSVG({
-    viewBox: {
-        x: 80,
-        y: 80,
-        width: 250,
-        height: 250
-    }
-}));
-
+// Create shape based on the selected shape and size
 createShape = () => {
     const radios = document.querySelectorAll('.shape-selector-unit')
     radios.forEach((radio) => {
@@ -84,8 +81,11 @@ createShape = () => {
     })
 }
 
+// Event Listeners
 document.querySelector('.create-shape-btn').addEventListener('click', createShape)
+document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 
+// Body click event to send changes to the server
 document.querySelector('body').addEventListener('click', () => {
     socket.emit('drawing', canvas.toSVG())
 })

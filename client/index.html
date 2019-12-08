@@ -11,8 +11,22 @@
 
     <canvas id="c"></canvas>
 
+<!--    free drawing settings START-->
+    <div class="free-draw-toggle-icon">draw</div>
+    <div class="tool-window free-draw-tool-window">
+        <div class="shape-properties">
+<!--            TODO Add color picker-->
+            <label>Size
+                <input type="number" value="20" class="brush-size">
+            </label>
+            <button class="update-brush-btn">Update</button>
+        </div>
+    </div>
+<!--    free drawing settings END-->
+
+<!--    Create shape settings START -->
     <div class="create-shape-window-icon">open</div>
-    <div class="create-shape-tool-window">
+    <div class="tool-window create-shape-tool-window">
         <label>Circle
             <input type="radio" value="circle" class="shape-selector-unit" name="shape">
         </label>
@@ -29,6 +43,7 @@
             <button class="create-shape-btn">Create</button>
         </div>
     </div>
+    <!--    Create shape settings END -->
 
     <h1 class="remove">Remove</h1>
      <script src="/socket.io/socket.io.js"></script>
