@@ -45,12 +45,43 @@ fabric.log('SVG output with viewBox attribute: ', canvas.toSVG({
 }));
 
 createShape = () => {
-    canvas.add(new fabric.Circle({
-        radius: document.querySelector('.shape-size').value,
-        left: 100,
-        top: 100,
-        fill: '#0B61A4'
-    }));
+    const radios = document.querySelectorAll('.shape-selector-unit')
+    radios.forEach((radio) => {
+        if(radio.checked){
+            switch (radio.value) {
+                case 'circle':
+                    canvas.add(new fabric.Circle({
+                        radius: document.querySelector('.shape-size').value,
+                        left: 100,
+                        top: 100,
+                        fill: '#0B61A4'
+                    }));
+                    break;
+                case 'triangle':
+                    canvas.add(new fabric.Triangle({
+                        width: document.querySelector('.shape-size').value,
+                        height: document.querySelector('.shape-size').value,
+                        left: 100,
+                        top: 100,
+                        fill: '#0B61A4'
+                    }));
+                    break;
+                case 'rectangle':
+                    canvas.add(new fabric.Rect({
+                        width: document.querySelector('.shape-size').value,
+                        height: document.querySelector('.shape-size').value,
+                        left: 100,
+                        top: 100,
+                        fill: '#0B61A4'
+                    }));
+                    break;
+            }
+
+        }else{
+            console.log(radio)
+            console.log('NO')
+        }
+    })
 }
 
 document.querySelector('.create-shape-btn').addEventListener('click', createShape)
