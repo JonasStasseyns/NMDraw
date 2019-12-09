@@ -88,8 +88,9 @@ showHideShapes = () => {
 
 
 // Event Listeners
-const shapeIcons = document.querySelectorAll('.shape-icon')
-document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
+const shapeIcons = document.querySelectorAll('.shape-icon') ===
+    // TODO Add shape selector evtlistener + shape select store
+    document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
 shapeIcons.forEach((icon) => {
