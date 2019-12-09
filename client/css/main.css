@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 .cache-img {
     display: none;
 }
@@ -59,23 +58,40 @@ body {
     background-color: yellow;
 }
 
+.canvas-container {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .login-overlay {
     width: 100vw;
     height: 100vh;
-    background-color: blue;
-    position: absolute;
+    background-color: #f9f9f9;
     z-index: 1000;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 35%;
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+    background-image: url(../images/shape_1.svg);
+    background-position: top 430px left 460px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .login-sub-container {
-    width: 40vw;
+    width: 70vw
 }
 
 .login-sub-container h1 {
-    margin-bottom: 2vh;
+    margin-bottom: 7vh;
+    font-size: 400%;
+}
+
+.input-username-label {
+    font-size: 250%;
 }
 
 .login-input,
@@ -85,5 +101,134 @@ body {
     display: block;
 }
 
+.login-input {
+    background: #e2e2e2;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    width: 80%;
+    height: 5vh;
+    padding: 0% 10%;
+    font-size: 120%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-btn {
+    margin-top: 7vh;
+    background: blue;
+    border-radius: 5px;
+    color: white;
+    font-size: 150%;
+    font-weight: 600;
+    display: inline-block;
+    width: 48%;
+    height: 7vh;
+    font-size: 250%;
+}
+
+
+/* 
+.add-blue {
+    background-color: #00062f;
+} */
+
+
+/* overlay menu */
+
+.load-existing-drawing,
+.new-drawing {
+    background: black;
+    width: 10vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 2%;
+    border-radius: 100px;
+    display: inline-block;
+}
+
 
 /*# sourceMappingURL=main.css.map */
+
+.toolwindow {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid blue;
+    padding: 3% 1%;
+    border-radius: 10px;
+    width: 40px;
+    align-items: center;
+    position: absolute;
+    margin-top: 5%;
+    left: 5%;
+    background-color: white;
+}
+
+.tool-icon {
+    width: 7vh;
+    height: 7vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.tool-icon:hover {
+    cursor: pointer;
+}
+
+.brush-tool {
+    background-image: url(../images/brushstroke.svg);
+}
+
+.shapeselector-tool {
+    background-image: url(../images/shapeSelector.svg);
+}
+
+.colorpicker-tool {
+    background-image: url(../images/colorpicker.svg);
+}
+
+.clear-canvas-tool {
+    background-image: url(../images/clearcanvas.svg);
+}
+
+.shapetools {
+    height: 40vh;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgb(29, 38, 255);
+    padding: 3% 1%;
+    border-radius: 10px;
+    width: 40px;
+    align-items: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 5%;
+    left: 15%;
+}
+
+.shape-icon {
+    width: 5vh;
+    height: 5vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.sh-i-rectangle {
+    background-image: url(../images/rectangle-white.svg);
+}
+
+.sh-i-circle {
+    background-image: url(../images/circle-white.svg);
+}
+
+.sh-i-triangle {
+    background-image: url(../images/triangle-white.svg);
+}
