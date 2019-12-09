@@ -4,7 +4,7 @@ validateUsername = (e) => {
     document.querySelector('.load-btn').style.display = 'none'
     console.log(e.target.value)
     console.log(socket.id)
-    socket.emit('validation', {value: e.target.value, id: socket.id})
+    socket.emit('validation', { value: e.target.value, id: socket.id })
 }
 
 socket.on('validationResponse', (val) => {
@@ -45,18 +45,18 @@ toggleDraw = () => {
     document.querySelector('.free-draw-toggle-icon').style.color = (isDrawing) ? 'red' : 'black'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
     canvas.freeDrawingBrush.color = brushColor
-    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
+        // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
     canvas.renderAll()
 }
 
 // Create a start shape for debugging
-canvas.add(new fabric.Triangle({
-    width: 150,
-    height: 100,
-    left: 160,
-    top: 200,
-    fill: '#00AF64'
-}))
+// canvas.add(new fabric.Triangle({
+//     width: 150,
+//     height: 100,
+//     left: 160,
+//     top: 200,
+//     fill: '#00AF64'
+// }))
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
@@ -100,7 +100,7 @@ showHideShapes = () => {
 
 // Event Listeners
 const shapeIcons = document.querySelectorAll('.shape-icon')
-// TODO Add shape selector evtlistener + shape select store
+    // TODO Add shape selector evtlistener + shape select store
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
@@ -135,5 +135,16 @@ socket.on('load', (loadedDrawing) => {
     })
 })
 
+toHomeScreen = () => {
+    console.log('Go to home screen');
+    document.querySelector('.login-overlay').style.display = 'none'
+}
+
+toLoginScreen = () => {
+    document.querySelector('.login-overlay').style.display = 'flex'
+}
+
 document.querySelector('.login-input').addEventListener('input', validateUsername)
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
+document.querySelector('.login-btn').addEventListener('click', toHomeScreen)
+document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)

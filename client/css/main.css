@@ -23,7 +23,7 @@
 html,
 body {
     position: relative;
-    font-family: 'Roboto', Helvetica, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .colors {
@@ -88,6 +88,7 @@ body {
 .login-sub-container h1 {
     margin-bottom: 7vh;
     font-size: 400%;
+    font-weight: 500;
 }
 
 .input-username-label {
@@ -102,7 +103,7 @@ body {
 }
 
 .login-input {
-    background: #e2e2e2;
+    background: #efefef;
     border-radius: 10px;
     outline: none;
     border: none;
@@ -118,7 +119,7 @@ body {
 }
 
 .login-btn {
-    margin-top: 7vh;
+    margin-top: 4vh;
     background: blue;
     border-radius: 5px;
     color: white;
@@ -128,11 +129,26 @@ body {
     width: 48%;
     height: 7vh;
     font-size: 250%;
+    border-radius: 15px !important;
+    font-weight: 200;
+    letter-spacing: 2px;
 }
 
+.logout-btn {
+    position: absolute;
+    right: 5%;
+    top: 5vh;
+    width: 7vh;
+}
 
 .load-btn {
     display: none;
+}
+
+.shape-3 {
+    position: fixed;
+    right: 10px;
+    top: -8%;
 }
 
 
@@ -230,4 +246,39 @@ body {
 
 .sh-i-triangle {
     background-image: url(../images/triangle-white.svg);
+}
+
+@media screen and (orientation:portrait) {
+    body {
+        background-color: blue;
+    }
+    .please-flip-device {
+        background-color: #07051f;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: blue;
+        font-size: 220%;
+        position: absolute;
+        z-index: 50;
+        width: 80%;
+        font-weight: 100;
+        opacity: 1;
+        padding: 0% 10%;
+        transition: 0.2s ease-in-out;
+    }
+    .please-flip-device h2 {
+        text-align: center;
+        padding: 3%;
+        font-weight: 200;
+        color: #efefef;
+    }
+}
+
+@media screen and (orientation:landscape) {
+    .please-flip-device {
+        opacity: 0;
+        transition: 0.2s ease-in-out;
+    }
 }
