@@ -131,10 +131,9 @@ body {
 }
 
 
-/* 
-.add-blue {
-    background-color: #00062f;
-} */
+.load-btn {
+    display: none;
+}
 
 
 /* overlay menu */

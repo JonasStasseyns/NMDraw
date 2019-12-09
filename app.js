@@ -28,7 +28,7 @@ onConnection = (socket) => {
     // Main Drawing Socket
     socket.on('drawing', (data) => {
         socket.broadcast.emit('drawing', data)
-        // console.log(data)
+        console.log(data)
         fs.writeFile('storage/' + owner + '.svg', data, (er)=> console.log(er));
     });
 
@@ -45,6 +45,18 @@ onConnection = (socket) => {
             })
             console.log('--- VALIDATION SVG FILES END ---')
         })
+    })
+
+    // Request Drawing Load
+    socket.on('drawingRequest', (name) => {
+        tools.ImportSVG(`storage/${name}.svg`).then(svg => {
+            console.log('--- LOADED SVG START ---');
+            console.log(svg.toString());
+            console.log('--- LOADED SVG END ---');
+            socket.emit('load', svg.toString())
+        }).catch(err => {
+            console.log(err);
+        });
     })
 
     // Username socket
