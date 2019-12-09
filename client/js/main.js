@@ -1,5 +1,11 @@
 const socket = io('http://10.1.225.83:5000')
 
+socket.on('connect', function() {
+    const registration = { name: prompt('Enter a username'), id: socket.id };
+    console.log(registration)
+    socket.emit('register', registration);
+});
+
 fabric.Object.prototype.set({
     transparentCorners: false,
     cornerColor: 'rgba(102,153,255,0.5)',
@@ -25,6 +31,7 @@ toggleDraw = () => {
     // TODO Change ui button based on isDrawing
     isDrawing = !isDrawing
     console.log(isDrawing)
+    document.querySelector('.free-draw-toggle-icon').style.color = (isDrawing) ? 'red' : 'black'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0;
     canvas.freeDrawingBrush.color = 'black';
     // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value;
@@ -81,7 +88,13 @@ showHideShapes = () => {
 
 
 // Event Listeners
-const shapeIcons = document.querySelectorAll('.shape-icon')
+<<
+<< << < HEAD
+const shapeIcons = document.querySelectorAll('.shape-icon') ===
+    === =
+    // TODO Add shape selector evtlistener + shape select store
+    document.querySelector('.create-shape-btn').addEventListener('click', createShape) >>>
+    >>> > c2e4415ce89445146ddef7d19fc3aee229a4f79f
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
