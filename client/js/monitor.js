@@ -1,7 +1,7 @@
 const socket = io()
 
 const body = document.querySelector('body')
-const canvas = window._canvas = new fabric.Canvas('c');
+const canvas = window._canvas = new fabric.Canvas('c')
 canvas.setWidth(window.innerWidth)
 canvas.setHeight(window.innerHeight)
 
@@ -11,23 +11,23 @@ socket.on('drawing', (data) => {
     if(!init){
         canvas.clear()
     }
-    console.log(data);
+    console.log(data)
     fabric.loadSVGFromString(data, function(objects, options) {
-        const obj = fabric.util.groupSVGElements(objects, options);
-        canvas.add(obj).renderAll();
+        const obj = fabric.util.groupSVGElements(objects, options)
+        canvas.add(obj).renderAll()
     })
     init = false
-});
+})
 
 socket.on('load', (data) => {
     if(!init){
         canvas.clear()
     }
-    console.log('LOAD');
-    console.log(data);
+    console.log('LOAD')
+    console.log(data)
     fabric.loadSVGFromString(data, function(objects, options) {
-        const obj = fabric.util.groupSVGElements(objects, options);
-        canvas.add(obj).renderAll();
+        const obj = fabric.util.groupSVGElements(objects, options)
+        canvas.add(obj).renderAll()
     })
     init = false
 })
@@ -46,5 +46,5 @@ loadCanvas = (data) => {
         cornerColor: 'rgba(102,153,255,0.5)',
         cornerSize: 12,
         padding: 5
-    });
+    })
 }

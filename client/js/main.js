@@ -1,7 +1,7 @@
 const socket = io()
 
 validateUsername = (e) => {
-    document.querySelector('.load-button').style.display = 'none'
+    document.querySelector('.load-btn').style.display = 'none'
     console.log(e.target.value)
     console.log(socket.id)
     socket.emit('validation', {value: e.target.value, id: socket.id})
@@ -9,25 +9,26 @@ validateUsername = (e) => {
 
 socket.on('validationResponse', (val) => {
     console.log(val)
-    document.querySelector('.load-button').style.display = 'block'
+    document.querySelector('.load-btn').style.display = 'block'
 })
 
-// const registration = { name: e.target.value, id: socket.id };
+// const registration = { name: e.target.value, id: socket.id }
 // console.log(registration)
-// socket.emit('login', registration);
+// socket.emit('login', registration)
 
 fabric.Object.prototype.set({
     transparentCorners: false,
     cornerColor: 'rgba(102,153,255,0.5)',
     cornerSize: 20,
     padding: 5
-});
+})
 
 // Global variables
 let isDrawing = false
+let brushColor = 'black'
 
 // Canvas Init
-const canvas = window._canvas = new fabric.Canvas('c');
+const canvas = window._canvas = new fabric.Canvas('c')
 canvas.setWidth(window.innerWidth)
 canvas.setHeight(window.innerHeight)
 
@@ -42,10 +43,10 @@ toggleDraw = () => {
     isDrawing = !isDrawing
     console.log(isDrawing)
     document.querySelector('.free-draw-toggle-icon').style.color = (isDrawing) ? 'red' : 'black'
-    canvas.isDrawingMode = (isDrawing) ? 1 : 0;
-    canvas.freeDrawingBrush.color = 'black';
-    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value;
-    canvas.renderAll();
+    canvas.isDrawingMode = (isDrawing) ? 1 : 0
+    canvas.freeDrawingBrush.color = brushColor
+    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
+    canvas.renderAll()
 }
 
 // Create a start shape for debugging
@@ -55,7 +56,7 @@ canvas.add(new fabric.Triangle({
     left: 160,
     top: 200,
     fill: '#00AF64'
-}));
+}))
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
@@ -66,8 +67,8 @@ createShape = (e) => {
                 left: Math.random() * 400 + 100,
                 top: Math.random() * 400 + 100,
                 fill: '#0B61A4'
-            }));
-            break;
+            }))
+            break
         case 'triangleShape':
             canvas.add(new fabric.Triangle({
                 width: 40,
@@ -75,8 +76,8 @@ createShape = (e) => {
                 left: Math.random() * 400 + 100,
                 top: Math.random() * 400 + 100,
                 fill: '#0B61A4'
-            }));
-            break;
+            }))
+            break
         case 'rectShape':
             canvas.add(new fabric.Rect({
                 width: 40,
@@ -84,8 +85,8 @@ createShape = (e) => {
                 left: Math.random() * 400 + 100,
                 top: Math.random() * 400 + 100,
                 fill: '#0B61A4'
-            }));
-            break;
+            }))
+            break
     }
 }
 
@@ -107,9 +108,32 @@ shapeIcons.forEach((icon) => {
     icon.addEventListener('click', createShape)
 })
 
+// Color Picker
+const parent = document.querySelector('.colorpicker-tool');
+const picker = new Picker(parent);
+picker.onChange = function(color) {
+    brushColor = color.rgbString
+};
+
 // Body click event to send changes to the server
 document.querySelector('body').addEventListener('click', () => {
     socket.emit('drawing', canvas.toSVG())
+    console.log('bodyevt')
+})
+
+loadDrawing = () => {
+    console.log('LOADBTN')
+    socket.emit('drawingRequest', document.querySelector('.login-input').value)
+}
+
+socket.on('load', (loadedDrawing) => {
+    console.log('loadddddd')
+    document.querySelector('.login-overlay').style.display = 'none'
+    fabric.loadSVGFromString(loadedDrawing, (objects, options) => {
+        const obj = fabric.util.groupSVGElements(objects, options)
+        canvas.add(obj).renderAll()
+    })
 })
 
 document.querySelector('.login-input').addEventListener('input', validateUsername)
+document.querySelector('.load-btn').addEventListener('click', loadDrawing)
