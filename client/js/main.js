@@ -1,10 +1,20 @@
 const socket = io()
 
-// socket.on('connect', function() {
-//     const registration = { name: prompt('Enter a username'), id: socket.id };
-//     console.log(registration)
-//     socket.emit('register', registration);
-// });
+validateUsername = (e) => {
+    document.querySelector('.load-button').style.display = 'none'
+    console.log(e.target.value)
+    console.log(socket.id)
+    socket.emit('validation', {value: e.target.value, id: socket.id})
+}
+
+socket.on('validationResponse', (val) => {
+    console.log(val)
+    document.querySelector('.load-button').style.display = 'block'
+})
+
+// const registration = { name: e.target.value, id: socket.id };
+// console.log(registration)
+// socket.emit('login', registration);
 
 fabric.Object.prototype.set({
     transparentCorners: false,
@@ -89,7 +99,7 @@ showHideShapes = () => {
 
 // Event Listeners
 const shapeIcons = document.querySelectorAll('.shape-icon')
-    // TODO Add shape selector evtlistener + shape select store
+// TODO Add shape selector evtlistener + shape select store
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
@@ -101,3 +111,5 @@ shapeIcons.forEach((icon) => {
 document.querySelector('body').addEventListener('click', () => {
     socket.emit('drawing', canvas.toSVG())
 })
+
+document.querySelector('.login-input').addEventListener('input', validateUsername)

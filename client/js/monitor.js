@@ -19,6 +19,19 @@ socket.on('drawing', (data) => {
     init = false
 });
 
+socket.on('load', (data) => {
+    if(!init){
+        canvas.clear()
+    }
+    console.log('LOAD');
+    console.log(data);
+    fabric.loadSVGFromString(data, function(objects, options) {
+        const obj = fabric.util.groupSVGElements(objects, options);
+        canvas.add(obj).renderAll();
+    })
+    init = false
+})
+
 socket.on('usr', (usr) => {
     const disp = document.createElement('div')
     disp.classList.add('user-toast')
