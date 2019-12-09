@@ -1,0 +1,1 @@
+- Create modal window for username input (or login screen/overlay) 

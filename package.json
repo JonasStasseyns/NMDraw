@@ -13,5 +13,9 @@
     "nodemon": "^2.0.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "latest"
+  },
+  "devDependencies": {
+    "d3-node": "^2.2.1",
+    "xmlserializer": "^0.6.1"
   }
 }
