@@ -27,16 +27,22 @@ onConnection = (socket) => {
     // Main Drawing Socket
     socket.on('drawing', (data) => {
         socket.broadcast.emit('drawing', data)
-        console.log(data)
-        fs.writeFile('storage/' + owner.id + '.svg', data, (er)=> console.log(er));
+        // console.log(data)
+        fs.writeFile('storage/' + owner + '.svg', data, (er)=> console.log(er));
     });
 
     // Username socket
-    socket.on('register', (usr) => {
+    socket.on('login', (usr) => {
+        fs.readdir('storage', (err, files) => {
+            files.forEach((file) => {
+                console.log(file)
+            })
+        })
         logUser(usr)
         userBase.push(usr)
         console.log(userBase)
-        owner = userBase[0]
+        owner = userBase[0].name
+        console.log('ub0name: ' + userBase[0].name)
         socket.broadcast.emit('usr', usr.name)
     })
     socket.on('disconnect', () => {

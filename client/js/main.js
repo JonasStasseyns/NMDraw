@@ -1,9 +1,9 @@
-const socket = io('http://10.1.225.83:5000')
+const socket = io()
 
 socket.on('connect', function() {
     const registration = { name: prompt('Enter a username'), id: socket.id };
     console.log(registration)
-    socket.emit('register', registration);
+    socket.emit('login', registration);
 });
 
 fabric.Object.prototype.set({
