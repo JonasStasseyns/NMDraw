@@ -1,46 +1,83 @@
 .cache-img {
-  display: none;
+    display: none;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-html, body {
-  position: relative;
+html,
+body {
+    position: relative;
 }
 
 .colors {
-  position: fixed;
-  top: 0;
-  left: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .color {
-  display: inline-block;
-  height: 2vw;
-  width: 2vw;
+    display: inline-block;
+    height: 2vw;
+    width: 2vw;
 }
 
 .color.black {
-  background-color: black;
+    background-color: black;
 }
 
 .color.red {
-  background-color: red;
+    background-color: red;
 }
 
 .color.green {
-  background-color: green;
+    background-color: green;
 }
 
 .color.blue {
-  background-color: blue;
+    background-color: blue;
 }
 
 .color.yellow {
-  background-color: yellow;
+    background-color: yellow;
 }
 
+
 /*# sourceMappingURL=main.css.map */
+
+.toolwindow {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid blue;
+    padding: 3% 1%;
+    border-radius: 20px;
+    width: 40px;
+    align-items: center;
+}
+
+.tool-icon {
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.brush-tool {
+    background-image: url(../images/brushstroke.svg);
+}
+
+.shapeselector-tool {
+    background-image: url(../images/shapeSelector.svg);
+}
+
+.colorpicker-tool {
+    background-image: url(../images/colorpicker.svg);
+}
+
+.clear-canvas-tool {
+    background-image: url(../images/clearcanvas.svg);
+}

@@ -11,45 +11,53 @@
 
     <canvas id="c"></canvas>
 
-<!--    free drawing settings START-->
-    <div class="free-draw-toggle-icon">draw</div>
+    <div class="toolwindow">
+        <div class="tool-icon brush-tool"></div>
+        <div class="tool-icon shapeselector-tool"></div>
+        <div class="tool-icon colorpicker-tool"></div>
+        <div class="tool-icon clear-canvas-tool"></div>
+    </div>
+
+    <!--   
+    <div class="free-draw-toggle-icon"><img src="images/brushstroke.svg" alt=""></div>
     <div class="tool-window free-draw-tool-window">
         <div class="shape-properties">
-<!--            TODO Add color picker-->
+           
             <label>Size
                 <input type="number" value="20" class="brush-size">
             </label>
             <button class="update-brush-btn">Update</button>
         </div>
     </div>
-<!--    free drawing settings END-->
 
-<!--    Create shape settings START -->
+  
     <div class="create-shape-window-icon">open</div>
     <div class="tool-window create-shape-tool-window">
-        <label>Circle
-            <input type="radio" value="circle" class="shape-selector-unit" name="shape">
-        </label>
-        <label>Triangle
-            <input type="radio" value="triangle" class="shape-selector-unit" name="shape">
-        </label>
-        <label>Rectangle
-            <input type="radio" value="rectangle" class="shape-selector-unit" name="shape">
-        </label>
+
+
+        <div class="shape-circle">
+            <img src="images/circle.svg" alt="">
+        </div>
+        <div class="shape-rectangle">
+            <img src="images/rectangle.svg" alt="">
+        </div>
+        <div class="shape-triangle">
+            <img src="images/triangle.svg" alt="">
+        </div>
+
         <div class="shape-properties">
             <label>Size
                 <input type="number" value="20" class="shape-size">
             </label>
             <button class="create-shape-btn">Create</button>
         </div>
-    </div>
-    <!--    Create shape settings END -->
+    </div> -->
 
-    <h1 class="remove">Remove</h1>
-     <script src="/socket.io/socket.io.js"></script>
+    <!-- <div class="remove"><img src="images/clearcanvas.svg" alt=""></div> -->
+    <script src="/socket.io/socket.io.js"></script>
     <script src="js/fabric-ini.js"></script>
-<!--    <script src="js/fabric.js"></script>-->
-     <script src="js/main.js"></script>
+    <!--    <script src="js/fabric.js"></script>-->
+    <script src="js/main.js"></script>
 
 </body>
 
