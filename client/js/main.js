@@ -26,8 +26,8 @@ toggleDraw = () => {
     isDrawing = !isDrawing
     console.log(isDrawing)
     canvas.isDrawingMode = (isDrawing) ? 1 : 0;
-    canvas.freeDrawingBrush.color = "purple";
-    canvas.freeDrawingBrush.width = 10;
+    canvas.freeDrawingBrush.color = 'black';
+    canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value;
     canvas.renderAll();
 }
 
