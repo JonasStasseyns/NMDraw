@@ -44,26 +44,38 @@ body {
     background-color: yellow;
 }
 
+.canvas-container {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 
 /*# sourceMappingURL=main.css.map */
 
 .toolwindow {
-    height: 200px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid blue;
     padding: 3% 1%;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 40px;
     align-items: center;
+    position: absolute;
+    top: 5%;
+    left: 5%;
 }
 
 .tool-icon {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.tool-icon:hover {
+    cursor: pointer;
 }
 
 .brush-tool {
@@ -80,4 +92,39 @@ body {
 
 .clear-canvas-tool {
     background-image: url(../images/clearcanvas.svg);
+}
+
+.shapetools {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgb(222, 239, 255);
+    padding: 3% 1%;
+    border-radius: 10px;
+    width: 40px;
+    align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 5%;
+    left: 15%;
+}
+
+.shape-icon {
+    width: 15px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.sh-i-rectangle {
+    background-image: url(../images/rectangle.svg);
+}
+
+.sh-i-circle {
+    background-image: url(../images/circle.svg);
+}
+
+.sh-i-triangle {
+    background-image: url(../images/triangle.svg);
 }
