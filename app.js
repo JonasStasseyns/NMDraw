@@ -37,7 +37,7 @@ onConnection = (socket) => {
         userBase.push(usr)
         console.log(userBase)
         owner = userBase[0]
-        socket.broadcast.emit('usr', usr)
+        socket.broadcast.emit('usr', usr.name)
     })
     socket.on('disconnect', () => {
         // console.log(socket)
