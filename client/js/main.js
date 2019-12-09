@@ -1,5 +1,7 @@
 const socket = io()
 
+socket.emit('usr', prompt('Enter a username:'))
+
 fabric.Object.prototype.set({
     transparentCorners: false,
     cornerColor: 'rgba(102,153,255,0.5)',
@@ -25,6 +27,7 @@ toggleDraw = () => {
     // TODO Change ui button based on isDrawing
     isDrawing = !isDrawing
     console.log(isDrawing)
+    document.querySelector('.free-draw-toggle-icon').style.color = (isDrawing) ? 'red' : 'black'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0;
     canvas.freeDrawingBrush.color = 'black';
     canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value;
@@ -82,6 +85,7 @@ createShape = () => {
 }
 
 // Event Listeners
+// TODO Add shape selector evtlistener + shape select store
 document.querySelector('.create-shape-btn').addEventListener('click', createShape)
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 
