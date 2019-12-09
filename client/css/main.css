@@ -23,6 +23,7 @@
 html,
 body {
     position: relative;
+    font-family: 'Roboto', Helvetica, sans-serif;
 }
 
 .colors {

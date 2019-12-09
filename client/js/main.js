@@ -1,10 +1,10 @@
 const socket = io('http://10.1.225.83:5000')
 
-socket.on('connect', function() {
-    const registration = { name: prompt('Enter a username'), id: socket.id };
-    console.log(registration)
-    socket.emit('register', registration);
-});
+// socket.on('connect', function() {
+//     const registration = { name: prompt('Enter a username'), id: socket.id };
+//     console.log(registration)
+//     socket.emit('register', registration);
+// });
 
 fabric.Object.prototype.set({
     transparentCorners: false,
@@ -88,9 +88,9 @@ showHideShapes = () => {
 
 
 // Event Listeners
-const shapeIcons = document.querySelectorAll('.shape-icon') ===
+const shapeIcons = document.querySelectorAll('.shape-icon')
     // TODO Add shape selector evtlistener + shape select store
-    document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
+document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
 shapeIcons.forEach((icon) => {
