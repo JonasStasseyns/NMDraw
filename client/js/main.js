@@ -1,4 +1,4 @@
-const socket = io()
+const socket = io('http://10.1.225.83:5000')
 
 fabric.Object.prototype.set({
     transparentCorners: false,
@@ -16,9 +16,9 @@ canvas.setWidth(window.innerWidth)
 canvas.setHeight(window.innerHeight)
 
 // Remove active shape
-// document.querySelector('h1').addEventListener('click', (e) => {
-//     canvas.remove(canvas.getActiveObject())
-// })
+document.querySelector('.remove').addEventListener('click', (e) => {
+    canvas.remove(canvas.getActiveObject())
+})
 
 // Drawing Test
 toggleDraw = () => {
@@ -27,7 +27,7 @@ toggleDraw = () => {
     console.log(isDrawing)
     canvas.isDrawingMode = (isDrawing) ? 1 : 0;
     canvas.freeDrawingBrush.color = 'black';
-    canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value;
+    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value;
     canvas.renderAll();
 }
 
@@ -41,62 +41,53 @@ canvas.add(new fabric.Triangle({
 }));
 
 // Create shape based on the selected shape and size
-createShape = () => {
-    const radios = document.querySelectorAll('.shape-selector-unit')
-    radios.forEach((radio) => {
-        if (radio.checked) {
-            switch (radio.value) {
-                case 'circle':
-                    canvas.add(new fabric.Circle({
-                        radius: document.querySelector('.shape-size').value,
-                        left: 100,
-                        top: 100,
-                        fill: '#0B61A4'
-                    }));
-                    break;
-                case 'triangle':
-                    canvas.add(new fabric.Triangle({
-                        width: document.querySelector('.shape-size').value,
-                        height: document.querySelector('.shape-size').value,
-                        left: 100,
-                        top: 100,
-                        fill: '#0B61A4'
-                    }));
-                    break;
-                case 'rectangle':
-                    canvas.add(new fabric.Rect({
-                        width: document.querySelector('.shape-size').value,
-                        height: document.querySelector('.shape-size').value,
-                        left: 100,
-                        top: 100,
-                        fill: '#0B61A4'
-                    }));
-                    break;
-            }
-
-        } else {
-            console.log(radio)
-            console.log('NO')
-        }
-    })
+createShape = (e) => {
+    switch (e.target.id) {
+        case 'circleShape':
+            canvas.add(new fabric.Circle({
+                radius: 20,
+                left: Math.random() * 400 + 100,
+                top: Math.random() * 400 + 100,
+                fill: '#0B61A4'
+            }));
+            break;
+        case 'triangleShape':
+            canvas.add(new fabric.Triangle({
+                width: 40,
+                height: 40,
+                left: Math.random() * 400 + 100,
+                top: Math.random() * 400 + 100,
+                fill: '#0B61A4'
+            }));
+            break;
+        case 'rectShape':
+            canvas.add(new fabric.Rect({
+                width: 40,
+                height: 40,
+                left: Math.random() * 400 + 100,
+                top: Math.random() * 400 + 100,
+                fill: '#0B61A4'
+            }));
+            break;
+    }
 }
 
 showHideShapes = () => {
     let shapeTools = document.getElementById('shapeTools')
-    if (shapeTools.style.display === "none") {
-        shapeTools.style.display = "flex";
-    } else {
-        shapeTools.style.display = "none";
-    }
+    shapeTools.style.display === "flex" ?
+        shapeTools.style.display = "none" :
+        shapeTools.style.display = "flex"
 }
 
 
 // Event Listeners
-// document.querySelector('.create-shape-btn').addEventListener('click', createShape)
-// document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
+const shapeIcons = document.querySelectorAll('.shape-icon')
+document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
-
+shapeIcons.forEach((icon) => {
+    icon.addEventListener('click', createShape)
+})
 
 // Body click event to send changes to the server
 document.querySelector('body').addEventListener('click', () => {

@@ -53,7 +53,7 @@ body {
 /*# sourceMappingURL=main.css.map */
 
 .toolwindow {
-    height: 160px;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -63,13 +63,14 @@ body {
     width: 40px;
     align-items: center;
     position: absolute;
-    top: 5%;
+    margin-top: 5%;
     left: 5%;
+    background-color: white;
 }
 
 .tool-icon {
-    width: 20px;
-    height: 20px;
+    width: 7vh;
+    height: 7vh;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -95,36 +96,36 @@ body {
 }
 
 .shapetools {
-    height: 80px;
-    display: flex;
+    height: 40vh;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
-    background: rgb(222, 239, 255);
+    background: rgb(29, 38, 255);
     padding: 3% 1%;
     border-radius: 10px;
     width: 40px;
     align-items: center;
     align-items: center;
     position: absolute;
-    top: 5%;
+    margin-top: 5%;
     left: 15%;
 }
 
 .shape-icon {
-    width: 15px;
-    height: 15px;
+    width: 5vh;
+    height: 5vh;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .sh-i-rectangle {
-    background-image: url(../images/rectangle.svg);
+    background-image: url(../images/rectangle-white.svg);
 }
 
 .sh-i-circle {
-    background-image: url(../images/circle.svg);
+    background-image: url(../images/circle-white.svg);
 }
 
 .sh-i-triangle {
-    background-image: url(../images/triangle.svg);
+    background-image: url(../images/triangle-white.svg);
 }
