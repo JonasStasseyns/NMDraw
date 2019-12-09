@@ -1,6 +1,7 @@
 const express = require('express');
 const socket = require('socket.io');
-const fs = require('fs')
+const fs = require('fs');
+const tools = require('simple-svg-tools');
 
 const app = express();
 const server = app.listen(5000, () => {
@@ -31,6 +32,21 @@ onConnection = (socket) => {
         fs.writeFile('storage/' + owner + '.svg', data, (er)=> console.log(er));
     });
 
+    // Validation socket
+    socket.on('validation', (value) => {
+        console.log(value.value)
+        fs.readdir('storage', (err, files) => {
+            files.forEach((file) => {
+                if(file.split('.')[0] === value.value && file.split('.')[0] !== ''){
+                    console.log('match')
+                    console.log(value.id)
+                    socket.emit('validationResponse', true);
+                }
+            })
+            console.log('--- VALIDATION SVG FILES END ---')
+        })
+    })
+
     // Username socket
     socket.on('login', (usr) => {
         fs.readdir('storage', (err, files) => {
@@ -38,7 +54,16 @@ onConnection = (socket) => {
             files.forEach((file) => {
                 console.log(file)
                 if(file.split('.')[0] === usr.name){
-
+                    tools.ImportSVG('storage/'+file).then(svg => {
+                        // SVG was imported
+                        // Variable 'svg' is instance of SVG class
+                        console.log('--- LOADED SVG START ---');
+                        console.log(svg.toString());
+                        console.log('--- LOADED SVG END ---');
+                        socket.broadcast.emit('load', svg.toString())
+                    }).catch(err => {
+                        console.log(err);
+                    });
                 }
             })
             console.log('--- SVG FILES END ---')

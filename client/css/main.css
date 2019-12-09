@@ -82,4 +82,8 @@ html, body {
   display: block;
 }
 
+.load-button {
+  display: none;
+}
+
 /*# sourceMappingURL=main.css.map */
