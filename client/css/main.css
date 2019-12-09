@@ -1,89 +1,89 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 .cache-img {
-  display: none;
+    display: none;
 }
 
 .toast-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .user-toast {
-  margin: 1vh 0;
-  padding: 1vh 2vw;
-  background-color: aliceblue;
-  border-radius: 5px;
+    margin: 1vh 0;
+    padding: 1vh 2vw;
+    background-color: aliceblue;
+    border-radius: 5px;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-html, body {
-  position: relative;
-  font-family: sans-serif;
+html,
+body {
+    position: relative;
+    font-family: 'Roboto', Helvetica, sans-serif;
 }
 
 .colors {
-  position: fixed;
-  top: 0;
-  left: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .color {
-  display: inline-block;
-  height: 2vw;
-  width: 2vw;
+    display: inline-block;
+    height: 2vw;
+    width: 2vw;
 }
 
 .color.black {
-  background-color: black;
+    background-color: black;
 }
 
 .color.red {
-  background-color: red;
+    background-color: red;
 }
 
 .color.green {
-  background-color: green;
+    background-color: green;
 }
 
 .color.blue {
-  background-color: blue;
+    background-color: blue;
 }
 
 .color.yellow {
-  background-color: yellow;
+    background-color: yellow;
 }
 
 .login-overlay {
-  width: 100vw;
-  height: 100vh;
-  background-color: blue;
-  position: absolute;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: blue;
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .login-sub-container {
-  width: 40vw;
+    width: 40vw;
 }
 
 .login-sub-container h1 {
-  margin-bottom: 2vh;
+    margin-bottom: 2vh;
 }
 
-.login-input, .login-btn, .login-radio-container {
-  margin: 2vh 0;
-  display: block;
+.login-input,
+.login-btn,
+.login-radio-container {
+    margin: 2vh 0;
+    display: block;
 }
 
-.load-button {
-  display: none;
-}
 
 /*# sourceMappingURL=main.css.map */
