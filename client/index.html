@@ -9,7 +9,24 @@
 
 <body>
 
-    <h1>DRUGS</h1>
+    <div class="login-overlay">
+        <div class="login-sub-container">
+            <h1>NMDraw Login</h1>
+            <label>Username
+                <input type="text" class="login-input">
+            </label>
+            <div class="login-radio-container">
+                <label>
+                    <input type="radio" class="login-radio" name="login-radio" value="load">
+                </label>Load existing drawing
+                <label>
+                    <input type="radio" class="login-radio" name="login-radio" value="noload">
+                </label>New drawing
+            </div>
+            <button class="login-btn">Draw</button>
+        </div>
+    </div>
+
     <canvas id="c"></canvas>
 
     <div class="toolwindow">
@@ -29,7 +46,7 @@
     <div class="free-draw-toggle-icon"><img src="images/brushstroke.svg" alt=""></div>
     <div class="tool-window free-draw-tool-window">
         <div class="shape-properties">
-           
+
             <label>Size
                 <input type="number" value="20" class="brush-size">
             </label>
@@ -37,7 +54,7 @@
         </div>
     </div>
 
-  
+
     <div class="create-shape-window-icon">open</div>
     <div class="tool-window create-shape-tool-window">
 

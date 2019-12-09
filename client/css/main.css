@@ -1,144 +1,85 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 .cache-img {
-    display: none;
+  display: none;
 }
 
 .toast-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .user-toast {
-    margin: 1vh 0;
-    padding: 1vh 2vw;
-    background-color: aliceblue;
-    border-radius: 5px;
+  margin: 1vh 0;
+  padding: 1vh 2vw;
+  background-color: aliceblue;
+  border-radius: 5px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-html,
-body {
-    position: relative;
+html, body {
+  position: relative;
+  font-family: sans-serif;
 }
 
 .colors {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .color {
-    display: inline-block;
-    height: 2vw;
-    width: 2vw;
+  display: inline-block;
+  height: 2vw;
+  width: 2vw;
 }
 
 .color.black {
-    background-color: black;
+  background-color: black;
 }
 
 .color.red {
-    background-color: red;
+  background-color: red;
 }
 
 .color.green {
-    background-color: green;
+  background-color: green;
 }
 
 .color.blue {
-    background-color: blue;
+  background-color: blue;
 }
 
 .color.yellow {
-    background-color: yellow;
+  background-color: yellow;
 }
 
-.canvas-container {
-    width: 100% !important;
-    height: 100% !important;
+.login-overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: blue;
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
+.login-sub-container {
+  width: 40vw;
+}
+
+.login-sub-container h1 {
+  margin-bottom: 2vh;
+}
+
+.login-input, .login-btn, .login-radio-container {
+  margin: 2vh 0;
+  display: block;
+}
 
 /*# sourceMappingURL=main.css.map */
-
-.toolwindow {
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid blue;
-    padding: 3% 1%;
-    border-radius: 10px;
-    width: 40px;
-    align-items: center;
-    position: absolute;
-    margin-top: 5%;
-    left: 5%;
-    background-color: white;
-}
-
-.tool-icon {
-    width: 7vh;
-    height: 7vh;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.tool-icon:hover {
-    cursor: pointer;
-}
-
-.brush-tool {
-    background-image: url(../images/brushstroke.svg);
-}
-
-.shapeselector-tool {
-    background-image: url(../images/shapeSelector.svg);
-}
-
-.colorpicker-tool {
-    background-image: url(../images/colorpicker.svg);
-}
-
-.clear-canvas-tool {
-    background-image: url(../images/clearcanvas.svg);
-}
-
-.shapetools {
-    height: 40vh;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    background: rgb(29, 38, 255);
-    padding: 3% 1%;
-    border-radius: 10px;
-    width: 40px;
-    align-items: center;
-    align-items: center;
-    position: absolute;
-    margin-top: 5%;
-    left: 15%;
-}
-
-.shape-icon {
-    width: 5vh;
-    height: 5vh;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.sh-i-rectangle {
-    background-image: url(../images/rectangle-white.svg);
-}
-
-.sh-i-circle {
-    background-image: url(../images/circle-white.svg);
-}
-
-.sh-i-triangle {
-    background-image: url(../images/triangle-white.svg);
-}

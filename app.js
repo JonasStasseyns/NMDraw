@@ -34,9 +34,14 @@ onConnection = (socket) => {
     // Username socket
     socket.on('login', (usr) => {
         fs.readdir('storage', (err, files) => {
+            console.log('--- SVG FILES START ---')
             files.forEach((file) => {
                 console.log(file)
+                if(file.split('.')[0] === usr.name){
+
+                }
             })
+            console.log('--- SVG FILES END ---')
         })
         logUser(usr)
         userBase.push(usr)
