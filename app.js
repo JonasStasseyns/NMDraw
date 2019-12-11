@@ -23,8 +23,10 @@ logUser = (usr) => {
     console.log('---------- ---------- ----------')
 }
 
+// TODO Registration (manage ownership) disconnect id
 onConnection = (socket) => {
     console.log('Socket established: ' + socket.id)
+
     // Main Drawing Socket
     socket.on('drawing', (data) => {
         socket.broadcast.emit('drawing', data)
@@ -43,7 +45,6 @@ onConnection = (socket) => {
                     socket.emit('validationResponse', true);
                 }
             })
-            console.log('--- VALIDATION SVG FILES END ---')
         })
     })
 

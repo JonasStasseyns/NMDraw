@@ -12,10 +12,6 @@ socket.on('validationResponse', (val) => {
     document.querySelector('.load-btn').style.display = 'block'
 })
 
-// const registration = { name: e.target.value, id: socket.id }
-// console.log(registration)
-// socket.emit('login', registration)
-
 fabric.Object.prototype.set({
     transparentCorners: false,
     cornerColor: 'rgba(102,153,255,0.5)',
