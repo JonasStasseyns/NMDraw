@@ -124,10 +124,14 @@ newDrawing = () => {
 
 socket.on('load', (loadedDrawing) => {
     console.log('loadddddd')
+    canvas.clear()
     document.querySelector('.login-overlay').style.display = 'none'
     fabric.loadSVGFromString(loadedDrawing, (objects, options) => {
-        const obj = fabric.util.groupSVGElements(objects, options)
-        canvas.add(obj).renderAll()
+        // const obj = fabric.util.groupSVGElements(objects, options)
+        // canvas.add(obj).renderAll()
+        objects.forEach((obj, i) => {
+            canvas.add(obj);
+        });
     })
 })
 
@@ -145,5 +149,5 @@ document.querySelector('.login-input').addEventListener('input', validateUsernam
 
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
 document.querySelector('.new-btn').addEventListener('click', newDrawing)
-document.querySelector('.login-btn').addEventListener('click', toHomeScreen)
+// document.querySelector('.login-btn').addEventListener('click', toHomeScreen)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)
