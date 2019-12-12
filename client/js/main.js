@@ -103,15 +103,23 @@ picker.onChange = function(color) {
     brushColor = color.rgbString
 };
 
-// Body click event to send changes to the server
-document.querySelector('body').addEventListener('click', () => {
+handleClickTouch = () => {
     socket.emit('drawing', canvas.toSVG())
-    console.log('bodyevt')
-})
+    console.log('§canvas-evt')
+}
+
+// Body click event to send changes to the server
+document.querySelector('.trigger-area').addEventListener('click', handleClickTouch)
+document.querySelector('.trigger-area').addEventListener('touchend', handleClickTouch)
+document.querySelector('.trigger-area').addEventListener('touchstart', handleClickTouch)
 
 loadDrawing = () => {
     console.log('LOADBTN')
     socket.emit('drawingRequest', document.querySelector('.login-input').value)
+}
+
+newDrawing = () => {
+    socket.emit('register', document.querySelector('.login-input').value)
 }
 
 socket.on('load', (loadedDrawing) => {
@@ -132,7 +140,10 @@ toLoginScreen = () => {
     document.querySelector('.login-overlay').style.display = 'flex'
 }
 
+// Triggers validateUsername after each keystroke to check is the user has an existing drawing
 document.querySelector('.login-input').addEventListener('input', validateUsername)
+
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
+document.querySelector('.new-btn').addEventListener('click', newDrawing)
 document.querySelector('.login-btn').addEventListener('click', toHomeScreen)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)

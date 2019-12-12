@@ -7,7 +7,11 @@ canvas.setHeight(window.innerHeight)
 
 let init = true
 
-socket.on('drawing', (data) => {
+socket.on('king', (userObject) => {
+    console.log(userObject)
+})
+
+socket.on('updateMonitor', (data) => {
     if(!init){
         canvas.clear()
     }
@@ -19,26 +23,26 @@ socket.on('drawing', (data) => {
     init = false
 })
 
-socket.on('load', (data) => {
-    if(!init){
-        canvas.clear()
-    }
-    console.log('LOAD')
-    console.log(data)
-    fabric.loadSVGFromString(data, function(objects, options) {
-        const obj = fabric.util.groupSVGElements(objects, options)
-        canvas.add(obj).renderAll()
-    })
-    init = false
-})
+// socket.on('load', (data) => {
+//     if(!init){
+//         canvas.clear()
+//     }
+//     console.log('LOAD')
+//     console.log(data)
+//     fabric.loadSVGFromString(data, function(objects, options) {
+//         const obj = fabric.util.groupSVGElements(objects, options)
+//         canvas.add(obj).renderAll()
+//     })
+//     init = false
+// })
 
-socket.on('usr', (usr) => {
-    const disp = document.createElement('div')
-    disp.classList.add('user-toast')
-    disp.innerHTML = usr + ' Connected!'
-    document.querySelector('.toast-container').appendChild(disp)
-    console.log(usr + 'Connected!')
-})
+// socket.on('usr', (usr) => {
+//     const disp = document.createElement('div')
+//     disp.classList.add('user-toast')
+//     disp.innerHTML = usr + ' Connected!'
+//     document.querySelector('.toast-container').appendChild(disp)
+//     console.log(usr + 'Connected!')
+// })
 
 loadCanvas = (data) => {
     fabric.Object.prototype.set({

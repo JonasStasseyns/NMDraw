@@ -13,7 +13,6 @@ app.use(express.static('client'));
 // Websocket
 const io = socket(server);
 
-let owner = 'owner'
 let userBase = []
 
 logUser = (usr) => {
@@ -41,9 +40,10 @@ onConnection = (socket) => {
 
     // Main Drawing Socket
     socket.on('drawing', (data) => {
-        socket.broadcast.emit('drawing', data)
+        socket.broadcast.emit('updateMonitor', data)
         console.log(data)
-        fs.writeFile('storage/' + owner + '.svg', data, (er)=> console.log(er));
+        console.log('I REALLY DID DIS')
+        fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er)=> console.log(er));
     });
 
     // Validation socket
@@ -74,15 +74,12 @@ onConnection = (socket) => {
     })
 
     // Username socket
-    socket.on('register', (usr) => {
-
-        logUser(usr)
-        userBase.push(usr)
-        console.log(userBase)
-        owner = userBase[0].name
-        console.log('ub0name: ' + userBase[0].name)
-        socket.broadcast.emit('usr', usr.name)
+    socket.on('register', (name) => {
+        registerUserId(name, socket.id)
+        socket.broadcast.emit('king', userBase[0])
     })
+
+    // Socket triggers on disconnect and removes user from userBase[]
     socket.on('disconnect', () => {
         console.log(userBase)
         userBase = userBase.filter(function( obj ) {
