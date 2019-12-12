@@ -119,7 +119,9 @@ loadDrawing = () => {
 }
 
 newDrawing = () => {
+    canvas.clear()
     socket.emit('register', document.querySelector('.login-input').value)
+    document.querySelector('.login-overlay').style.display = 'none'
 }
 
 socket.on('load', (loadedDrawing) => {
