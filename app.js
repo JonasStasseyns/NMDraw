@@ -14,13 +14,25 @@ app.use(express.static('client'));
 const io = socket(server);
 
 let owner = 'owner'
-const userBase = []
+let userBase = []
 
 logUser = (usr) => {
     console.log('---------- ---------- ----------')
     console.log(Date())
     console.log(usr + ' connected!')
     console.log('---------- ---------- ----------')
+}
+
+registerUserId = (name, id) => {
+    console.log('registerUserID()')
+    userBase.push({
+        name,
+        id
+    })
+    console.log(userBase)
+    console.log(name)
+    console.log(id)
+    console.log('---')
 }
 
 // TODO Registration (manage ownership) disconnect id
@@ -50,6 +62,7 @@ onConnection = (socket) => {
 
     // Request Drawing Load
     socket.on('drawingRequest', (name) => {
+        registerUserId(name, socket.id)
         tools.ImportSVG(`storage/${name}.svg`).then(svg => {
             console.log('--- LOADED SVG START ---');
             console.log(svg.toString());
@@ -61,26 +74,8 @@ onConnection = (socket) => {
     })
 
     // Username socket
-    socket.on('login', (usr) => {
-        fs.readdir('storage', (err, files) => {
-            console.log('--- SVG FILES START ---')
-            files.forEach((file) => {
-                console.log(file)
-                if(file.split('.')[0] === usr.name){
-                    tools.ImportSVG('storage/'+file).then(svg => {
-                        // SVG was imported
-                        // Variable 'svg' is instance of SVG class
-                        console.log('--- LOADED SVG START ---');
-                        console.log(svg.toString());
-                        console.log('--- LOADED SVG END ---');
-                        socket.broadcast.emit('load', svg.toString())
-                    }).catch(err => {
-                        console.log(err);
-                    });
-                }
-            })
-            console.log('--- SVG FILES END ---')
-        })
+    socket.on('register', (usr) => {
+
         logUser(usr)
         userBase.push(usr)
         console.log(userBase)
@@ -89,7 +84,13 @@ onConnection = (socket) => {
         socket.broadcast.emit('usr', usr.name)
     })
     socket.on('disconnect', () => {
-        // console.log(socket)
+        console.log(userBase)
+        userBase = userBase.filter(function( obj ) {
+            return obj.id !== socket.id;
+        });
+        console.log('')
+        console.log(userBase)
+        console.log('Socket closed: ' + socket.id)
     });
 }
 

@@ -45,14 +45,6 @@ toggleDraw = () => {
     canvas.renderAll()
 }
 
-// Create a start shape for debugging
-// canvas.add(new fabric.Triangle({
-//     width: 150,
-//     height: 100,
-//     left: 160,
-//     top: 200,
-//     fill: '#00AF64'
-// }))
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
