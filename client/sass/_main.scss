@@ -259,11 +259,12 @@ body {
     font-size: 220%;
     position: absolute;
     z-index: 50;
-    width: 80%;
+    width: 100%;
     font-weight: 100;
     opacity: 1;
     padding: 0% 10%;
     transition: 0.2s ease-in-out;
+    box-sizing: border-box;
 }
 
 .please-flip-to-landscape h2 {
@@ -283,11 +284,12 @@ body {
     font-size: 220%;
     position: absolute;
     z-index: 1000;
-    width: 80%;
+    width: 100%;
     font-weight: 100;
     opacity: 1;
     padding: 0% 10%;
     transition: 0.2s ease-in-out;
+    box-sizing: border-box;
 }
 
 .please-flip-to-portrait h2 {
