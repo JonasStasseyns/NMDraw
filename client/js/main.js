@@ -119,6 +119,7 @@ document.querySelector('.trigger-area').addEventListener('click', handleClickTou
 document.querySelector('.trigger-area').addEventListener('touchend', handleClickTouch)
 
 loadDrawing = () => {
+
     console.log('LOADBTN')
     socket.emit('drawingRequest', document.querySelector('.login-input').value)
 }
