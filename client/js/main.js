@@ -5,6 +5,7 @@ let screenOrientation = '';
 let toggleDevOrientation = document.getElementById("toggleOrientation");
 
 toggleOrientatonAlert = () => {
+    console.log(screen)
     screenOrientation = screen.orientation.type
     if (!userActive && screenOrientation === 'landscape-primary') {
         toggleDevOrientation.className = 'please-flip-to-portrait'
