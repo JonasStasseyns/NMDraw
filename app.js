@@ -15,23 +15,9 @@ const io = socket(server);
 
 let userBase = []
 
-logUser = (usr) => {
-    console.log('---------- ---------- ----------')
-    console.log(Date())
-    console.log(usr + ' connected!')
-    console.log('---------- ---------- ----------')
-}
-
 registerUserId = (name, id) => {
-    console.log('registerUserID()')
-    userBase.push({
-        name,
-        id
-    })
+    userBase.push({name, id})
     console.log(userBase)
-    console.log(name)
-    console.log(id)
-    console.log('---')
 }
 
 // TODO Registration (manage ownership) disconnect id
@@ -48,13 +34,10 @@ onConnection = (socket) => {
 
     // Validation socket
     socket.on('validation', (value) => {
-        console.log(value.value)
         fs.readdir('storage', (err, files) => {
             files.forEach((file) => {
                 if(file.split('.')[0] === value.value && file.split('.')[0] !== ''){
-                    console.log('match')
-                    console.log(value.id)
-                    socket.emit('validationResponse', true);
+                    socket.emit('validationResponse', true)
                 }
             })
         })
@@ -63,14 +46,7 @@ onConnection = (socket) => {
     // Request Drawing Load
     socket.on('drawingRequest', (name) => {
         registerUserId(name, socket.id)
-        tools.ImportSVG(`storage/${name}.svg`).then(svg => {
-            console.log('--- LOADED SVG START ---');
-            console.log(svg.toString());
-            console.log('--- LOADED SVG END ---');
-            socket.emit('load', svg.toString())
-        }).catch(err => {
-            console.log(err);
-        });
+        tools.ImportSVG(`storage/${name}.svg`).then(svg => socket.emit('load', svg.toString())).catch(err => console.log(err))
     })
 
     // Username socket
@@ -85,7 +61,6 @@ onConnection = (socket) => {
         userBase = userBase.filter(function( obj ) {
             return obj.id !== socket.id;
         });
-        console.log('')
         console.log(userBase)
         console.log('Socket closed: ' + socket.id)
     });
