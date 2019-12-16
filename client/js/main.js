@@ -5,19 +5,20 @@ let screenOrientation = '';
 let toggleDevOrientation = document.getElementById("toggleOrientation");
 
 toggleOrientatonAlert = () => {
-    screenOrientation = screen.orientation.type
-    if (!userActive && screenOrientation === 'landscape-primary') {
+    console.log(window.orientation)
+    screenOrientation = window.orientation.toString()
+    if ((!userActive && screenOrientation == '-90') || (!userActive && screenOrientation == '90')) {
         toggleDevOrientation.className = 'please-flip-to-portrait'
         toggleDevOrientation.style.display = 'flex';
-    } else if (!userActive && screenOrientation === 'portrait-primary') {
+    } else if (!userActive && screenOrientation === 'portrait-primary' || (window.orientation == 0)) {
         toggleDevOrientation.className = ''
         toggleDevOrientation.style.display = 'none';
     }
 
-    if (userActive && screenOrientation === 'portrait-primary') {
+    if (userActive && screenOrientation === '0') {
         toggleDevOrientation.className = 'please-flip-to-landscape'
         toggleDevOrientation.style.display = 'flex';
-    } else if (userActive && screenOrientation === 'landscape-primary') {
+    } else if (userActive != '0') {
         toggleDevOrientation.className = ''
         toggleDevOrientation.style.display = 'none';
     }
@@ -174,7 +175,6 @@ socket.on('load', (loadedDrawing) => {
 })
 
 toHomeScreen = () => {
-    console.log('Go to home screen');
     document.querySelector('.login-overlay').style.display = 'none'
 }
 
@@ -186,11 +186,8 @@ toLoginScreen = () => {
 
 // Triggers validateUsername after each keystroke to check is the user has an existing drawing
 document.querySelector('.login-input').addEventListener('input', validateUsername)
-
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
 document.querySelector('.new-btn').addEventListener('click', newDrawing)
-    // document.querySelector('.login-btn').addEventListener('click', toHomeScreen)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)
-
 
 toggleOrientatonAlert()
