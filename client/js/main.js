@@ -72,7 +72,6 @@ toggleDraw = () => {
     canvas.renderAll()
 }
 
-
 // Create shape based on the selected shape and size
 createShape = (e) => {
     switch (e.target.id) {
@@ -124,7 +123,9 @@ shapeIcons.forEach((icon) => {
 })
 
 changeActiveShapeColor = (color) => {
-    canvas.getActiveObject().setColor(color)
+    if(canvas.getActiveObject().get('type') !== 'path'){
+        canvas.getActiveObject().setColor(color)
+    }
     console.log('Color Set')
     canvas.renderAll()
 }
