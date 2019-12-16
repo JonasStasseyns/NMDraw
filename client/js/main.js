@@ -6,18 +6,18 @@ let toggleDevOrientation = document.getElementById("toggleOrientation");
 
 toggleOrientatonAlert = () => {
     screenOrientation = screen.orientation.type
-    if (!userActive && screenOrientation == 'landscape-primary') {
+    if (!userActive && screenOrientation === 'landscape-primary') {
         toggleDevOrientation.className = 'please-flip-to-portrait'
         toggleDevOrientation.style.display = 'flex';
-    } else if (!userActive && screenOrientation == 'portrait-primary') {
+    } else if (!userActive && screenOrientation === 'portrait-primary') {
         toggleDevOrientation.className = ''
         toggleDevOrientation.style.display = 'none';
     }
 
-    if (userActive && screenOrientation == 'portrait-primary') {
+    if (userActive && screenOrientation === 'portrait-primary') {
         toggleDevOrientation.className = 'please-flip-to-landscape'
         toggleDevOrientation.style.display = 'flex';
-    } else if (userActive && screenOrientation == 'landscape-primary') {
+    } else if (userActive && screenOrientation === 'landscape-primary') {
         toggleDevOrientation.className = ''
         toggleDevOrientation.style.display = 'none';
     }
