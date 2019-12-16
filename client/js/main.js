@@ -1,3 +1,17 @@
+let toggleDevOrientation1 = document.getElementById("toggleOrientation1");
+let toggleDevOrientation2 = document.getElementById("toggleOrientation2");
+
+let userActive = false;
+
+checkDeviceOrientation = () => {
+    if (window.innerHeight > window.innerWidth && userActive) {
+        alert("Please use Landscape!");
+        toggleDevOrientation1.className = "please-flip-to-landscape"
+    } else {
+        toggleDevOrientation1.className = ""
+    }
+}
+
 const socket = io()
 
 validateUsername = (e) => {
@@ -116,12 +130,13 @@ document.querySelector('.trigger-area').addEventListener('touchstart', handleCli
 loadDrawing = () => {
     console.log('LOADBTN')
     socket.emit('drawingRequest', document.querySelector('.login-input').value)
+    toHomeScreen()
 }
 
 newDrawing = () => {
     canvas.clear()
     socket.emit('register', document.querySelector('.login-input').value)
-    document.querySelector('.login-overlay').style.display = 'none'
+    toHomeScreen()
 }
 
 socket.on('load', (loadedDrawing) => {
@@ -140,10 +155,16 @@ socket.on('load', (loadedDrawing) => {
 toHomeScreen = () => {
     console.log('Go to home screen');
     document.querySelector('.login-overlay').style.display = 'none'
+    setTimeout(() => {
+        checkDeviceOrientation()
+    }, 1500);
 }
 
 toLoginScreen = () => {
     document.querySelector('.login-overlay').style.display = 'flex'
+    setTimeout(() => {
+        checkDeviceOrientation()
+    }, 1500);
 }
 
 // Triggers validateUsername after each keystroke to check is the user has an existing drawing
@@ -151,5 +172,5 @@ document.querySelector('.login-input').addEventListener('input', validateUsernam
 
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
 document.querySelector('.new-btn').addEventListener('click', newDrawing)
-// document.querySelector('.login-btn').addEventListener('click', toHomeScreen)
+    // document.querySelector('.login-btn').addEventListener('click', toHomeScreen)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)
