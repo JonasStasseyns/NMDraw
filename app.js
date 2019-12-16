@@ -15,23 +15,9 @@ const io = socket(server);
 
 let userBase = []
 
-logUser = (usr) => {
-    console.log('---------- ---------- ----------')
-    console.log(Date())
-    console.log(usr + ' connected!')
-    console.log('---------- ---------- ----------')
-}
-
 registerUserId = (name, id) => {
-    console.log('registerUserID()')
-    userBase.push({
-        name,
-        id
-    })
+    userBase.push({name, id})
     console.log(userBase)
-    console.log(name)
-    console.log(id)
-    console.log('---')
 }
 
 // TODO Registration (manage ownership) disconnect id
@@ -48,12 +34,9 @@ onConnection = (socket) => {
 
     // Validation socket
     socket.on('validation', (value) => {
-        console.log(value.value)
         fs.readdir('storage', (err, files) => {
             files.forEach((file) => {
                 if(file.split('.')[0] === value.value && file.split('.')[0] !== ''){
-                    console.log('match')
-                    console.log(value.id)
                     socket.emit('validationResponse', true);
                 }
             })
