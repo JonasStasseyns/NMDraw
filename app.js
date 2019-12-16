@@ -43,7 +43,7 @@ onConnection = (socket) => {
         socket.broadcast.emit('updateMonitor', data)
         // console.log(data)
         console.log('Drawing data received')
-        fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er)=> console.log(er));
+        userBase[0].name ? fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er)=> console.log(er)) : console.log('No username was linked to this socket-id: ' + socket.id)
     });
 
     // Validation socket
