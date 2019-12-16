@@ -63,7 +63,8 @@ toggleDraw = () => {
     // TODO Change ui button based on isDrawing
     isDrawing = !isDrawing
     console.log(isDrawing)
-    document.querySelector('.free-draw-toggle-icon').style.color = (isDrawing) ? 'red' : 'black'
+    document.querySelector('.brush-tool').style.backgroundImage = (isDrawing) ? 'url(../images/brushstroke-active.svg)' : 'url(../images/brushstroke.svg)'
+    document.querySelector('.brush-tool').style.boxShadow = (isDrawing) ? '' : 'url(../images/brushstroke.svg)'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
     canvas.freeDrawingBrush.color = brushColor
         // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
@@ -160,7 +161,7 @@ newDrawing = () => {
 }
 
 socket.on('load', (loadedDrawing) => {
-    console.log('loadddddd')
+    console.log('SVG-Data received')
     canvas.clear()
     document.querySelector('.login-overlay').style.display = 'none'
     fabric.loadSVGFromString(loadedDrawing, (objects, options) => {
