@@ -4,7 +4,7 @@ validateUsername = (e) => {
     document.querySelector('.load-btn').style.display = 'none'
     console.log(e.target.value)
     console.log(socket.id)
-    socket.emit('validation', { value: e.target.value, id: socket.id })
+    socket.emit('validation', {value: e.target.value, id: socket.id})
 }
 
 socket.on('validationResponse', (val) => {
@@ -41,7 +41,7 @@ toggleDraw = () => {
     document.querySelector('.free-draw-toggle-icon').style.color = (isDrawing) ? 'red' : 'black'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
     canvas.freeDrawingBrush.color = brushColor
-        // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
+    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
     canvas.renderAll()
 }
 
@@ -88,7 +88,7 @@ showHideShapes = () => {
 
 // Event Listeners
 const shapeIcons = document.querySelectorAll('.shape-icon')
-    // TODO Add shape selector evtlistener + shape select store
+// TODO Add shape selector evtlistener + shape select store
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
@@ -96,11 +96,17 @@ shapeIcons.forEach((icon) => {
     icon.addEventListener('click', createShape)
 })
 
+changeActiveShapeColor = (color) => {
+    canvas.getActiveObject().setColor(color)
+    console.log('Color Set')
+    canvas.renderAll()
+}
+
 // Color Picker
 const parent = document.querySelector('.colorpicker-tool');
 const picker = new Picker(parent);
-picker.onChange = function(color) {
-    brushColor = color.rgbString
+picker.onChange = function (color) {
+    isDrawing ? brushColor = color.rgbString : changeActiveShapeColor(color.rgbString)
 };
 
 handleClickTouch = () => {
@@ -111,7 +117,6 @@ handleClickTouch = () => {
 // Body click event to send changes to the server
 document.querySelector('.trigger-area').addEventListener('click', handleClickTouch)
 document.querySelector('.trigger-area').addEventListener('touchend', handleClickTouch)
-document.querySelector('.trigger-area').addEventListener('touchstart', handleClickTouch)
 
 loadDrawing = () => {
     console.log('LOADBTN')

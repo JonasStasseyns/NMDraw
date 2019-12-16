@@ -7,7 +7,6 @@
     "sass": "sass --watch client/sass/app.sass:client/css/main.css"
   },
   "dependencies": {
-    "a-color-picker": "^1.2.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "node-sass-middleware": "0.11.0",
