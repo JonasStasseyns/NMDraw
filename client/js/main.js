@@ -1,24 +1,35 @@
-let toggleDevOrientation1 = document.getElementById("toggleOrientation1");
-let toggleDevOrientation2 = document.getElementById("toggleOrientation2");
+const socket = io()
 
 let userActive = false;
+let screenOrientation = '';
+let toggleDevOrientation = document.getElementById("toggleOrientation");
 
-checkDeviceOrientation = () => {
-    if (window.innerHeight > window.innerWidth && userActive) {
-        alert("Please use Landscape!");
-        toggleDevOrientation1.className = "please-flip-to-landscape"
-    } else {
-        toggleDevOrientation1.className = ""
+toggleOrientatonAlert = () => {
+    screenOrientation = screen.orientation.type
+    if (!userActive && screenOrientation == 'landscape-primary') {
+        toggleDevOrientation.className = 'please-flip-to-portrait'
+        toggleDevOrientation.style.display = 'flex';
+    } else if (!userActive && screenOrientation == 'portrait-primary') {
+        toggleDevOrientation.className = ''
+        toggleDevOrientation.style.display = 'none';
+    }
+
+    if (userActive && screenOrientation == 'portrait-primary') {
+        toggleDevOrientation.className = 'please-flip-to-landscape'
+        toggleDevOrientation.style.display = 'flex';
+    } else if (userActive && screenOrientation == 'landscape-primary') {
+        toggleDevOrientation.className = ''
+        toggleDevOrientation.style.display = 'none';
     }
 }
 
-const socket = io()
+window.addEventListener('orientationchange', toggleOrientatonAlert)
 
 validateUsername = (e) => {
     document.querySelector('.load-btn').style.display = 'none'
     console.log(e.target.value)
     console.log(socket.id)
-    socket.emit('validation', {value: e.target.value, id: socket.id})
+    socket.emit('validation', { value: e.target.value, id: socket.id })
 }
 
 socket.on('validationResponse', (val) => {
@@ -55,7 +66,7 @@ toggleDraw = () => {
     document.querySelector('.free-draw-toggle-icon').style.color = (isDrawing) ? 'red' : 'black'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
     canvas.freeDrawingBrush.color = brushColor
-    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
+        // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
     canvas.renderAll()
 }
 
@@ -102,7 +113,7 @@ showHideShapes = () => {
 
 // Event Listeners
 const shapeIcons = document.querySelectorAll('.shape-icon')
-// TODO Add shape selector evtlistener + shape select store
+    // TODO Add shape selector evtlistener + shape select store
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
@@ -119,7 +130,7 @@ changeActiveShapeColor = (color) => {
 // Color Picker
 const parent = document.querySelector('.colorpicker-tool');
 const picker = new Picker(parent);
-picker.onChange = function (color) {
+picker.onChange = function(color) {
     isDrawing ? brushColor = color.rgbString : changeActiveShapeColor(color.rgbString)
 };
 
@@ -133,16 +144,19 @@ document.querySelector('.trigger-area').addEventListener('click', handleClickTou
 document.querySelector('.trigger-area').addEventListener('touchend', handleClickTouch)
 
 loadDrawing = () => {
-
     console.log('LOADBTN')
     socket.emit('drawingRequest', document.querySelector('.login-input').value)
     toHomeScreen()
+    userActive = true;
+    toggleOrientatonAlert()
 }
 
 newDrawing = () => {
     canvas.clear()
     socket.emit('register', document.querySelector('.login-input').value)
     toHomeScreen()
+    userActive = true;
+    toggleOrientatonAlert()
 }
 
 socket.on('load', (loadedDrawing) => {
@@ -161,16 +175,12 @@ socket.on('load', (loadedDrawing) => {
 toHomeScreen = () => {
     console.log('Go to home screen');
     document.querySelector('.login-overlay').style.display = 'none'
-    setTimeout(() => {
-        checkDeviceOrientation()
-    }, 1500);
 }
 
 toLoginScreen = () => {
     document.querySelector('.login-overlay').style.display = 'flex'
-    setTimeout(() => {
-        checkDeviceOrientation()
-    }, 1500);
+    userActive = false
+    toggleOrientatonAlert()
 }
 
 // Triggers validateUsername after each keystroke to check is the user has an existing drawing
@@ -180,3 +190,6 @@ document.querySelector('.load-btn').addEventListener('click', loadDrawing)
 document.querySelector('.new-btn').addEventListener('click', newDrawing)
     // document.querySelector('.login-btn').addEventListener('click', toHomeScreen)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)
+
+
+toggleOrientatonAlert()

@@ -24,7 +24,6 @@ html,
 body {
     position: relative;
     font-family: 'Montserrat', sans-serif;
-    background-color: orange;
 }
 
 .colors {
@@ -249,72 +248,50 @@ body {
     background-image: url(../images/triangle-white.svg);
 }
 
-@media screen and (orientation:portrait) {
-    body {
-        background-color: blue;
-    }
-    .please-flip-to-landscape {
-        background-color: #07051f;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: blue;
-        font-size: 220%;
-        position: absolute;
-        z-index: 50;
-        width: 80%;
-        font-weight: 100;
-        opacity: 1;
-        padding: 0% 10%;
-        transition: 0.2s ease-in-out;
-    }
-    .please-flip-to-landscape h2 {
-        text-align: center;
-        padding: 3%;
-        font-weight: 200;
-        color: #efefef;
-    }
+.please-flip-to-landscape {
+    background-color: #07051f;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+    font-size: 220%;
+    position: absolute;
+    z-index: 50;
+    width: 80%;
+    font-weight: 100;
+    opacity: 1;
+    padding: 0% 10%;
+    transition: 0.2s ease-in-out;
 }
 
-@media screen and (orientation:landscape) {
-    .please-flip-to-landscape {
-        opacity: 0;
-        transition: 0.2s ease-in-out;
-    }
+.please-flip-to-landscape h2 {
+    text-align: center;
+    padding: 3%;
+    font-weight: 200;
+    color: #efefef;
 }
 
-@media screen and (orientation:landscape) {
-    body {
-        background-color: green;
-    }
-    .please-flip-to-portrait {
-        background-color: #07051f;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: blue;
-        font-size: 220%;
-        position: absolute;
-        z-index: 50;
-        width: 80%;
-        font-weight: 100;
-        opacity: 1;
-        padding: 0% 10%;
-        transition: 0.2s ease-in-out;
-    }
-    .please-flip-to-portrait h2 {
-        text-align: center;
-        padding: 3%;
-        font-weight: 200;
-        color: #efefef;
-    }
+.please-flip-to-portrait {
+    background-color: #07051f;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+    font-size: 220%;
+    position: absolute;
+    z-index: 1000;
+    width: 80%;
+    font-weight: 100;
+    opacity: 1;
+    padding: 0% 10%;
+    transition: 0.2s ease-in-out;
 }
 
-@media screen and (orientation:portrait) {
-    .please-flip-to-landscape {
-        opacity: 0;
-        transition: 0.2s ease-in-out;
-    }
+.please-flip-to-portrait h2 {
+    text-align: center;
+    padding: 3%;
+    font-weight: 200;
+    color: #efefef;
 }
