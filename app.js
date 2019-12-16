@@ -41,8 +41,8 @@ onConnection = (socket) => {
     // Main Drawing Socket
     socket.on('drawing', (data) => {
         socket.broadcast.emit('updateMonitor', data)
-        console.log(data)
-        console.log('I REALLY DID DIS')
+        // console.log(data)
+        console.log('Drawing data received')
         fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er)=> console.log(er));
     });
 
