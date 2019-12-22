@@ -4,69 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <title>NMDraw</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
-    <div class="login-overlay">
-        <img src="images/shape_2.svg" class="shape-3" alt="">
-        <div class="login-sub-container">
-            <h1>NMDraw Login</h1>
-            <label class="input-username-label">Username
-                <input type="text" class="login-input">
+<div class="login-overlay">
+    <img src="images/shape_2.svg" class="shape-3" alt="">
+    <div class="login-sub-container">
+        <h1>NMDraw Login</h1>
+        <label class="input-username-label">Username
+            <input type="text" class="login-input">
+        </label>
+        <div class="btn-container">
+            <button class="login-btn new-btn">New</button>
+            <button class="login-btn load-btn">Load</button>
+        </div>
+    </div>
+</div>
+
+<div id="toggleOrientation" class="please-flip-to-landscape">
+    <h2>Please rotate device</h2>
+</div>
+
+<!--    div.trigger-area serves as a container for the click/touch events to prevent sending data to the server on the login screen-->
+<div class="trigger-area">
+    <canvas id="c"></canvas>
+
+    <div class="toolwindow">
+        <div class="tool-icon brush-tool free-draw-toggle-icon"></div>
+        <div class="tool-icon shapeselector-tool" id="shapeSelector"></div>
+        <div class="tool-icon colorpicker-tool"></div>
+        <div class="tool-icon clear-canvas-tool remove"></div>
+    </div>
+
+    <div class="shapetools" id="shapeTools">
+        <div class="shape-icon sh-i-rectangle" id="rectShape"></div>
+        <div class="shape-icon sh-i-circle" id="circleShape"></div>
+        <div class="shape-icon sh-i-triangle" id="triangleShape"></div>
+    </div>
+
+    <div class="logout">
+        <img src="images/logout-btn.svg" class="logout-btn" id="screenLogout" alt="">
+    </div>
+
+    <!--
+    <div class="free-draw-toggle-icon"><img src="images/brushstroke.svg" alt=""></div>
+    <div class="tool-window free-draw-tool-window">
+        <div class="shape-properties">
+
+            <label>Size
+                <input type="number" value="20" class="brush-size">
             </label>
-            <div class="btn-container">
-                <button class="login-btn new-btn">New</button>
-                <button class="login-btn load-btn">Load</button>
-            </div>
+            <button class="update-brush-btn">Update</button>
         </div>
-    </div>
+    </div> -->
+</div>
 
-    <div id="toggleOrientation" class="please-flip-to-landscape">
-        <h2>Please rotate device</h2>
-    </div>
-
-    <!--    div.trigger-area serves as a container for the click/touch events to prevent sending data to the server on the login screen-->
-    <div class="trigger-area">
-        <canvas id="c"></canvas>
-
-        <div class="toolwindow">
-            <div class="tool-icon brush-tool free-draw-toggle-icon"></div>
-            <div class="tool-icon shapeselector-tool" id="shapeSelector"></div>
-            <div class="tool-icon colorpicker-tool"></div>
-            <div class="tool-icon clear-canvas-tool remove"></div>
-        </div>
-
-        <div class="shapetools" id="shapeTools">
-            <div class="shape-icon sh-i-rectangle" id="rectShape"></div>
-            <div class="shape-icon sh-i-circle" id="circleShape"></div>
-            <div class="shape-icon sh-i-triangle" id="triangleShape"></div>
-        </div>
-
-        <div class="logout">
-            <img src="images/logout-btn.svg" class="logout-btn" id="screenLogout" alt="">
-        </div>
-
-        <!--
-        <div class="free-draw-toggle-icon"><img src="images/brushstroke.svg" alt=""></div>
-        <div class="tool-window free-draw-tool-window">
-            <div class="shape-properties">
-
-                <label>Size
-                    <input type="number" value="20" class="brush-size">
-                </label>
-                <button class="update-brush-btn">Update</button>
-            </div>
-        </div> -->
-    </div>
-
-    <script src="https://unpkg.com/vanilla-picker@2"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/fabric-ini.js"></script>
-    <!-- <script src="js/fabric.js"></script> -->
-    <script src="js/main.js"></script>
+<script src="https://unpkg.com/vanilla-picker@2"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/fabric-ini.js"></script>
+<!-- <script src="js/fabric.js"></script> -->
+<script src="js/main.js"></script>
 
 </body>
 

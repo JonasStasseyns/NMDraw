@@ -30,7 +30,7 @@ validateUsername = (e) => {
     document.querySelector('.load-btn').style.display = 'none'
     console.log(e.target.value)
     console.log(socket.id)
-    socket.emit('validation', { value: e.target.value, id: socket.id })
+    socket.emit('validation', {value: e.target.value, id: socket.id})
 }
 
 socket.on('validationResponse', (val) => {
@@ -47,7 +47,6 @@ fabric.Object.prototype.set({
 
 // Global variables
 let isDrawing = false
-let brushColor = 'black'
 
 // Canvas Init
 const canvas = window._canvas = new fabric.Canvas('c')
@@ -61,14 +60,11 @@ document.querySelector('.remove').addEventListener('click', (e) => {
 
 // Drawing Test
 toggleDraw = () => {
-    // TODO Change ui button based on isDrawing
     isDrawing = !isDrawing
-    console.log(isDrawing)
+    console.log('Drawing Mode: ' + isDrawing)
     document.querySelector('.brush-tool').style.backgroundImage = (isDrawing) ? 'url(../images/brushstroke-active.svg)' : 'url(../images/brushstroke.svg)'
-    document.querySelector('.brush-tool').style.boxShadow = (isDrawing) ? '' : 'url(../images/brushstroke.svg)'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
-    canvas.freeDrawingBrush.color = brushColor
-        // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
+    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
     canvas.renderAll()
 }
 
@@ -114,7 +110,6 @@ showHideShapes = () => {
 
 // Event Listeners
 const shapeIcons = document.querySelectorAll('.shape-icon')
-    // TODO Add shape selector evtlistener + shape select store
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
@@ -123,7 +118,7 @@ shapeIcons.forEach((icon) => {
 })
 
 changeActiveShapeColor = (color) => {
-    if(canvas.getActiveObject().get('type') !== 'path'){
+    if (canvas.getActiveObject().get('type') !== 'path') {
         canvas.getActiveObject().setColor(color)
     }
     console.log('Color Set')
@@ -133,8 +128,8 @@ changeActiveShapeColor = (color) => {
 // Color Picker
 const parent = document.querySelector('.colorpicker-tool');
 const picker = new Picker(parent);
-picker.onChange = function(color) {
-    isDrawing ? brushColor = color.rgbString : changeActiveShapeColor(color.rgbString)
+picker.onChange = function (color) {
+    isDrawing ? canvas.freeDrawingBrush.color = color.rgbString : changeActiveShapeColor(color.rgbString)
 };
 
 handleClickTouch = () => {

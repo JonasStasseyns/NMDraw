@@ -4,3 +4,4 @@
     - but canvas does NOT update, the server does however
     - Possible fix: load canvas from tunnel again
 - ~~Check if new drawing works for existing user~~
+- Lock scrolling (body: overflow: hidden?)

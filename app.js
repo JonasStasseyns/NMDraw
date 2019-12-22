@@ -20,7 +20,7 @@ registerUserId = (name, id) => {
     console.log(userBase)
 }
 
-// TODO Registration (manage ownership) disconnect id
+// Check on ownership system (in big test with monitor)
 onConnection = (socket) => {
     console.log('Socket established: ' + socket.id)
 
@@ -29,14 +29,14 @@ onConnection = (socket) => {
         socket.broadcast.emit('updateMonitor', data)
         // console.log(data)
         console.log('Drawing data received')
-        userBase[0].name ? fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er)=> console.log(er)) : console.log('No username was linked to this socket-id: ' + socket.id)
+        userBase[0].name ? fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er) => console.log(er)) : console.log('No username was linked to this socket-id: ' + socket.id)
     });
 
     // Validation socket
     socket.on('validation', (value) => {
         fs.readdir('storage', (err, files) => {
             files.forEach((file) => {
-                if(file.split('.')[0] === value.value && file.split('.')[0] !== ''){
+                if (file.split('.')[0] === value.value && file.split('.')[0] !== '') {
                     socket.emit('validationResponse', true)
                 }
             })
@@ -58,7 +58,7 @@ onConnection = (socket) => {
     // Socket triggers on disconnect and removes user from userBase[]
     socket.on('disconnect', () => {
         console.log(userBase)
-        userBase = userBase.filter(function( obj ) {
+        userBase = userBase.filter((obj) => {
             return obj.id !== socket.id;
         });
         console.log(userBase)
