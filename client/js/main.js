@@ -149,7 +149,7 @@ loadDrawing = () => {
     toggleOrientatonAlert()
 }
 
-newDrawing = () => {
+newDrawing = () => { // Link username to socket-ID
     canvas.clear()
     socket.emit('register', document.querySelector('.login-input').value)
     toHomeScreen()
@@ -157,7 +157,7 @@ newDrawing = () => {
     toggleOrientatonAlert()
 }
 
-socket.on('load', (loadedDrawing) => {
+socket.on('load', (loadedDrawing) => { // Load drawing from username.svg
     console.log('SVG-Data received')
     canvas.clear()
     document.querySelector('.login-overlay').style.display = 'none'
@@ -182,6 +182,7 @@ toLoginScreen = () => {
 
 // Triggers validateUsername after each keystroke to check is the user has an existing drawing
 document.querySelector('.login-input').addEventListener('input', validateUsername)
+x
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
 document.querySelector('.new-btn').addEventListener('click', newDrawing)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)
