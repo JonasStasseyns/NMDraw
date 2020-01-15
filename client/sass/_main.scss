@@ -1,23 +1,23 @@
 .cache-img {
-    display: none;
+  display: none;
 }
 
 .toast-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .user-toast {
-    margin: 1vh 0;
-    padding: 1vh 2vw;
-    background-color: aliceblue;
-    border-radius: 5px;
+  margin: 1vh 0;
+  padding: 1vh 2vw;
+  background-color: aliceblue;
+  border-radius: 5px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html,
@@ -30,128 +30,128 @@ body {
 }
 
 .colors {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .color {
-    display: inline-block;
-    height: 2vw;
-    width: 2vw;
+  display: inline-block;
+  height: 2vw;
+  width: 2vw;
 }
 
 .color.black {
-    background-color: black;
+  background-color: black;
 }
 
 .color.red {
-    background-color: red;
+  background-color: red;
 }
 
 .color.green {
-    background-color: green;
+  background-color: green;
 }
 
 .color.blue {
-    background-color: blue;
+  background-color: blue;
 }
 
 .color.yellow {
-    background-color: yellow;
+  background-color: yellow;
 }
 
 .canvas-container {
-    width: 100% !important;
-    height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .login-overlay {
-    width: 100vw;
-    height: 100vh;
-    background-color: #f9f9f9;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding-top: 35%;
-    position: absolute;
-    top: 0;
-    box-sizing: border-box;
-    background-image: url(../images/shape_1.1.svg);
-    background-position: top 430px left 460px;
-    background-repeat: no-repeat;
-    background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f9f9f9;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 35%;
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  background-image: url(../images/shape_1.1.svg);
+  background-position: top 430px left 460px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .login-sub-container {
-    width: 70vw
+  width: 70vw
 }
 
 .login-sub-container h1 {
-    margin-bottom: 7vh;
-    font-size: 400%;
-    font-weight: 500;
+  margin-bottom: 7vh;
+  font-size: 400%;
+  font-weight: 500;
 }
 
 .input-username-label {
-    font-size: 250%;
+  font-size: 250%;
 }
 
 .login-input,
 .login-btn,
 .login-radio-container {
-    margin: 2vh 0;
-    display: block;
+  margin: 2vh 0;
+  display: block;
 }
 
 .login-input {
-    background: #efefef;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    width: 80%;
-    height: 5vh;
-    padding: 0% 10%;
-    font-size: 120%;
+  background: #efefef;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  width: 80%;
+  height: 5vh;
+  padding: 0% 10%;
+  font-size: 120%;
 }
 
 .btn-container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .login-btn {
-    margin-top: 4vh;
-    background: blue;
-    border-radius: 5px;
-    color: white;
-    font-size: 150%;
-    font-weight: 600;
-    display: inline-block;
-    width: 48%;
-    height: 7vh;
-    font-size: 250%;
-    border-radius: 15px !important;
-    font-weight: 200;
-    letter-spacing: 2px;
+  margin-top: 4vh;
+  background: blue;
+  border-radius: 5px;
+  color: white;
+  font-size: 150%;
+  font-weight: 600;
+  display: inline-block;
+  width: 48%;
+  height: 7vh;
+  font-size: 250%;
+  border-radius: 15px !important;
+  font-weight: 200;
+  letter-spacing: 2px;
 }
 
 .logout-btn {
-    position: absolute;
-    right: 5%;
-    top: 5vh;
-    width: 7vh;
+  position: absolute;
+  right: 5%;
+  top: 5vh;
+  width: 7vh;
 }
 
 .load-btn {
-    display: none;
+  display: none;
 }
 
 .shape-3 {
-    position: fixed;
-    right: 10px;
-    top: -8%;
+  position: fixed;
+  right: 10px;
+  top: -8%;
 }
 
 
@@ -159,45 +159,45 @@ body {
 
 .load-existing-drawing,
 .new-drawing {
-    background: black;
-    width: 10vh;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    color: white;
-    padding: 2%;
-    border-radius: 100px;
-    display: inline-block;
+  background: black;
+  width: 10vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 2%;
+  border-radius: 100px;
+  display: inline-block;
 }
 
 
 /*# sourceMappingURL=main.css.map */
 
 .toolwindow {
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid blue;
-    padding: 3% 1%;
-    border-radius: 10px;
-    width: 40px;
-    align-items: center;
-    position: absolute;
-    margin-top: 5%;
-    left: 5%;
-    background-color: white;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid blue;
+  padding: 3% 1%;
+  border-radius: 10px;
+  width: 40px;
+  align-items: center;
+  position: absolute;
+  margin-top: 5%;
+  left: 5%;
+  background-color: white;
 }
 
 .tool-icon {
-    width: 7vh;
-    height: 7vh;
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 7vh;
+  height: 7vh;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .tool-icon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .brush-tool {
@@ -218,81 +218,81 @@ body {
 }
 
 .shapetools {
-    height: 40vh;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    background: rgb(29, 38, 255);
-    padding: 3% 1%;
-    border-radius: 10px;
-    width: 40px;
-    align-items: center;
-    align-items: center;
-    position: absolute;
-    margin-top: 5%;
-    left: 15%;
+  height: 40vh;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgb(29, 38, 255);
+  padding: 3% 1%;
+  border-radius: 10px;
+  width: 40px;
+  align-items: center;
+  align-items: center;
+  position: absolute;
+  margin-top: 5%;
+  left: 15%;
 }
 
 .shape-icon {
-    width: 5vh;
-    height: 5vh;
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 5vh;
+  height: 5vh;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .sh-i-rectangle {
-    background-image: url(../images/rectangle-white.svg);
+  background-image: url(../images/rectangle-white.svg);
 }
 
 .sh-i-circle {
-    background-image: url(../images/circle-white.svg);
+  background-image: url(../images/circle-white.svg);
 }
 
 .sh-i-triangle {
-    background-image: url(../images/triangle-white.svg);
+  background-image: url(../images/triangle-white.svg);
 }
 
 .please-flip-to-landscape {
-    background-color: #07051f;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: blue;
-    font-size: 220%;
-    position: absolute;
-    z-index: 50;
-    width: 100%;
-    font-weight: 100;
-    opacity: 1;
-    padding: 0% 10%;
-    transition: 0.2s ease-in-out;
-    box-sizing: border-box;
+  background-color: #07051f;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: blue;
+  font-size: 220%;
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  font-weight: 100;
+  opacity: 1;
+  padding: 0 10%;
+  transition: 0.2s ease-in-out;
+  box-sizing: border-box;
 }
 
 .please-flip-to-landscape h2 {
-    text-align: center;
-    padding: 3%;
-    font-weight: 200;
-    color: #efefef;
+  text-align: center;
+  padding: 3%;
+  font-weight: 200;
+  color: #efefef;
 }
 
 .please-flip-to-portrait {
-    background-color: #07051f;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: blue;
-    font-size: 220%;
-    position: absolute;
-    z-index: 1000;
-    width: 100%;
-    font-weight: 100;
-    opacity: 1;
-    padding: 0% 10%;
-    transition: 0.2s ease-in-out;
-    box-sizing: border-box;
+  background-color: #07051f;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: blue;
+  font-size: 220%;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  font-weight: 100;
+  opacity: 1;
+  padding: 0% 10%;
+  transition: 0.2s ease-in-out;
+  box-sizing: border-box;
 }
 
 .please-flip-to-portrait h2 {

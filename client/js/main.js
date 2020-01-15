@@ -62,7 +62,6 @@ fabric.Object.prototype.set({
 
 // Global variables
 let isDrawing = false
-let brushColor = 'black'
 
 // Canvas Init
 const canvas = window._canvas = new fabric.Canvas('c')
@@ -76,7 +75,6 @@ document.querySelector('.remove-tool').addEventListener('click', (e) => {
 
 // free draw with brushtool
 toggleDraw = () => {
-    // TODO Change ui button based on isDrawing
     isDrawing = !isDrawing
     console.log(isDrawing)
     // document.querySelector('.brush-tool').style.backgroundImage = (isDrawing) ? 'url(../images/brushstroke-active.svg)' : 'url(../images/brushstroke.svg)'
@@ -170,7 +168,7 @@ loadDrawing = () => {
     toggleOrientatonAlert()
 }
 
-newDrawing = () => {
+newDrawing = () => { // Link username to socket-ID
     canvas.clear()
     socket.emit('register', document.querySelector('.login-input').value)
     toHomeScreen()
@@ -178,7 +176,7 @@ newDrawing = () => {
     toggleOrientatonAlert()
 }
 
-socket.on('load', (loadedDrawing) => {
+socket.on('load', (loadedDrawing) => { // Load drawing from username.svg
     console.log('SVG-Data received')
     canvas.clear()
     document.querySelector('.login-overlay').style.display = 'none'
@@ -203,6 +201,7 @@ toLoginScreen = () => {
 
 // Triggers validateUsername after each keystroke to check is the user has an existing drawing
 document.querySelector('.login-input').addEventListener('input', validateUsername)
+x
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
 document.querySelector('.new-btn').addEventListener('click', newDrawing)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)
