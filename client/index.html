@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>NMDraw</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -31,22 +33,36 @@
     <!--    div.trigger-area serves as a container for the click/touch events to prevent sending data to the server on the login screen-->
     <div class="trigger-area">
         <canvas id="c"></canvas>
-
-        <div class="toolwindow">
-            <div class="tool-icon brush-tool free-draw-toggle-icon"></div>
-            <div class="tool-icon shapeselector-tool" id="shapeSelector"></div>
-            <div class="tool-icon colorpicker-tool"></div>
-            <div class="tool-icon clear-canvas-tool remove"></div>
+        <div class="new-toolwindow">
+            <div class="tool-wrapper free-draw-toggle-icon">
+                <div class="tool-icon brush-tool"></div>
+            </div>
+            <div class="tool-wrapper" id="shapeSelector">
+                <div class="tool-icon shapeselector-tool"></div>
+            </div>
+            <div class="tool-wrapper activate-colorpicker-tool">
+                <div class="tool-icon colorpicker-tool"></div>
+            </div>
+            <div class="tool-wrapper-exception remove-tool">
+                <div class="tool-icon clear-canvas-tool"></div>
+            </div>
         </div>
 
         <div class="shapetools" id="shapeTools">
-            <div class="shape-icon sh-i-rectangle" id="rectShape"></div>
-            <div class="shape-icon sh-i-circle" id="circleShape"></div>
-            <div class="shape-icon sh-i-triangle" id="triangleShape"></div>
+            <div class="shape-wrapper">
+                <div class="shape-icon sh-i-rectangle" id="rectShape"></div>
+            </div>
+            <div class="shape-wrapper">
+                <div class="shape-icon sh-i-circle" id="circleShape"></div>
+            </div>
+            <div class="shape-wrapper">
+                <div class="shape-icon sh-i-triangle" id="triangleShape"></div>
+            </div>
         </div>
 
         <div class="logout">
-            <img src="images/logout-btn.svg" class="logout-btn" id="screenLogout" alt="">
+            <!-- <img src="images/logout-btn.svg" class="logout-btn" id="screenLogout" alt=""> -->
+            <p class="logout-btn">Leave</p>
         </div>
 
         <!--

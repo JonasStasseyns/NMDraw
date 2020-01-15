@@ -1,6 +1,8 @@
 const socket = io()
 
 let userActive = false;
+
+// force user to flip device
 let screenOrientation = '';
 let toggleDevOrientation = document.getElementById("toggleOrientation");
 
@@ -25,6 +27,19 @@ toggleOrientatonAlert = () => {
 }
 
 window.addEventListener('orientationchange', toggleOrientatonAlert)
+
+
+// toggle tool background color when active
+toggleToolState = (element) => {
+    element.preventDefault();
+    element.target.classList.toggle('tool-wrapper-active');
+}
+
+let toolContainers = document.querySelectorAll('.tool-wrapper');
+toolContainers.forEach(e => {
+    e.addEventListener('click', toggleToolState);
+});
+
 
 validateUsername = (e) => {
     document.querySelector('.load-btn').style.display = 'none'
@@ -55,22 +70,24 @@ canvas.setWidth(window.innerWidth)
 canvas.setHeight(window.innerHeight)
 
 // Remove active shape
-document.querySelector('.remove').addEventListener('click', (e) => {
+document.querySelector('.remove-tool').addEventListener('click', (e) => {
     canvas.remove(canvas.getActiveObject())
 })
 
-// Drawing Test
+// free draw with brushtool
 toggleDraw = () => {
     // TODO Change ui button based on isDrawing
     isDrawing = !isDrawing
     console.log(isDrawing)
-    document.querySelector('.brush-tool').style.backgroundImage = (isDrawing) ? 'url(../images/brushstroke-active.svg)' : 'url(../images/brushstroke.svg)'
-    document.querySelector('.brush-tool').style.boxShadow = (isDrawing) ? '' : 'url(../images/brushstroke.svg)'
+    // document.querySelector('.brush-tool').style.backgroundImage = (isDrawing) ? 'url(../images/brushstroke-active.svg)' : 'url(../images/brushstroke.svg)'
+    // document.querySelector('.brush-tool').style.boxShadow = (isDrawing) ? '' : 'url(../images/brushstroke.svg)'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
     canvas.freeDrawingBrush.color = brushColor
-        // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
+    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
     canvas.renderAll()
 }
+
+document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
@@ -114,8 +131,7 @@ showHideShapes = () => {
 
 // Event Listeners
 const shapeIcons = document.querySelectorAll('.shape-icon')
-    // TODO Add shape selector evtlistener + shape select store
-document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
+// TODO Add shape selector evtlistener + shape select store
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
 shapeIcons.forEach((icon) => {
@@ -123,7 +139,7 @@ shapeIcons.forEach((icon) => {
 })
 
 changeActiveShapeColor = (color) => {
-    if(canvas.getActiveObject().get('type') !== 'path'){
+    if (canvas.getActiveObject().get('type') !== 'path') {
         canvas.getActiveObject().setColor(color)
     }
     console.log('Color Set')
@@ -131,9 +147,9 @@ changeActiveShapeColor = (color) => {
 }
 
 // Color Picker
-const parent = document.querySelector('.colorpicker-tool');
+const parent = document.querySelector('.activate-colorpicker-tool');
 const picker = new Picker(parent);
-picker.onChange = function(color) {
+picker.onChange = function (color) {
     isDrawing ? brushColor = color.rgbString : changeActiveShapeColor(color.rgbString)
 };
 

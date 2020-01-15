@@ -23,7 +23,10 @@
 html,
 body {
     position: relative;
-    font-family: 'Montserrat', sans-serif;
+    // font-family: 'Montserrat', sans-serif;
+    font-family: 'aktiv-grotesk', sans-serif;
+    font-style: normal;
+    font-weight: 200;
 }
 
 .colors {
@@ -198,20 +201,20 @@ body {
 }
 
 .brush-tool {
-    background-image: url(../images/brushstroke.svg);
+    background-image: url(../images/tool-icons/brushstroke.svg);
     background-position: center;
 }
 
 .shapeselector-tool {
-    background-image: url(../images/shapeSelector.svg);
+    background-image: url(../images/tool-icons/shapeSelector.svg);
 }
 
 .colorpicker-tool {
-    background-image: url(../images/colorpicker.svg);
+    background-image: url(../images/tool-icons/colorpicker.svg);
 }
 
 .clear-canvas-tool {
-    background-image: url(../images/clearcanvas.svg);
+    background-image: url(../images/tool-icons/clearcanvas.svg);
 }
 
 .shapetools {
