@@ -115,27 +115,29 @@ body {
 .login-btn {
     margin-top: 4vh;
     background: blue;
-    border-radius: 5px;
     color: white;
-    font-size: 150%;
-    font-weight: 600;
     display: inline-block;
     width: 48%;
     height: 7vh;
     font-size: 250%;
-    border-radius: 15px !important;
     font-weight: 200;
     letter-spacing: 2px;
+    border: none;
 }
 
 .logout-btn {
+    display: flex;
     position: absolute;
     right: 5%;
     top: 5vh;
-    width: 7vh;
+    width: 10vh;
     background: #f4f4f4;
     padding: 3vh 2vw;
     border-radius: 10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    justify-content: center;
+    align-items: center;
 }
 
 .alter-buttons-wrapper {
@@ -245,7 +247,6 @@ body {
     background: rgb(241, 241, 241);
 }
 
-
 .tool-icon {
     width: 5vh;
     height: 5vh;
@@ -286,11 +287,10 @@ body {
     background-color: #fff;
     transition: 0.4s ease-in-out;
 }
-/* 
-.shapetools:active {
+
+.shapetools-active {
     left: 10vw;
-    transition: 0.4s ease-in-out;
-} */
+}
 
 .shape-wrapper {
     height: 10vh;
@@ -327,7 +327,7 @@ body {
 }
 
 .please-flip-to-landscape {
-    background-color: #07051f;
+    background-color: rgb(10, 0, 37);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -340,7 +340,6 @@ body {
     font-weight: 100;
     opacity: 1;
     padding: 0% 10%;
-    transition: 0.2s ease-in-out;
     box-sizing: border-box;
 }
 
@@ -365,12 +364,11 @@ body {
     font-weight: 100;
     opacity: 1;
     padding: 0% 10%;
-    transition: 0.2s ease-in-out;
     box-sizing: border-box;
 }
 
 .please-flip-to-portrait h2 {
-    font-size: 75%;
+    font-size: 100%;
     text-align: center;
     padding: 3%;
     font-weight: 200;
@@ -433,6 +431,16 @@ body {
 
 .load-button {
     display: none;
+}
+
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }
 
 

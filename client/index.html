@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>NMDraw</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -12,7 +11,6 @@
 </head>
 
 <body>
-
     <div class="login-overlay">
         <img src="images/shape_2.svg" class="shape-3" alt="">
         <div class="login-sub-container">
@@ -28,10 +26,9 @@
     </div>
 
     <div id="toggleOrientation" class="please-flip-to-landscape">
-        <h2>Please rotate device</h2>
+        <h2 class="blink_me">Please rotate device ...</h2>
     </div>
 
-    <!--    div.trigger-area serves as a container for the click/touch events to prevent sending data to the server on the login screen-->
     <div class="trigger-area">
         <canvas id="c"></canvas>
         <div class="new-toolwindow">
@@ -73,24 +70,11 @@
                 <div class="redo-button"></div>
             </div>
         </div>
-
-        <!--
-    <div class="free-draw-toggle-icon"><img src="images/brushstroke.svg" alt=""></div>
-    <div class="tool-window free-draw-tool-window">
-        <div class="shape-properties">
-
-            <label>Size
-                <input type="number" value="20" class="brush-size">
-            </label>
-            <button class="update-brush-btn">Update</button>
-        </div>
-    </div> -->
     </div>
 
     <script src="https://unpkg.com/vanilla-picker@2"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/fabric-ini.js"></script>
-    <!-- <script src="js/fabric.js"></script> -->
     <script src="js/main.js"></script>
 
 </body>

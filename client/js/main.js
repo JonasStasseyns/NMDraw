@@ -132,6 +132,7 @@ showHideShapes = () => {
     shapeTools.style.display === "flex" ?
         shapeTools.style.display = "none" :
         shapeTools.style.display = "flex"
+    document.querySelector('#shapeSelector').classList.add('shapetools-active')
 }
 
 
