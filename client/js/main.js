@@ -35,6 +35,10 @@ toggleToolState = (element) => {
     element.target.classList.toggle('tool-wrapper-active');
 }
 
+unToggleToolState = () => {
+    toolContainers[2].classList.remove("tool-wrapper-active")
+}
+
 let toolContainers = document.querySelectorAll('.tool-wrapper');
 toolContainers.forEach(e => {
     e.addEventListener('click', toggleToolState);
@@ -43,8 +47,8 @@ toolContainers.forEach(e => {
 
 validateUsername = (e) => {
     document.querySelector('.load-btn').style.display = 'none'
-    console.log(e.target.value)
-    console.log(socket.id)
+    // console.log(e.target.value)
+    // console.log(socket.id)
     socket.emit('validation', {
         value: e.target.value,
         id: socket.id
@@ -156,39 +160,16 @@ picker.onChange = (color) => {
 }
 picker.onDone = () => {
     window.scrollTo(0, 0)
+    console.log('Submit was clicked')
+    unToggleToolState()
 }
 picker.onClose = () => {
     window.scrollTo(0, 0)
 }
 
 
-
-
-let pickerDone
-
-searchPickerButton = () => {
-    if (document.querySelector('.picker_done')) {
-        pickerDone = document.querySelector('.picker_done')
-    } else {
-        console.log('Color picker not found')
-    }
-}
-
-showpickerButton = () => {
-    console.log(pickerDone)
-    if (pickerDone) {
-        pickerDone.addEventListener('click', console.log('I was clicked'))
-    } else {
-        console.log('I don\'t exist')
-    }
-}
-
-
 handleClickTouch = () => {
     socket.emit('drawing', canvas.toSVG())
-    console.log('canvas-evt')
-    searchPickerButton()
-    showpickerButton()
 }
 
 // Body click event to send changes to the server
@@ -212,7 +193,7 @@ newDrawing = () => { // Link username to socket-ID
 }
 
 socket.on('load', (loadedDrawing) => { // Load drawing from username.svg
-    console.log('SVG-Data received')
+    // console.log('SVG-Data received')
     canvas.clear()
     document.querySelector('.login-overlay').style.display = 'none'
     fabric.loadSVGFromString(loadedDrawing, (objects, options) => {
@@ -242,3 +223,50 @@ document.querySelector('.new-btn').addEventListener('click', newDrawing)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)
 
 toggleOrientatonAlert()
+
+
+
+// Feature undo and redo recent actions on canvas
+let undo = []
+let redo = []
+let alterCanvasState = false;
+
+stackCanvasChanges = () => {
+    if (!alterCanvasState) {
+        undo.push(JSON.stringify(canvas));
+        redo = [];
+        console.log('Changes detected on canvas', undo);
+    }
+}
+
+undoAction = (e) => {
+    alterCanvasState = true;
+    redo.push(undo.pop());
+    let prevState = undo[undo.length - 1];
+    if (prevState == null) {
+        prevState = '{}';
+    }
+    canvas.loadFromJSON(prevState, function () {
+        canvas.renderAll();
+    })
+    alterCanvasState = false;
+}
+
+redoAction = (e) => {
+    alterCanvasState = true;
+    state = redo.pop();
+    if (state != null) {
+        undo.push(state);
+        canvas.loadFromJSON(state, function () {
+            canvas.renderAll();
+        })
+        alterCanvasState = false;
+    }
+}
+
+canvas.on('object:removed', stackCanvasChanges);
+canvas.on('object:modified', stackCanvasChanges);
+canvas.on('object:added', stackCanvasChanges);
+
+let undoButton = document.querySelector('.undo-button').addEventListener('click', undoAction)
+let redoButton = document.querySelector('.redo-button').addEventListener('click', redoAction)

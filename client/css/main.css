@@ -56,14 +56,15 @@ body {
 }
 
 .login-overlay {
+    display: flex;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     background-color: #f9f9f9;
     z-index: 1000;
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
-    padding-top: 35%;
+    align-items: center;
     position: absolute;
     top: 0;
     box-sizing: border-box;
@@ -134,6 +135,26 @@ body {
     background: #f4f4f4;
     padding: 3vh 2vw;
     border-radius: 10px;
+}
+
+.undo-button {
+    position: absolute;
+    right: 5%;
+    top: 15vh;
+    width: 7vh;
+    background: #33a517;
+    padding: 3vh 2vw;
+    border-radius: 10px; 
+}
+
+.redo-button{
+    position: absolute;
+    right: 5%;
+    top: 25vh;
+    width: 7vh;
+    background: #33a517;
+    padding: 3vh 2vw;
+    border-radius: 10px;  
 }
 
 .load-btn {
@@ -317,7 +338,7 @@ body {
     font-size: 220%;
     position: absolute;
     z-index: 1000;
-    width: 100%;
+    width: 100vw;
     font-weight: 100;
     opacity: 1;
     padding: 0% 10%;
@@ -326,6 +347,7 @@ body {
 }
 
 .please-flip-to-portrait h2 {
+    font-size: 75%;
     text-align: center;
     padding: 3%;
     font-weight: 200;
