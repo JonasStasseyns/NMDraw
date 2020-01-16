@@ -7,7 +7,7 @@ let screenOrientation = '';
 let toggleDevOrientation = document.getElementById("toggleOrientation");
 
 toggleOrientatonAlert = () => {
-    console.log(window.orientation)
+    // console.log(window.orientation)
     screenOrientation = window.orientation.toString()
     if ((!userActive && screenOrientation == '-90') || (!userActive && screenOrientation == '90')) {
         toggleDevOrientation.className = 'please-flip-to-portrait'
@@ -43,13 +43,13 @@ toolContainers.forEach(e => {
 
 validateUsername = (e) => {
     document.querySelector('.load-btn').style.display = 'none'
-    console.log(e.target.value)
-    console.log(socket.id)
+    // console.log(e.target.value)
+    // console.log(socket.id)
     socket.emit('validation', { value: e.target.value, id: socket.id })
 }
 
 socket.on('validationResponse', (val) => {
-    console.log(val)
+    // console.log(val)
     document.querySelector('.load-btn').style.display = 'block'
 })
 
@@ -72,11 +72,12 @@ canvas.setHeight(window.innerHeight)
 document.querySelector('.remove-tool').addEventListener('click', (e) => {
     canvas.remove(canvas.getActiveObject())
 })
+let brushColor = 'black';
 
 // free draw with brushtool
 toggleDraw = () => {
     isDrawing = !isDrawing
-    console.log(isDrawing)
+    // console.log(isDrawing)
     // document.querySelector('.brush-tool').style.backgroundImage = (isDrawing) ? 'url(../images/brushstroke-active.svg)' : 'url(../images/brushstroke.svg)'
     // document.querySelector('.brush-tool').style.boxShadow = (isDrawing) ? '' : 'url(../images/brushstroke.svg)'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
@@ -151,9 +152,34 @@ picker.onChange = function (color) {
     isDrawing ? brushColor = color.rgbString : changeActiveShapeColor(color.rgbString)
 };
 
+
+
+
+let pickerDone
+
+searchPickerButton = () => {
+    if (document.querySelector('.picker_done')) {
+        pickerDone = document.querySelector('.picker_done')
+    } else {
+        console.log('Color picker not found')
+    }
+}
+
+showpickerButton = () => {
+    console.log(pickerDone)
+    if (pickerDone) {
+        pickerDone.addEventListener('click', console.log('I was clicked'))
+    } else {
+        console.log('I don\'t exist')
+    }
+}
+
+
 handleClickTouch = () => {
     socket.emit('drawing', canvas.toSVG())
-    console.log('§canvas-evt')
+    console.log('canvas-evt')
+    searchPickerButton()
+    showpickerButton()
 }
 
 // Body click event to send changes to the server
@@ -201,7 +227,6 @@ toLoginScreen = () => {
 
 // Triggers validateUsername after each keystroke to check is the user has an existing drawing
 document.querySelector('.login-input').addEventListener('input', validateUsername)
-x
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
 document.querySelector('.new-btn').addEventListener('click', newDrawing)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)
