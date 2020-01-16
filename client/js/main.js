@@ -10,9 +10,11 @@ toggleOrientatonAlert = () => {
     // console.log(window.orientation)
     screenOrientation = window.orientation.toString()
     if ((!userActive && screenOrientation == '-90') || (!userActive && screenOrientation == '90')) {
+        window.scrollTo(0, 0)
         toggleDevOrientation.className = 'please-flip-to-portrait'
         toggleDevOrientation.style.display = 'flex';
     } else if (!userActive && screenOrientation === 'portrait-primary' || (window.orientation == 0)) {
+        window.scrollTo(0, 0)
         toggleDevOrientation.className = ''
         toggleDevOrientation.style.display = 'none';
     }
