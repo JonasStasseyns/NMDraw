@@ -128,9 +128,15 @@ changeActiveShapeColor = (color) => {
 // Color Picker
 const parent = document.querySelector('.colorpicker-tool');
 const picker = new Picker(parent);
-picker.onChange = function (color) {
+picker.onChange = (color) => {
     isDrawing ? canvas.freeDrawingBrush.color = color.rgbString : changeActiveShapeColor(color.rgbString)
-};
+}
+picker.onDone = () => {
+    window.scrollTo(0, 0)
+}
+picker.onClose = () => {
+    window.scrollTo(0, 0)
+}
 
 handleClickTouch = () => {
     socket.emit('drawing', canvas.toSVG())
@@ -182,7 +188,7 @@ toLoginScreen = () => {
 
 // Triggers validateUsername after each keystroke to check is the user has an existing drawing
 document.querySelector('.login-input').addEventListener('input', validateUsername)
-x
+
 document.querySelector('.load-btn').addEventListener('click', loadDrawing)
 document.querySelector('.new-btn').addEventListener('click', newDrawing)
 document.querySelector('.logout-btn').addEventListener('click', toLoginScreen)

@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "d3-node": "^2.2.1",
+    "detect-ssid": "^1.0.3",
     "xmlserializer": "^0.6.1"
   }
 }

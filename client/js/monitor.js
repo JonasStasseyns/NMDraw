@@ -11,6 +11,10 @@ socket.on('king', (userObject) => {
     console.log(userObject)
 })
 
+// socket.on('network', (ssid) => {
+//     console.log(ssid)
+// })
+
 socket.on('updateMonitor', (data) => {
     if(!init){
         canvas.clear()
@@ -22,6 +26,7 @@ socket.on('updateMonitor', (data) => {
     })
     init = false
 })
+
 
 // socket.on('load', (data) => {
 //     if(!init){

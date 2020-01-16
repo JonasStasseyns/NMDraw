@@ -2,6 +2,7 @@ const express = require('express');
 const socket = require('socket.io');
 const fs = require('fs');
 const tools = require('simple-svg-tools');
+const detectSSid = require('detect-ssid');
 
 const app = express();
 const server = app.listen(5000, () => {
@@ -20,8 +21,13 @@ registerUserId = (name, id) => {
     console.log(userBase)
 }
 
+// detectSSid((error, ssidname) => {
+//     socket.emit('network', ssidname)
+// })
+
 // Check on ownership system (in big test with monitor)
 onConnection = (socket) => {
+
     console.log('Socket established: ' + socket.id)
 
     // Main Drawing Socket
