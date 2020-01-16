@@ -41,13 +41,13 @@ socket.on('updateMonitor', (data) => {
 //     init = false
 // })
 
-// socket.on('usr', (usr) => {
-//     const disp = document.createElement('div')
-//     disp.classList.add('user-toast')
-//     disp.innerHTML = usr + ' Connected!'
-//     document.querySelector('.toast-container').appendChild(disp)
-//     console.log(usr + 'Connected!')
-// })
+socket.on('usr', (usr) => {
+    const disp = document.createElement('div')
+    disp.classList.add('user-toast')
+    disp.innerHTML = usr + ' Connected!'
+    document.querySelector('.toast-container').appendChild(disp)
+    console.log(usr + 'Connected!')
+})
 
 loadCanvas = (data) => {
     fabric.Object.prototype.set({
