@@ -46,6 +46,7 @@ socket.on('usr', (usr) => {
     disp.classList.add('user-toast')
     disp.innerHTML = usr + ' Connected!'
     document.querySelector('.toast-container').appendChild(disp)
+    setTimeout(() => disp.classList.add('fade-out'), 5000)
     console.log(usr + 'Connected!')
 })
 
