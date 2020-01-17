@@ -59,6 +59,7 @@ onConnection = (socket) => {
     socket.on('register', (name) => {
         registerUserId(name, socket.id)
         socket.broadcast.emit('king', userBase[0])
+        socket.broadcast.emit('usr', name)
     })
 
     // Socket triggers on disconnect and removes user from userBase[]
