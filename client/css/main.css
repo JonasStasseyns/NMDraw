@@ -1,12 +1,109 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-html,
-body {
+/* Dark mode feature */
+@media (prefers-color-scheme: dark) {
+    body, .picker_wrapper, .toolwindow, .shapetools, .shape-wrapper, .alter-buttons-subwrapper {
+        background: #000 !important;
+        box-shadow: none !important;
+    }
+
+    .picker_done>button, .logout-btn {
+        background: #000 !important;
+        color: #fff !important;
+        box-shadow: none !important;
+    }
+
+    .picker_done>button {
+        font-weight: 600 !important;
+    }
+
+    .layout_default .picker_editor input {
+        font-weight: 900 !important;
+        letter-spacing: 1px !important;
+        font-size: 170% !important;
+    }
+
+    .picker_sample {
+        box-shadow: none !important;
+    }
+
+    .picker_editor>input {
+        background: #000 !important;
+        box-shadow: none !important;
+        color: #fff;
+    }
+
+    .picker_sl {
+        box-shadow: none !important;
+    }
+
+    .picker_arrow::before, .picker_arrow::after {
+        display: none !important;
+    }
+
+    .picker_selector {
+        border: 4px solid #000 !important;
+    }
+
+    .toolwindow, .shapetools {
+        border: 1px solid #000 !important;
+    }
+
+    .tool-wrapper-active {
+        background: #333333 !important;
+    }
+
+    .alter-buttons-subwrapper, .logout-btn {
+        border: 1px solid white !important;
+    }
+
+    .undo-button {
+        background-image: url(../icons/undo-white.svg) !important;
+    }
+
+    .redo-button {
+        background-image: url(../icons/redo-white.svg) !important;
+    }
+
+    .brush-tool {
+        background-image: url(../icons/paintbrush-white.svg) !important;
+    }
+
+    .shapeselector-tool {
+        background-image: url(../icons/shapeselector-white.svg) !important;
+    }
+    
+    .colorpicker-tool {
+        background-image: url(../icons/colorpicker-white.svg) !important;
+    }
+
+    .clear-canvas-tool {
+        background-image: url(../icons/remove-white.svg) !important;
+    }
+
+    .sh-i-rectangle {
+        background-image: url(../icons/square-white.svg) !important;
+    }
+
+    .sh-i-circle {
+        background-image: url(../icons/circle-white.svg) !important;
+    }
+
+    .sh-i-triangle {
+        background-image: url(../icons/triangle-white.svg) !important;
+    }
+}
+
+
+
+
+html, body {
     position: relative;
     font-family: "aktiv-grotesk", sans-serif;
     font-style: normal;
     font-weight: 200;
     height: 100vh;
+    overflow: hidden;
 }
 
 * {
@@ -89,9 +186,7 @@ body {
     font-size: 250%;
 }
 
-.login-input,
-.login-btn,
-.login-radio-container {
+.login-input, .login-btn, .login-radio-container {
     margin: 2vh 0;
     display: block;
 }
@@ -165,7 +260,7 @@ body {
     margin-left: 2vw;
 }
 
-.undo-button{
+.undo-button {
     background-image: url(../icons/undo.svg);
     height: 100%;
     width: 100%;
@@ -173,14 +268,13 @@ body {
     background-size: cover;
 }
 
-.redo-button{
+.redo-button {
     background-image: url(../icons/redo.svg);
     height: 100%;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 
 .load-btn {
     display: none;
@@ -192,11 +286,9 @@ body {
     top: -8%;
 }
 
-
 /* overlay menu */
 
-.load-existing-drawing,
-.new-drawing {
+.load-existing-drawing, .new-drawing {
     background: black;
     width: 10vh;
     text-align: center;
@@ -208,10 +300,9 @@ body {
     display: inline-block;
 }
 
-
 /*# sourceMappingURL=main.css.map */
 
-.new-toolwindow {
+.toolwindow {
     height: 50vh;
     display: flex;
     flex-direction: column;
@@ -219,6 +310,7 @@ body {
     width: 6vw;
     border: 1px solid rgb(230, 230, 230);
     position: absolute;
+    background: #fff;
 }
 
 .tool-wrapper {
@@ -232,7 +324,7 @@ body {
 
 .tool-wrapper-active {
     background: rgb(241, 241, 241);
- }
+}
 
 .tool-wrapper-exception {
     height: 12.5vh;
@@ -257,7 +349,6 @@ body {
 
 .brush-tool {
     background-image: url(../icons/paintbrush.svg);
-    /* background-position: center; */
 }
 
 .shapeselector-tool {
@@ -392,43 +483,6 @@ body {
     border-radius: 5px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.colors {
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-
-.color {
-    display: inline-block;
-    height: 2vw;
-    width: 2vw;
-}
-
-.color.black {
-    background-color: black;
-}
-
-.color.red {
-    background-color: red;
-}
-
-.color.green {
-    background-color: green;
-}
-
-.color.blue {
-    background-color: blue;
-}
-
-.color.yellow {
-    background-color: yellow;
-}
-
 .load-button {
     display: none;
 }
@@ -443,5 +497,14 @@ body {
     }
 }
 
+.picker_wrapper {
+    box-shadow: none !important;
+}
+
+.picker_editor>input {
+    font-family: "aktiv-grotesk", sans-serif !important;
+    font-weight: 300 !important;
+    text-align: center !important;
+}
 
 /*# sourceMappingURL=main.css.map */

@@ -87,11 +87,9 @@ let brushColor = 'black';
 toggleDraw = () => {
     isDrawing = !isDrawing
     // console.log(isDrawing)
-    // document.querySelector('.brush-tool').style.backgroundImage = (isDrawing) ? 'url(../images/brushstroke-active.svg)' : 'url(../images/brushstroke.svg)'
-    // document.querySelector('.brush-tool').style.boxShadow = (isDrawing) ? '' : 'url(../images/brushstroke.svg)'
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
     canvas.freeDrawingBrush.color = brushColor
-    // canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
+    canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
     canvas.renderAll()
 }
 
@@ -148,7 +146,7 @@ shapeIcons.forEach((icon) => {
 })
 
 changeActiveShapeColor = (color) => {
-    if (canvas.getActiveObject().get('type') !== 'path') {
+    if (canvas.getActiveObject() && canvas.getActiveObject().get('type') !== 'path') {
         canvas.getActiveObject().setColor(color)
     }
     console.log('Color Set')
@@ -168,6 +166,7 @@ picker.onDone = () => {
 }
 picker.onClose = () => {
     window.scrollTo(0, 0)
+    unToggleToolState()
 }
 
 
