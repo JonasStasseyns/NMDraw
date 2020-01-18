@@ -104,7 +104,7 @@ updateBrushValue = () => {
     let output = document.querySelector('.brush-value').textContent = sliderValue
     canvas.isDrawingMode = 1
     // canvas.freeDrawingBrush.color = brushColor
-    canvas.freeDrawingBrush.width = sliderValue
+    canvas.freeDrawingBrush.width = parseInt(sliderValue)
     canvas.renderAll()
 }
 slider.addEventListener('change', updateBrushValue)
