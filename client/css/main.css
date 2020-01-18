@@ -6,7 +6,7 @@
         background: #000 !important;
         box-shadow: none !important;
     }
-    .picker_done>button, .logout-btn {
+    .picker_done>button, .logout-btn, .brush-size-tools {
         background: #000 !important;
         color: #fff !important;
         box-shadow: none !important;
@@ -36,7 +36,7 @@
     .picker_selector {
         border: 4px solid #000 !important;
     }
-    .toolwindow, .shapetools {
+    .toolwindow, .shapetools, .brush-size-tools {
         border: 1px solid #000 !important;
     }
     .tool-wrapper-active {
@@ -62,6 +62,9 @@
     }
     .clear-canvas-tool {
         background-image: url(../icons/remove-white.svg) !important;
+    }
+    .close-slider {
+        background-image: url(../icons/close-white.svg) !important;
     }
     .sh-i-rectangle {
         background-image: url(../icons/square-white.svg) !important;
@@ -350,6 +353,14 @@ html, body {
     background-image: url(../icons/remove.svg);
 }
 
+.spawn-emoji {
+    background-image: url(../icons/emoji.svg);
+    width: 5vh;
+    height: 5vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .shapetools {
     position: absolute;
     display: none;
@@ -409,8 +420,8 @@ html, body {
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
-    height: 20vh;
+    align-items: inherit;
+    height: 24vh;
     width: 20vw;
     left: 10vw;
     padding: 3% 1%;
@@ -458,7 +469,7 @@ html, body {
 .close-slider-parent {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 8vh;
 }
 
 .close-slider {
