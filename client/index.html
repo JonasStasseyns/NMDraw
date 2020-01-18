@@ -14,12 +14,13 @@
     <div class="login-overlay">
         <img src="images/shape_2.svg" class="shape-3" alt="">
         <div class="login-sub-container">
-            <h1>NMDraw Login</h1>
-            <label class="input-username-label">Username
-                <input type="text" class="login-input">
+            <h1>Hi user!</h1>
+            <p>Let's create something awesome!</p>
+            <!-- <label class="input-username-label">Username -->
+            <input type="text" class="login-input" value="Username">
             </label>
             <div class="btn-container">
-                <button class="login-btn new-btn">New</button>
+                <button class="login-btn new-btn">Start</button>
                 <button class="login-btn load-btn">Load</button>
             </div>
         </div>
@@ -61,6 +62,15 @@
             <div class="shape-wrapper">
                 <div class="shape-icon sh-i-triangle" id="triangleShape"></div>
             </div>
+        </div>
+
+        <div class="brush-size-tools">
+            <div class="close-slider-parent">
+                <div class="close-slider">
+                </div>
+            </div>
+            <input type="range" value="30" min="0" max="100" class="slider">
+            <p>Width: <span class="brush-value"></span></p>
         </div>
 
         <div class="logout">

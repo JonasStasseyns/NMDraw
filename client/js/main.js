@@ -39,7 +39,9 @@ toggleToolState = (element) => {
 
 unToggleToolState = () => {
     toolContainers[2].classList.remove("tool-wrapper-active")
+    toolContainers[0].classList.remove("tool-wrapper-active")
 }
+
 
 let toolContainers = document.querySelectorAll('.tool-wrapper');
 toolContainers.forEach(e => {
@@ -83,17 +85,39 @@ document.querySelector('.remove-tool').addEventListener('click', (e) => {
 })
 let brushColor = 'black';
 
+
 // free draw with brushtool
-toggleDraw = () => {
+let brushToolSize = document.querySelector('.brush-size-tools')
+toggleBrushSlider = () => {
+    brushToolSize.style.display === "flex" ?
+        brushToolSize.style.display = "none" :
+        brushToolSize.style.display = "flex"
     isDrawing = !isDrawing
-    // console.log(isDrawing)
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
-    canvas.freeDrawingBrush.color = brushColor
-    canvas.freeDrawingBrush.width = document.querySelector('.brush-size').value
+}
+document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleBrushSlider)
+
+let slider = document.querySelector('.slider')
+let output = document.querySelector('.brush-value').textContent = slider.value
+updateBrushValue = () => {
+    let sliderValue = document.querySelector('.slider').value
+    let output = document.querySelector('.brush-value').textContent = sliderValue
+    canvas.isDrawingMode = 1
+    // canvas.freeDrawingBrush.color = brushColor
+    canvas.freeDrawingBrush.width = sliderValue
     canvas.renderAll()
 }
+slider.addEventListener('change', updateBrushValue)
 
-document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleDraw)
+closeSlider = () => {
+    canvas.isDrawingMode = 0
+    brushToolSize.style.display = "none"
+    unToggleToolState()
+}
+document.querySelector('.close-slider').addEventListener('click', closeSlider)
+
+
+
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
@@ -138,7 +162,6 @@ showHideShapes = () => {
         shapeTools.style.display = "flex"
     document.querySelector('#shapeSelector').classList.add('shapetools-active')
 }
-
 
 // Event Listeners
 const shapeIcons = document.querySelectorAll('.shape-icon')
