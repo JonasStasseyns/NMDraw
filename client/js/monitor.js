@@ -19,7 +19,7 @@ socket.on('updateMonitor', (data) => {
     if(!init){
         canvas.clear()
     }
-    // console.log(data)
+    console.log(data)
     fabric.loadSVGFromString(data, function(objects, options) {
         const obj = fabric.util.groupSVGElements(objects, options)
         canvas.add(obj).renderAll()

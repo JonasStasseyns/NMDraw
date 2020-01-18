@@ -171,7 +171,10 @@ picker.onClose = () => {
 
 
 handleClickTouch = () => {
-    socket.emit('drawing', canvas.toSVG())
+    setTimeout(() => {
+        socket.emit('drawing', canvas.toSVG())
+        console.log(canvas.toSVG())
+    }, 10)
 }
 
 // Body click event to send changes to the server
@@ -237,7 +240,7 @@ stackCanvasChanges = () => {
     if (!alterCanvasState) {
         undo.push(JSON.stringify(canvas));
         redo = [];
-        console.log('Changes detected on canvas', undo);
+        // console.log('Changes detected on canvas', undo);
     }
 }
 
