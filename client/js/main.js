@@ -194,7 +194,10 @@ picker.onClose = () => {
 
 
 handleClickTouch = () => {
-    socket.emit('drawing', canvas.toSVG())
+    setTimeout(() => {
+        socket.emit('drawing', canvas.toSVG())
+        console.log(canvas.toSVG())
+    }, 10)
 }
 
 // Body click event to send changes to the server
@@ -260,7 +263,7 @@ stackCanvasChanges = () => {
     if (!alterCanvasState) {
         undo.push(JSON.stringify(canvas));
         redo = [];
-        console.log('Changes detected on canvas', undo);
+        // console.log('Changes detected on canvas', undo);
     }
 }
 
@@ -289,9 +292,39 @@ redoAction = (e) => {
     }
 }
 
+showEmojiList = () => {
+    socket.emit('showEmojiList', true)
+}
+
+// Receiving list of emoji thumbnails
+socket.on('sendList', (list) => {
+    document.querySelector('.emoji-list-container').innerHTML = ''
+    document.querySelector('.emoji-list-container').style.display = 'flex'
+    list.forEach(emoji => {
+        console.log(emoji)
+        const div = document.createElement('div')
+        div.classList.add('emoji-div')
+        div.style.backgroundImage = 'url("../shapes/' + emoji + '")'
+        div.id = emoji
+        div.addEventListener('click', e => socket.emit('loadSpecificEmoji', emoji))
+        document.querySelector('.emoji-list-container').appendChild(div)
+    })
+})
+
+socket.on('sendLoadedEmoji', (svg) => {
+    fabric.loadSVGFromString(svg, (objects, options) => {
+        objects.forEach((obj, i) => {
+            canvas.add(obj);
+        });
+    })
+    canvas.renderAll()
+    document.querySelector('.emoji-list-container').style.display = 'none'
+})
+
 canvas.on('object:removed', stackCanvasChanges);
 canvas.on('object:modified', stackCanvasChanges);
 canvas.on('object:added', stackCanvasChanges);
 
 let undoButton = document.querySelector('.undo-button').addEventListener('click', undoAction)
 let redoButton = document.querySelector('.redo-button').addEventListener('click', redoAction)
+let emojiBtn = document.querySelector('.spawn-emoji').addEventListener('click', showEmojiList)

@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1440" height="2960" viewBox="0 0 1440 2960" xml:space="preserve">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="375" height="667" viewBox="0 0 375 667" xml:space="preserve">
 <desc>Created with Fabric.js 3.5.0</desc>
 <defs>
 </defs>
-<g transform="matrix(1 0 0 1 433.5 703)"  >
-<path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-433.5, -703)" d="M 24.999 703 Q 25 703 25.5 703 Q 26 703 26.5 703 Q 27 703 28.5 703 Q 30 703 42.5 703 Q 55 703 62 703 Q 69 703 74.5 703 Q 80 703 91.5 701.5 Q 103 700 115 698 Q 127 696 137.5 695 Q 148 694 151 694 Q 154 694 157 694 Q 160 694 167.5 694 Q 175 694 177 694 Q 179 694 185 694 Q 191 694 193 694 Q 195 694 198.5 694.5 Q 202 695 204 695 Q 206 695 208 695.5 Q 210 696 218 697 Q 226 698 228.5 698 Q 231 698 240.5 698.5 Q 250 699 253.5 699 Q 257 699 265.5 700 Q 274 701 277 701 Q 280 701 289 701.5 Q 298 702 302 702 Q 306 702 310.5 702 Q 315 702 329 702 Q 343 702 348 702 Q 353 702 356 702 Q 359 702 377 701 Q 395 700 401 699.5 Q 407 699 411 698.5 Q 415 698 436.5 694.5 Q 458 691 462.5 690.5 Q 467 690 475 689 Q 483 688 487 687.5 Q 491 687 512.5 686.5 Q 534 686 538 686 Q 542 686 546 686 Q 550 686 557 686 Q 564 686 588 686 Q 612 686 631.5 687.5 Q 651 689 658.5 689.5 Q 666 690 694 693.5 Q 722 697 731.5 698 Q 741 699 746.5 700 Q 752 701 762 703 Q 772 705 797 709 Q 822 713 827 714.5 Q 832 716 836.5 718 Q 841 720 841.5 720 L 842.001 720" stroke-linecap="round" />
-</g>
-<g transform="matrix(1 0 0 1 1402 711.4)"  >
-<path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-1402, -711.4)" d="M 1402 702.999 Q 1402 703 1402 704.5 Q 1402 706 1402 707 Q 1402 708 1402 709.5 Q 1402 711 1402 714.5 Q 1402 718 1402 718.5 Q 1402 719 1402 719.5 Q 1402 720 1402 718.5 Q 1402 717 1402 715.5 Q 1402 714 1402 712 Q 1402 710 1402 709.5 Q 1402 709 1402 708.5 L 1402 707.999" stroke-linecap="round" />
-</g>
-<g transform="matrix(1 0 0 1 1431.5 46.5)"  >
-<path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-1431.5, -46.5)" d="M 1431 25.999 Q 1431 26 1431 26.5 Q 1431 27 1431 27.5 Q 1431 28 1431 29.5 Q 1431 31 1431 36.5 Q 1431 42 1431 43 Q 1431 44 1431 46 Q 1431 48 1431 48.5 Q 1431 49 1431 49.5 Q 1431 50 1431 50.5 Q 1431 51 1431 54.5 Q 1431 58 1431 59.5 Q 1431 61 1431 61.5 Q 1431 62 1431.5 64.5 L 1432.001 67.001" stroke-linecap="round" />
-</g>
-<g transform="matrix(1 0 0 1 1434.5 572)"  >
-<path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"  transform=" translate(-1434.5, -572)" d="M 1434 551.999 Q 1434 552 1434 552.5 Q 1434 553 1434 553.5 Q 1434 554 1434 555 Q 1434 556 1434 557 Q 1434 558 1434 560.5 Q 1434 563 1434 563.5 Q 1434 564 1434 565.5 Q 1434 567 1434 568 Q 1434 569 1434 571.5 Q 1434 574 1434 574.5 Q 1434 575 1434 576.5 Q 1434 578 1434 578.5 Q 1434 579 1434 581.5 Q 1434 584 1434.5 585 Q 1435 586 1435 588 Q 1435 590 1435 590.5 Q 1435 591 1435 591.5 L 1435 592.001" stroke-linecap="round" />
-</g>
 </svg>

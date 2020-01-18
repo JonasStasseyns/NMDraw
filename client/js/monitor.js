@@ -19,7 +19,7 @@ socket.on('updateMonitor', (data) => {
     if(!init){
         canvas.clear()
     }
-    // console.log(data)
+    console.log(data)
     fabric.loadSVGFromString(data, function(objects, options) {
         const obj = fabric.util.groupSVGElements(objects, options)
         canvas.add(obj).renderAll()
@@ -46,6 +46,7 @@ socket.on('usr', (usr) => {
     disp.classList.add('user-toast')
     disp.innerHTML = usr + ' Connected!'
     document.querySelector('.toast-container').appendChild(disp)
+    setTimeout(() => disp.classList.add('fade-out'), 5000)
     console.log(usr + 'Connected!')
 })
 
