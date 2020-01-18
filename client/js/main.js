@@ -2,6 +2,7 @@ const socket = io()
 
 let userActive = false;
 let isDrawing = false
+let brushColor = 'black';
 
 // force user to flip device
 let screenOrientation = '';
@@ -43,7 +44,7 @@ resetAllTools = (e) => {
     toolContainers.forEach(e => {
         e.classList.remove("tool-wrapper-active")
     });
-    isDrawing = false
+    !isDrawing
 }
 
 
@@ -81,12 +82,14 @@ const canvas = window._canvas = new fabric.Canvas('c')
 canvas.setWidth(window.innerWidth)
 canvas.setHeight(window.innerHeight)
 
-// Remove active shape
-document.querySelector('.remove-tool').addEventListener('click', (e) => {
-    canvas.remove(canvas.getActiveObject())
-})
-let brushColor = 'black';
-
+// remove one or multiple objects
+deleteAllSelectedObjects = () => {
+    canvas.getActiveObjects().forEach((object) => {
+        canvas.remove(object)
+    })
+    canvas.renderAll();
+}
+document.querySelector('.remove-tool').addEventListener('click', deleteAllSelectedObjects)
 
 // free draw with brushtool
 let brushToolSize = document.querySelector('.brush-size-tools')
