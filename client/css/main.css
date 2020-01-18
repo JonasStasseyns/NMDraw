@@ -2,7 +2,7 @@
 /* Dark mode feature */
 
 @media (prefers-color-scheme: dark) {
-    body.client, .picker_wrapper, .toolwindow, .shapetools, .shape-wrapper, .alter-buttons-subwrapper {
+    body.client, .picker_wrapper, .toolwindow, .shapetools, .shape-wrapper, .alter-buttons-subwrapper, .emoji-list-container {
         background: #000 !important;
         box-shadow: none !important;
     }
@@ -36,7 +36,7 @@
     .picker_selector {
         border: 4px solid #000 !important;
     }
-    .toolwindow, .shapetools, .brush-size-tools {
+    .toolwindow, .shapetools, .brush-size-tools, .emoji-list-container {
         border: 1px solid #000 !important;
     }
     .tool-wrapper-active {
@@ -74,6 +74,10 @@
     }
     .sh-i-triangle {
         background-image: url(../icons/triangle-white.svg) !important;
+    }
+    .spawn-emoji-tool {
+        background-image: url(../icons/emoji-white.svg) !important;
+
     }
 }
 
@@ -147,7 +151,7 @@ html, body {
     position: absolute;
     top: 0;
     box-sizing: border-box;
-    background-image: url(../images/shape_1.1.svg);
+    background-image: url(../images/bg-shape-dark-blue.svg);
     background-position: top 430px left 460px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -197,7 +201,7 @@ html, body {
 
 .login-btn {
     margin-top: 4vh;
-    background: blue;
+    background-image: linear-gradient(to left, #1b179d 0%, #3a76dc 100%);
     color: white;
     display: inline-block;
     width: 48%;
@@ -353,7 +357,7 @@ html, body {
     background-image: url(../icons/remove.svg);
 }
 
-.spawn-emoji {
+.spawn-emoji-tool {
     background-image: url(../icons/emoji.svg);
     width: 5vh;
     height: 5vh;
@@ -483,7 +487,8 @@ html, body {
 }
 
 .please-flip-to-landscape {
-    background-color: rgb(10, 0, 37);
+    /* background-color: rgb(10, 0, 37); */
+    background-image: linear-gradient(to left, #1b179d 0%, #0e5bde 100%);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -507,7 +512,8 @@ html, body {
 }
 
 .please-flip-to-portrait {
-    background-color: #07051f;
+    /* background-color: #07051f; */
+    background-image: linear-gradient(to left, #1b179d 0%, #0e5bde 100%);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -569,20 +575,20 @@ html, body {
     top: 2vh;
     left: 10vw;
     width: 40vw;
-    /*height: 40vw;*/
     background-size: contain;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    border: 1px solid black;
     display: none;
+    border: 1px solid rgb(230, 230, 230);
+    background: #fff;
 }
 
 .emoji-div {
     background-repeat: no-repeat;
     background-size: contain;
-    width: 5vw;
-    height: 5vw;
+    width: 2.5vw;
+    height: 2.5vw;
     margin: 1vw;
 }

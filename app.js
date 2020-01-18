@@ -30,7 +30,14 @@ onConnection = (socket) => {
         socket.broadcast.emit('updateMonitor', data)
         // console.log(data)
         console.log('Drawing data received')
+
+        // Complete Drawing to earliest player
         userBase[0].name ? fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er) => console.log(er)) : console.log('No username was linked to this socket-id: ' + socket.id)
+
+        // Everyone's own drawing to themselves
+        // userBase.forEach((user) => {
+        //     if(user.id === socket.id) fs.writeFile('storage/' + user.name + '.svg', data, (er) => console.log(er))
+        // })
     });
 
     // Validation socket
