@@ -105,7 +105,6 @@ updateBrushValue = () => {
     canvas.isDrawingMode = 1
     // canvas.freeDrawingBrush.color = brushColor
     canvas.freeDrawingBrush.width = sliderValue
-    canvas.renderAll()
 }
 slider.addEventListener('change', updateBrushValue)
 

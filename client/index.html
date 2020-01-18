@@ -17,7 +17,7 @@
             <h1>Hi user!</h1>
             <p>Let's create something awesome!</p>
             <!-- <label class="input-username-label">Username -->
-            <input type="text" class="login-input" value="Username">
+            <input type="text" class="login-input" placeholder="Username">
             </label>
             <div class="btn-container">
                 <button class="login-btn new-btn">Start</button>
@@ -45,9 +45,12 @@
             <div class="tool-wrapper-exception remove-tool">
                 <div class="tool-icon clear-canvas-tool"></div>
             </div>
-            <div class="tool-wrapper-exception">
+            <!-- <div class="tool-wrapper-exception">
                 <div class="spawn-emoji">EMOJI TEST</div>
-            </div>
+            </div> -->
+            <div class="tool-wrapper">
+                <div class="spawn-emoji"></div>
+            </div>    
         </div>
 
         <div class="emoji-list-container"></div>
@@ -69,9 +72,12 @@
                 <div class="close-slider">
                 </div>
             </div>
-            <input type="range" value="30" min="0" max="100" class="slider">
+            <div>
+                <input type="range" value="5" min="0" max="30" class="slider">
+            </div>
             <p>Width: <span class="brush-value"></span></p>
         </div>
+        
 
         <div class="logout">
             <p class="logout-btn">Leave</p>
