@@ -22,6 +22,7 @@ socket.on('updateMonitor', (data) => {
     console.log(data)
     fabric.loadSVGFromString(data, function(objects, options) {
         const obj = fabric.util.groupSVGElements(objects, options)
+        obj.scaleToWidth(window.innerWidth);
         canvas.add(obj).renderAll()
     })
     init = false

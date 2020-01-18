@@ -120,34 +120,38 @@ document.querySelector('.close-slider').addEventListener('click', closeSlider)
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
+    let shape;
+    const centerX = window.innerWidth/2
+    const centerY = window.innerHeight/2
     switch (e.target.id) {
         case 'circleShape':
-            canvas.add(new fabric.Circle({
+            shape = new fabric.Circle({
                 radius: 20,
-                left: Math.random() * 400 + 100,
-                top: Math.random() * 400 + 100,
-                fill: '#0B61A4'
-            }))
+                fill: '#0B61A4',
+                top: centerY,
+                left: centerX,
+            })
             break
         case 'triangleShape':
-            canvas.add(new fabric.Triangle({
+            shape = new fabric.Triangle({
                 width: 40,
                 height: 40,
-                left: Math.random() * 400 + 100,
-                top: Math.random() * 400 + 100,
-                fill: '#0B61A4'
-            }))
+                fill: '#0B61A4',
+                top: centerY,
+                left: centerX,
+            })
             break
         case 'rectShape':
-            canvas.add(new fabric.Rect({
+            shape = new fabric.Rect({
                 width: 40,
                 height: 40,
-                left: Math.random() * 400 + 100,
-                top: Math.random() * 400 + 100,
-                fill: '#0B61A4'
-            }))
+                fill: '#0B61A4',
+                top: centerY,
+                left: centerX,
+            })
             break
     }
+    canvas.add(shape)
 }
 
 showHideShapes = () => {
@@ -291,10 +295,6 @@ redoAction = (e) => {
     }
 }
 
-showEmojiList = () => {
-    socket.emit('showEmojiList', true)
-}
-
 // Receiving list of emoji thumbnails
 socket.on('sendList', (list) => {
     document.querySelector('.emoji-list-container').innerHTML = ''
@@ -312,9 +312,11 @@ socket.on('sendList', (list) => {
 
 socket.on('sendLoadedEmoji', (svg) => {
     fabric.loadSVGFromString(svg, (objects, options) => {
+        const groupObjects = []
         objects.forEach((obj, i) => {
-            canvas.add(obj);
+            groupObjects.push(obj)
         });
+        canvas.add(new fabric.Group(groupObjects, { left: window.innerWidth/2, top: window.innerHeight/2 }))
     })
     canvas.renderAll()
     document.querySelector('.emoji-list-container').style.display = 'none'
@@ -326,4 +328,4 @@ canvas.on('object:added', stackCanvasChanges);
 
 let undoButton = document.querySelector('.undo-button').addEventListener('click', undoAction)
 let redoButton = document.querySelector('.redo-button').addEventListener('click', redoAction)
-let emojiBtn = document.querySelector('.spawn-emoji').addEventListener('click', showEmojiList)
+let emojiBtn = document.querySelector('.spawn-emoji').addEventListener('click', () => socket.emit('showEmojiList', true))

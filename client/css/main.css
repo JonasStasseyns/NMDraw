@@ -97,12 +97,12 @@ html, body {
 
 .toast-container {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 1vw;
+    left: 1vw;
 }
 
 .user-toast {
-    margin: 1vh 0;
+    margin: 0 0 1vh 0;
     padding: 1vh 2vw;
     background-color: aliceblue;
     border-radius: 5px;
@@ -533,19 +533,6 @@ html, body {
 
 .cache-img {
     display: none;
-}
-
-.toast-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.user-toast {
-    margin: 1vh 0;
-    padding: 1vh 2vw;
-    background-color: aliceblue;
-    border-radius: 5px;
 }
 
 .load-button {

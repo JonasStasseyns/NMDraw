@@ -1,7 +1,3 @@
 ## TODO List
 
-- NO access to svg
-    - check if this access can be fixed
-    - otherwise look into storing svg in client and loading from there
-        - must be able to load file as background-image
-        - must be able to load file as svg-object
+- Optimize emojiList by checking if innerhtml == ' ' before pulling all the files through the websocket tunnel
