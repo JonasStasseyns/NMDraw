@@ -97,34 +97,38 @@ document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggl
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
+    let shape;
+    const centerX = window.innerWidth/2
+    const centerY = window.innerHeight/2
     switch (e.target.id) {
         case 'circleShape':
-            canvas.add(new fabric.Circle({
+            shape = new fabric.Circle({
                 radius: 20,
-                left: Math.random() * 400 + 100,
-                top: Math.random() * 400 + 100,
-                fill: '#0B61A4'
-            }))
+                fill: '#0B61A4',
+                top: centerY,
+                left: centerX,
+            })
             break
         case 'triangleShape':
-            canvas.add(new fabric.Triangle({
+            shape = new fabric.Triangle({
                 width: 40,
                 height: 40,
-                left: Math.random() * 400 + 100,
-                top: Math.random() * 400 + 100,
-                fill: '#0B61A4'
-            }))
+                fill: '#0B61A4',
+                top: centerY,
+                left: centerX,
+            })
             break
         case 'rectShape':
-            canvas.add(new fabric.Rect({
+            shape = new fabric.Rect({
                 width: 40,
                 height: 40,
-                left: Math.random() * 400 + 100,
-                top: Math.random() * 400 + 100,
-                fill: '#0B61A4'
-            }))
+                fill: '#0B61A4',
+                top: centerY,
+                left: centerX,
+            })
             break
     }
+    canvas.add(shape)
 }
 
 showHideShapes = () => {
