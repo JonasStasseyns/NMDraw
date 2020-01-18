@@ -79,6 +79,9 @@
         background-image: url(../icons/emoji-white.svg) !important;
 
     }
+    .initial-brush-color {
+        color: white;
+    }
 }
 
 html, body {
@@ -163,12 +166,12 @@ html, body {
 
 .login-sub-container h1 {
     margin-bottom: 2vh;
-    font-size: 400%;
+    font-size: 6.5em;
     font-weight: 500;
 }
 
 .login-sub-container p {
-    font-size: 230%;
+    font-size: 3em;
     margin-bottom: 7vh;
 }
 
@@ -192,6 +195,12 @@ html, body {
     font-size: 200%;
     color: #1f1f1f;
     font-weight: 200;
+}
+
+::placeholder {
+    font-weight: 100 !important;
+    color: rgb(170, 170, 170);
+    font-size: 1.3em;
 }
 
 .btn-container {
@@ -459,14 +468,14 @@ html, body {
     appearance: none;
     width: 25px;
     height: 25px;
-    background: #4CAF50;
+    background: #0e5bde;
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    background: #4CAF50;
+    background: #0e5bde;
     cursor: pointer;
 }
 

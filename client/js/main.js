@@ -2,7 +2,6 @@ const socket = io()
 
 let userActive = false;
 let isDrawing = false
-let brushColor = 'black';
 
 // force user to flip device
 let screenOrientation = '';
@@ -91,7 +90,19 @@ deleteAllSelectedObjects = () => {
 }
 document.querySelector('.remove-tool').addEventListener('click', deleteAllSelectedObjects)
 
-// free draw with brushtool
+
+// Switch initial brush color to black or white according to users theme mode
+let brushColor
+initializeBrushColor = () => {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // No absolute white because monitor canvas will be rgb(250, 250, 250)
+        brushColor = 'rgb(254,255,211)'
+    } else {
+        brushColor = 'rgb(0, 0, 0)'
+    }
+}
+
+// Toggle brush slider, increase or decrease brush width
 let brushToolSize = document.querySelector('.brush-size-tools')
 toggleBrushSlider = () => {
     brushToolSize.style.display === "flex" ?
@@ -99,29 +110,29 @@ toggleBrushSlider = () => {
         brushToolSize.style.display = "flex"
     isDrawing = !isDrawing
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
+    initializeBrushColor()
+    canvas.freeDrawingBrush.color = brushColor
 }
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleBrushSlider)
 
+// Update brush width
 let slider = document.querySelector('.slider')
 let output = document.querySelector('.brush-value').textContent = slider.value
 updateBrushValue = () => {
     let sliderValue = document.querySelector('.slider').value
-    let output = document.querySelector('.brush-value').textContent = sliderValue
+    output = document.querySelector('.brush-value').textContent = sliderValue
     canvas.isDrawingMode = 1
-    // canvas.freeDrawingBrush.color = brushColor
     canvas.freeDrawingBrush.width = parseInt(sliderValue)
 }
 slider.addEventListener('change', updateBrushValue)
 
+// Close brush width slider
 closeSlider = () => {
     canvas.isDrawingMode = 0
     brushToolSize.style.display = "none"
     resetAllTools()
 }
 document.querySelector('.close-slider').addEventListener('click', closeSlider)
-
-
-
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
