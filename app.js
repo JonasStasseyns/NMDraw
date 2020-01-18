@@ -21,11 +21,6 @@ registerUserId = (name, id) => {
     console.log(userBase)
 }
 
-
-// detectSSid((error, ssidname) => {
-//     socket.emit('network', ssidname)
-// })
-
 // Check on ownership system (in big test with monitor)
 onConnection = (socket) => {
     console.log('Socket established: ' + socket.id)
