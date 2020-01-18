@@ -96,11 +96,14 @@ let brushColor
 initializeBrushColor = () => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         // No absolute white because monitor canvas will be rgb(250, 250, 250)
-        brushColor = 'rgb(254,255,211)'
+        canvas.freeDrawingBrush.color = 'rgb(254,255,211)'
     } else {
-        brushColor = 'rgb(0, 0, 0)'
+        canvas.freeDrawingBrush.color = 'rgb(0, 0, 0)'
     }
 }
+setInterval(() => {
+    initializeBrushColor()
+}, 2000);
 
 // Toggle brush slider, increase or decrease brush width
 let brushToolSize = document.querySelector('.brush-size-tools')
@@ -110,8 +113,6 @@ toggleBrushSlider = () => {
         brushToolSize.style.display = "flex"
     isDrawing = !isDrawing
     canvas.isDrawingMode = (isDrawing) ? 1 : 0
-    initializeBrushColor()
-    canvas.freeDrawingBrush.color = brushColor
 }
 document.querySelector('.free-draw-toggle-icon').addEventListener('click', toggleBrushSlider)
 
