@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "server:start": "nodemon app.js",
-    "sass": "sass --watch client/sass/app.sass:client/css/main.css"
+    "sass": "sass --watch client/sass/app.sass:client/css/main.css",
+    "flush": "rm storage/*"
   },
   "dependencies": {
     "express": "~4.16.1",
