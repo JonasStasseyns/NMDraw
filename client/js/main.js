@@ -1,6 +1,7 @@
 const socket = io()
 
 let userActive = false;
+let isDrawing = false
 
 // force user to flip device
 let screenOrientation = '';
@@ -32,14 +33,17 @@ window.addEventListener('orientationchange', toggleOrientatonAlert)
 
 
 // toggle tool background color when active
-toggleToolState = (element) => {
-    element.preventDefault();
-    element.target.classList.toggle('tool-wrapper-active');
+toggleToolState = (e) => {
+    e.preventDefault();
+    e.target.classList.toggle('tool-wrapper-active');
 }
 
-unToggleToolState = () => {
-    toolContainers[2].classList.remove("tool-wrapper-active")
-    toolContainers[0].classList.remove("tool-wrapper-active")
+resetAllTools = (e) => {
+    let toolContainers = document.querySelectorAll('.tool-wrapper');
+    toolContainers.forEach(e => {
+        e.classList.remove("tool-wrapper-active")
+    });
+    isDrawing = false
 }
 
 
@@ -71,8 +75,6 @@ fabric.Object.prototype.set({
     padding: 5
 })
 
-// Global variables
-let isDrawing = false
 
 // Canvas Init
 const canvas = window._canvas = new fabric.Canvas('c')
@@ -111,7 +113,7 @@ slider.addEventListener('change', updateBrushValue)
 closeSlider = () => {
     canvas.isDrawingMode = 0
     brushToolSize.style.display = "none"
-    unToggleToolState()
+    resetAllTools()
 }
 document.querySelector('.close-slider').addEventListener('click', closeSlider)
 
@@ -121,8 +123,8 @@ document.querySelector('.close-slider').addEventListener('click', closeSlider)
 // Create shape based on the selected shape and size
 createShape = (e) => {
     let shape;
-    const centerX = window.innerWidth/2
-    const centerY = window.innerHeight/2
+    const centerX = window.innerWidth / 2
+    const centerY = window.innerHeight / 2
     switch (e.target.id) {
         case 'circleShape':
             shape = new fabric.Circle({
@@ -175,7 +177,7 @@ changeActiveShapeColor = (color) => {
     if (canvas.getActiveObject() && canvas.getActiveObject().get('type') !== 'path') {
         canvas.getActiveObject().setColor(color)
     }
-    console.log('Color Set')
+    // console.log('Color Set')
     canvas.renderAll()
 }
 
@@ -187,19 +189,17 @@ picker.onChange = (color) => {
 }
 picker.onDone = () => {
     window.scrollTo(0, 0)
-    console.log('Submit was clicked')
-    unToggleToolState()
+    resetAllTools()
 }
 picker.onClose = () => {
     window.scrollTo(0, 0)
-    unToggleToolState()
+    resetAllTools()
 }
 
 
 handleClickTouch = () => {
     setTimeout(() => {
         socket.emit('drawing', canvas.toSVG())
-        console.log(canvas.toSVG())
     }, 10)
 }
 
@@ -208,7 +208,7 @@ document.querySelector('.trigger-area').addEventListener('click', handleClickTou
 document.querySelector('.trigger-area').addEventListener('touchend', handleClickTouch)
 
 loadDrawing = () => {
-    console.log('LOADBTN')
+    // console.log('LOADBTN')
     socket.emit('drawingRequest', document.querySelector('.login-input').value)
     toHomeScreen()
     userActive = true;
@@ -300,7 +300,7 @@ socket.on('sendList', (list) => {
     document.querySelector('.emoji-list-container').innerHTML = ''
     document.querySelector('.emoji-list-container').style.display = 'flex'
     list.forEach(emoji => {
-        console.log(emoji)
+        // console.log(emoji)
         const div = document.createElement('div')
         div.classList.add('emoji-div')
         div.style.backgroundImage = 'url("../shapes/' + emoji + '")'
@@ -316,10 +316,11 @@ socket.on('sendLoadedEmoji', (svg) => {
         objects.forEach((obj, i) => {
             groupObjects.push(obj)
         });
-        canvas.add(new fabric.Group(groupObjects, { left: window.innerWidth/2, top: window.innerHeight/2 }))
+        canvas.add(new fabric.Group(groupObjects, { left: window.innerWidth / 2, top: window.innerHeight / 2 }))
     })
     canvas.renderAll()
     document.querySelector('.emoji-list-container').style.display = 'none'
+    resetAllTools()
 })
 
 canvas.on('object:removed', stackCanvasChanges);
