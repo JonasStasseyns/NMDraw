@@ -296,10 +296,6 @@ redoAction = (e) => {
     }
 }
 
-showEmojiList = () => {
-    socket.emit('showEmojiList', true)
-}
-
 // Receiving list of emoji thumbnails
 socket.on('sendList', (list) => {
     document.querySelector('.emoji-list-container').innerHTML = ''
@@ -317,9 +313,11 @@ socket.on('sendList', (list) => {
 
 socket.on('sendLoadedEmoji', (svg) => {
     fabric.loadSVGFromString(svg, (objects, options) => {
+        const groupObjects = []
         objects.forEach((obj, i) => {
-            canvas.add(obj);
+            groupObjects.push(obj)
         });
+        canvas.add(new fabric.Group(groupObjects, { left: window.innerWidth/2, top: window.innerHeight/2 }))
     })
     canvas.renderAll()
     document.querySelector('.emoji-list-container').style.display = 'none'
@@ -331,4 +329,4 @@ canvas.on('object:added', stackCanvasChanges);
 
 let undoButton = document.querySelector('.undo-button').addEventListener('click', undoAction)
 let redoButton = document.querySelector('.redo-button').addEventListener('click', redoAction)
-let emojiBtn = document.querySelector('.spawn-emoji').addEventListener('click', showEmojiList)
+let emojiBtn = document.querySelector('.spawn-emoji').addEventListener('click', () => socket.emit('showEmojiList', true))
