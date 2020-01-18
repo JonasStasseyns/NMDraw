@@ -2,7 +2,7 @@
 
 /* Dark mode feature */
 @media (prefers-color-scheme: dark) {
-    body, .picker_wrapper, .toolwindow, .shapetools, .shape-wrapper, .alter-buttons-subwrapper {
+    body.client, .picker_wrapper, .toolwindow, .shapetools, .shape-wrapper, .alter-buttons-subwrapper {
         background: #000 !important;
         box-shadow: none !important;
     }
@@ -510,4 +510,28 @@ html, body {
 
 .fade-out {
     opacity: 0;
+}
+
+/* TEMP */
+.emoji-list-container {
+    position: absolute;
+    top: 2vh;
+    left: 10vw;
+    width: 40vw;
+    /*height: 40vw;*/
+    background-size: contain;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid black;
+    display: none;
+}
+
+.emoji-div {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 5vw;
+    height: 5vw;
+    margin: 1vw;
 }

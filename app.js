@@ -21,13 +21,13 @@ registerUserId = (name, id) => {
     console.log(userBase)
 }
 
+
 // detectSSid((error, ssidname) => {
 //     socket.emit('network', ssidname)
 // })
 
 // Check on ownership system (in big test with monitor)
 onConnection = (socket) => {
-
     console.log('Socket established: ' + socket.id)
 
     // Main Drawing Socket
@@ -60,6 +60,41 @@ onConnection = (socket) => {
         registerUserId(name, socket.id)
         socket.broadcast.emit('king', userBase[0])
         socket.broadcast.emit('usr', name)
+    })
+
+    // Send emoji list
+    socket.on('showEmojiList', () => {
+        console.log('-----')
+        const emojiList = []
+        //DEP
+        fs.readdir('client/shapes', (err, files) => {
+            files = files.filter((value, index, arr) => {
+                return value !== '.DS_Store';
+            });
+            console.log('DONEEEE')
+            console.log(files)
+            socket.emit('sendList', files)
+        })
+        //DEP
+        // tools.ImportDir('client/shapes').then(collection => {
+        //     collection.forEach(svg => {
+        //         emojiList.push(svg.toString())
+        //     })
+        //     console.log(emojiList)
+        //     socket.emit('sendList', emojiList)
+        // }).catch(err => {
+        //     console.log(err);
+        // });
+    })
+
+    socket.on('loadSpecificEmoji', (emoji) => {
+        console.log('// LOAD SPECIFIC EMOJI //')
+        console.log('- Selected emoji file name: ' + emoji)
+        tools.ImportSVG('client/shapes/'+emoji).then(svg => {
+            socket.emit('sendLoadedEmoji', svg.toString())
+        }).catch(err => {
+            console.log(err);
+        });
     })
 
     // Socket triggers on disconnect and removes user from userBase[]
