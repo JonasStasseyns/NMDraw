@@ -11,10 +11,6 @@ socket.on('king', (userObject) => {
     console.log(userObject)
 })
 
-// socket.on('network', (ssid) => {
-//     console.log(ssid)
-// })
-
 socket.on('updateMonitor', (data) => {
     if(!init){
         canvas.clear()
@@ -28,6 +24,10 @@ socket.on('updateMonitor', (data) => {
     init = false
 })
 
+socket.on('network', (ssid, ip) => {
+    document.querySelector('.ssid').innerHTML = ssid
+    document.querySelector('.ipv4').innerHTML = ip + ':5000'
+})
 
 // socket.on('load', (data) => {
 //     if(!init){
