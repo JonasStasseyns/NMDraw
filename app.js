@@ -3,11 +3,15 @@ const socket = require('socket.io');
 const fs = require('fs');
 const tools = require('simple-svg-tools');
 const detectSSid = require('detect-ssid');
+const internalIp = require('internal-ip');
 
 const app = express();
 const server = app.listen(5000, () => {
     console.log('[Express] Server running')
 });
+
+let networkName;
+let localIP = internalIp.v4.sync();
 
 app.use(express.static('client'));
 
@@ -21,9 +25,14 @@ registerUserId = (name, id) => {
     console.log(userBase)
 }
 
+detectSSid((error, ssidname) => {
+    networkName = ssidname
+});
+
 // Check on ownership system (in big test with monitor)
 onConnection = (socket) => {
     console.log('Socket established: ' + socket.id)
+    socket.emit('network', networkName, localIP)
 
     // Main Drawing Socket
     socket.on('drawing', (data) => {
