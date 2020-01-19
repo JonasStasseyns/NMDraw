@@ -2,6 +2,7 @@ const socket = io()
 
 let userActive = false;
 let isDrawing = false
+const randomUsers = ['Goku', 'Gohan', 'Goten', 'Bulma', 'Krillin', 'Vegeta', 'Cell', 'Buu', 'Frieza', 'Piccolo', 'Broly', 'Beerus', 'Whis']
 
 // force user to flip device
 let screenOrientation = '';
@@ -11,7 +12,7 @@ toggleOrientatonAlert = () => {
     setTimeout(()=>{
         canvas.setWidth(window.innerWidth)
         canvas.setHeight(window.innerHeight)
-    }, 100)
+    }, 500)
     // console.log(window.orientation)
     screenOrientation = window.orientation.toString()
     if ((!userActive && screenOrientation == '-90') || (!userActive && screenOrientation == '90')) {
@@ -47,7 +48,7 @@ resetAllTools = (e) => {
     toolContainers.forEach(e => {
         e.classList.remove("tool-wrapper-active")
     });
-    !isDrawing
+    // isDrawing = false
 }
 
 
@@ -100,10 +101,11 @@ let brushColor
 initializeBrushColor = () => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         // No absolute white because monitor canvas will be rgb(250, 250, 250)
-        canvas.freeDrawingBrush.color = 'rgb(254,255,211)'
-    } else {
-        canvas.freeDrawingBrush.color = 'rgb(0, 0, 0)'
+        if(canvas.freeDrawingBrush.color === 'rgb(0, 0, 0)') canvas.freeDrawingBrush.color = 'rgb(140,255,211)'
     }
+    // else {
+    //     canvas.freeDrawingBrush.color == 'rgb(0, 0, 0)'
+    // }
 }
 setInterval(() => {
     initializeBrushColor()
@@ -211,6 +213,7 @@ const parent = document.querySelector('.activate-colorpicker-tool');
 const picker = new Picker(parent);
 picker.onChange = (color) => {
     isDrawing ? canvas.freeDrawingBrush.color = color.rgbString : changeActiveShapeColor(color.rgbString)
+    // isDrawing ? console.log('BRUSH: ' + color.rgbString) : console.log('SHAPE')
 }
 picker.onDone = () => {
     window.scrollTo(0, 0)
@@ -242,7 +245,12 @@ loadDrawing = () => {
 
 newDrawing = () => { // Link username to socket-ID
     canvas.clear()
-    socket.emit('register', document.querySelector('.login-input').value)
+    if(document.querySelector('.login-input').value !== '') {
+        socket.emit('register', document.querySelector('.login-input').value)
+    }else{
+        const i = Math.floor(Math.random()*randomUsers.length)
+        socket.emit('register', randomUsers[i])
+    }
     toHomeScreen()
     userActive = true;
     toggleOrientatonAlert()

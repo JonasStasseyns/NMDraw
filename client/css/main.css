@@ -249,7 +249,7 @@ html, body {
 }
 
 .alter-buttons-wrapper {
-    position: absolute;
+    position: fixed;
     right: 5%;
     bottom: 10vh;
     width: auto;
@@ -594,6 +594,7 @@ html, body {
 
 .fade-out {
     opacity: 0;
+    display: none;
 }
 
 /* TEMP */
