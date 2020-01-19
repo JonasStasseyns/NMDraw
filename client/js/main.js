@@ -189,10 +189,16 @@ shapeIcons.forEach((icon) => {
 })
 
 changeActiveShapeColor = (color) => {
-    if (canvas.getActiveObject() && canvas.getActiveObject().get('type') !== 'path') {
+    if (canvas.getActiveObject()) {
+        console.log(canvas.getActiveObject())
         canvas.getActiveObject().setColor(color)
+        // canvas.getActiveObject().seStroke(color);
+        // (canvas.getActiveObject() && canvas.getActiveObject().get('type') !== 'path')
+        console.log('Object was selected')
+    } else if (canvas.getActiveObject().get('type') == 'path') {
+        canvas.getActiveObject().stroke = color;
+        console.log('Path was selected')
     }
-    // console.log('Color Set')
     canvas.renderAll()
 }
 
@@ -276,6 +282,27 @@ toggleOrientatonAlert()
 let undo = []
 let redo = []
 let alterCanvasState = false;
+
+// checkTaskStack = () => {
+//     let taskButtons = document.querySelectorAll('.alter-buttons-subwrapper')
+//     if (undo.length == 0 && redo.length == 0) {
+//         taskButtons.forEach(element => {
+//             element.style.display = 'none'
+//         });
+//         // console.log('Undo array' + undo)
+//         // console.log('Redo array' + redo)
+//     } else if (undo.length != 0 && redo.length == 0) {
+//         document.querySelector('#undoButton').style.display = 'flex'
+//         // console.log('Undo array' + undo)
+//     } else if (undo.length == 0 && redo.length != 0) {
+//         document.querySelector('#redoButton').style.display = 'flex'
+//         // console.log('Redo array' + redo)
+//     }
+// }
+
+// setInterval(() => {
+//     checkTaskStack()
+// }, 1000);
 
 stackCanvasChanges = () => {
     if (!alterCanvasState) {

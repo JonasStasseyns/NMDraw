@@ -2,7 +2,7 @@
 /* Dark mode feature */
 
 @media (prefers-color-scheme: dark) {
-    body.client, .picker_wrapper, .toolwindow, .shapetools, .shape-wrapper, .alter-buttons-subwrapper, .emoji-list-container {
+    body.client, .picker_wrapper, .toolwindow, .shapetools, .shape-wrapper, .alter-buttons-subwrapper, .emoji-list-container, .login-overlay {
         background: #000 !important;
         box-shadow: none !important;
     }
@@ -81,6 +81,23 @@
     }
     .initial-brush-color {
         color: white;
+    }
+
+    .login-overlay {
+        background-position: top 430px left 460px !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        background-image: url(../images/bg-shape-dark-blue.svg) !important;
+        background: #000 !important;
+        color: #fff !important;
+    }
+
+    .login-input {
+        background: #2C2C2C !important;
+    }
+
+    login-btn {
+        background-image: linear-gradient(to left, #1B179D 0%, #DC3A6C 100%);
     }
 }
 
@@ -190,11 +207,12 @@ html, body {
     outline: none;
     border: none;
     width: 80%;
-    height: 5vh;
+    height: 7vh;
     padding: 0% 10%;
     font-size: 200%;
     color: #1f1f1f;
     font-weight: 200;
+    margin-bottom: 0px !important;
 }
 
 ::placeholder {
@@ -209,7 +227,6 @@ html, body {
 }
 
 .login-btn {
-    margin-top: 4vh;
     background-image: linear-gradient(to left, #1b179d 0%, #3a76dc 100%);
     color: white;
     display: inline-block;
