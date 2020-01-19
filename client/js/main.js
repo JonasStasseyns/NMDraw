@@ -3,6 +3,7 @@ const socket = io()
 let userActive = false;
 let isDrawing = false
 const randomUsers = ['Goku', 'Gohan', 'Goten', 'Bulma', 'Krillin', 'Vegeta', 'Cell', 'Buu', 'Frieza', 'Piccolo', 'Broly', 'Beerus', 'Whis']
+let emojiOpen = false
 
 // force user to flip device
 let screenOrientation = '';
@@ -39,15 +40,19 @@ window.addEventListener('orientationchange', toggleOrientatonAlert)
 
 // toggle tool background color when active
 toggleToolState = (e) => {
-    e.preventDefault();
     e.target.classList.toggle('tool-wrapper-active');
 }
 
 let toolContainers = document.querySelectorAll('.tool-wrapper');
 
 resetAllTools = (fromCP) => {
-    toolContainers.forEach(e => {
-        if (!isDrawing && e.classList.contains('free-draw-toggle-icon')) e.classList.remove("tool-wrapper-active")
+    toolContainers.forEach(element => {
+        console.log(element)
+        if (!isDrawing && !element.classList.contains('free-draw-toggle-icon')) {
+            element.classList.remove("tool-wrapper-active")
+        }else if(isDrawing && element.classList.contains('activate-colorpicker-tool')){
+            element.classList.remove("tool-wrapper-active")
+        }
     });
     if (!fromCP) isDrawing = false
 }
@@ -337,7 +342,15 @@ redoAction = (e) => {
 
 // Function that checks whether or not the container is empty
 // And if so, loads the thumbnails
-checkEmojiListContainer = () => {
+checkEmojiListContainer = (e) => {
+    console.log(document.querySelector('.spawn-emoji'))
+    document.querySelector('.spawn-emoji').classList.add('tool-wrapper-active');
+    isDrawing = false
+    toolContainers.forEach(tool => {
+        if(!tool.classList.contains('.spawn-emoji')) tool.classList.remove('tool-wrapper-active')
+    })
+    document.querySelector('.brush-size-tools').style.display = 'none'
+    document.querySelector('.shapetools').style.display = 'none'
     const eli = document.querySelector('.emoji-list-container')
     eli.innerHTML === '' ? socket.emit('showEmojiList', true) : eli.style.display = 'flex'
 }
