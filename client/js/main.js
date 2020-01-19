@@ -337,6 +337,13 @@ redoAction = (e) => {
     }
 }
 
+// Function that checks whether or not the container is empty
+// And if so, loads the thumbnails
+checkEmojiListContainer = () => {
+    const eli = document.querySelector('.emoji-list-container')
+    eli.innerHTML === '' ? socket.emit('showEmojiList', true) : eli.style.display = 'flex'
+}
+
 // Receiving list of emoji thumbnails
 socket.on('sendList', (list) => {
     document.querySelector('.emoji-list-container').innerHTML = ''
@@ -352,6 +359,7 @@ socket.on('sendList', (list) => {
     })
 })
 
+// Socket to receive the SVG-string of the clicked emoji
 socket.on('sendLoadedEmoji', (svg) => {
     fabric.loadSVGFromString(svg, (objects, options) => {
         const groupObjects = []
@@ -365,10 +373,11 @@ socket.on('sendLoadedEmoji', (svg) => {
     resetAllTools()
 })
 
+// Event listeners for version control
 canvas.on('object:removed', stackCanvasChanges);
 canvas.on('object:modified', stackCanvasChanges);
 canvas.on('object:added', stackCanvasChanges);
 
 let undoButton = document.querySelector('.undo-button').addEventListener('click', undoAction)
 let redoButton = document.querySelector('.redo-button').addEventListener('click', redoAction)
-let emojiBtn = document.querySelector('.spawn-emoji').addEventListener('click', () => socket.emit('showEmojiList', true))
+let emojiBtn = document.querySelector('.spawn-emoji').addEventListener('click', checkEmojiListContainer)
