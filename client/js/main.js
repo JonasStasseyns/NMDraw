@@ -8,6 +8,10 @@ let screenOrientation = '';
 let toggleDevOrientation = document.getElementById("toggleOrientation");
 
 toggleOrientatonAlert = () => {
+    setTimeout(()=>{
+        canvas.setWidth(window.innerWidth)
+        canvas.setHeight(window.innerHeight)
+    }, 100)
     // console.log(window.orientation)
     screenOrientation = window.orientation.toString()
     if ((!userActive && screenOrientation == '-90') || (!userActive && screenOrientation == '90')) {
