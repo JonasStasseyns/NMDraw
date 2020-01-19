@@ -13,11 +13,12 @@
     }
     .picker_done>button {
         font-weight: 600 !important;
+        font-size: 1.1em !important;
     }
     .layout_default .picker_editor input {
         font-weight: 900 !important;
         letter-spacing: 1px !important;
-        font-size: 170% !important;
+        font-size: 1.1em !important;
     }
     .picker_sample {
         box-shadow: none !important;
@@ -42,9 +43,6 @@
     .tool-wrapper-active {
         background: #333333 !important;
     }
-    /* .alter-buttons-subwrapper, .logout-btn {
-        border: 1px solid white !important;
-    } */
     .undo-button {
         background-image: url(../icons/undo-white.svg) !important;
     }
@@ -78,23 +76,15 @@
     .spawn-emoji-tool {
         background-image: url(../icons/emoji-white.svg) !important;
     }
-    .initial-brush-color {
-        color: white;
-    }
     .login-overlay {
-        background-position: top 430px left 460px !important;
-        background-repeat: no-repeat !important;
-        background-size: cover !important;
-        background-image: url(../images/bg-shape-dark-blue.svg) !important;
-        background: #000 !important;
-        color: #fff !important;
+        color: #fff;
     }
     .login-input {
         background: #2C2C2C !important;
         color: #fff !important;
     }
-    login-btn {
-        background-image: linear-gradient(to left, #1B179D 0%, #DC3A6C 100%);
+    #loginBtn, #loadBtn {
+        background-image: linear-gradient(to right, #1B179D -82%, #DC3A6C 100%) !important;
     }
     ::placeholder {
         font-weight: 100 !important;
@@ -173,11 +163,14 @@ html, body {
     position: absolute;
     top: 0;
     box-sizing: border-box;
-    background-image: url(../images/bg-shape-dark-blue.svg);
-    background-position: top 16vh left 55vw;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
+
+/* picture {
+    position: absolute;
+    top: -22vh;
+    left: 25vh;
+    z-index: -1;
+} */
 
 .login-sub-container {
     width: 70vw;
@@ -300,13 +293,19 @@ html, body {
     display: none;
 }
 
-.shape-3 {
-    position: fixed;
+.layout-abstract-image-top {
+    position: absolute;
     right: -7vh;
     top: -22vh;
 }
 
-/* overlay menu */
+.layout-abstract-image-right {
+    position: absolute;
+    left: 26vh;
+    top: -24vh;
+    z-index: -1;
+}
+
 
 .load-existing-drawing, .new-drawing {
     background: black;
@@ -590,6 +589,7 @@ html, body {
     font-family: "aktiv-grotesk", sans-serif !important;
     font-weight: 300 !important;
     text-align: center !important;
+    font-size: 1.2em;
 }
 
 .fade-out {

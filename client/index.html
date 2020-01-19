@@ -13,16 +13,22 @@
 
 <body class="client">
     <div class="login-overlay">
-        <img src="images/shape_2.svg" class="shape-3" alt="">
+        <picture class="layout-abstract-image-top">
+            <source srcset="images/shape_4.svg" media="(prefers-color-scheme: dark)">
+            <img src="images/shape_2.svg">
+        </picture>
+        <picture class="layout-abstract-image-right">
+            <source srcset="images/bg-shape-blue-purple.svg" media="(prefers-color-scheme: dark)">
+            <img src="images/bg-shape-dark-blue.svg">
+        </picture>
         <div class="login-sub-container">
             <h1>Hi user!</h1>
             <p>Let's create something awesome!</p>
-            <!-- <label class="input-username-label">Username -->
             <input type="text" class="login-input" placeholder="Username">
             </label>
             <div class="btn-container">
-                <button class="login-btn new-btn">Start</button>
-                <button class="login-btn load-btn">Load</button>
+                <button class="login-btn new-btn" id="loginBtn">Start</button>
+                <button class="login-btn load-btn" id="loadBtn">Load</button>
             </div>
         </div>
     </div>
