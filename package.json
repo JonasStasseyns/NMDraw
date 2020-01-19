@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "server:start": "nodemon app.js",
-    "sass": "sass --watch client/sass/app.sass:client/css/main.css",
     "flush": "rm storage/*"
   },
   "dependencies": {
@@ -18,12 +17,11 @@
     "socket.io": "^2.3.0",
     "socket.io-client": "latest",
     "vanilla-picker": "^2.10.0",
-    "wifi-name": "^3.1.1"
+    "detect-ssid": "^1.0.3",
+    "network-info": "^2.0.7"
   },
   "devDependencies": {
     "d3-node": "^2.2.1",
-    "detect-ssid": "^1.0.3",
-    "network-info": "^2.0.7",
     "xmlserializer": "^0.6.1"
   }
 }
