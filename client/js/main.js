@@ -9,7 +9,7 @@ let screenOrientation = '';
 let toggleDevOrientation = document.getElementById("toggleOrientation");
 
 toggleOrientatonAlert = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
         canvas.setWidth(window.innerWidth)
         canvas.setHeight(window.innerHeight)
     }, 500)
@@ -48,7 +48,7 @@ resetAllTools = (e) => {
     toolContainers.forEach(e => {
         e.classList.remove("tool-wrapper-active")
     });
-    // isDrawing = false
+    isDrawing = false
 }
 
 
@@ -101,7 +101,7 @@ let brushColor
 initializeBrushColor = () => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         // No absolute white because monitor canvas will be rgb(250, 250, 250)
-        if(canvas.freeDrawingBrush.color === 'rgb(0, 0, 0)') canvas.freeDrawingBrush.color = 'rgb(140,255,211)'
+        if (canvas.freeDrawingBrush.color === 'rgb(0, 0, 0)') canvas.freeDrawingBrush.color = 'rgb(140,255,211)'
     }
     // else {
     //     canvas.freeDrawingBrush.color == 'rgb(0, 0, 0)'
@@ -195,15 +195,8 @@ shapeIcons.forEach((icon) => {
 })
 
 changeActiveShapeColor = (color) => {
-    if (canvas.getActiveObject()) {
-        console.log(canvas.getActiveObject())
+    if (canvas.getActiveObject() && canvas.getActiveObject().get('type') != 'path') {
         canvas.getActiveObject().setColor(color)
-        // canvas.getActiveObject().seStroke(color);
-        // (canvas.getActiveObject() && canvas.getActiveObject().get('type') !== 'path')
-        console.log('Object was selected')
-    } else if (canvas.getActiveObject().get('type') == 'path') {
-        canvas.getActiveObject().stroke = color;
-        console.log('Path was selected')
     }
     canvas.renderAll()
 }
@@ -245,10 +238,10 @@ loadDrawing = () => {
 
 newDrawing = () => { // Link username to socket-ID
     canvas.clear()
-    if(document.querySelector('.login-input').value !== '') {
+    if (document.querySelector('.login-input').value !== '') {
         socket.emit('register', document.querySelector('.login-input').value)
-    }else{
-        const i = Math.floor(Math.random()*randomUsers.length)
+    } else {
+        const i = Math.floor(Math.random() * randomUsers.length)
         socket.emit('register', randomUsers[i])
     }
     toHomeScreen()
