@@ -9,7 +9,7 @@ let screenOrientation = '';
 let toggleDevOrientation = document.getElementById("toggleOrientation");
 
 toggleOrientatonAlert = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
         canvas.setWidth(window.innerWidth)
         canvas.setHeight(window.innerHeight)
     }, 500)
@@ -47,9 +47,9 @@ let toolContainers = document.querySelectorAll('.tool-wrapper');
 
 resetAllTools = (fromCP) => {
     toolContainers.forEach(e => {
-        if(!isDrawing && e.classList.contains('free-draw-toggle-icon')) e.classList.remove("tool-wrapper-active")
+        if (!isDrawing && e.classList.contains('free-draw-toggle-icon')) e.classList.remove("tool-wrapper-active")
     });
-    if(!fromCP) isDrawing = false
+    if (!fromCP) isDrawing = false
 }
 
 toolContainers.forEach(e => {
@@ -100,7 +100,7 @@ let brushColor
 initializeBrushColor = () => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         // No absolute white because monitor canvas will be rgb(250, 250, 250)
-        if(canvas.freeDrawingBrush.color === 'rgb(0, 0, 0)') canvas.freeDrawingBrush.color = 'rgb(140,255,211)'
+        if (canvas.freeDrawingBrush.color === 'rgb(0, 0, 0)') canvas.freeDrawingBrush.color = 'rgb(140,255,211)'
     }
     // else {
     //     canvas.freeDrawingBrush.color == 'rgb(0, 0, 0)'
@@ -252,10 +252,10 @@ loadDrawing = () => {
 
 newDrawing = () => { // Link username to socket-ID
     canvas.clear()
-    if(document.querySelector('.login-input').value !== '') {
+    if (document.querySelector('.login-input').value !== '') {
         socket.emit('register', document.querySelector('.login-input').value)
-    }else{
-        const i = Math.floor(Math.random()*randomUsers.length)
+    } else {
+        const i = Math.floor(Math.random() * randomUsers.length)
         socket.emit('register', randomUsers[i])
     }
     toHomeScreen()

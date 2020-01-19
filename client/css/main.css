@@ -301,7 +301,7 @@ html, body {
 
 .layout-abstract-image-right {
     position: absolute;
-    left: 26vh;
+    right: -75vh;
     top: -24vh;
     z-index: -1;
 }
@@ -373,6 +373,10 @@ html, body {
 
 .shapeselector-tool {
     background-image: url(../icons/shapeselector.svg);
+}
+
+.picker_sl {
+    height: 35vh !important;
 }
 
 .colorpicker-tool {
