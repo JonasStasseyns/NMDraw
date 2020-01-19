@@ -43,16 +43,15 @@ toggleToolState = (e) => {
     e.target.classList.toggle('tool-wrapper-active');
 }
 
-resetAllTools = (e) => {
-    let toolContainers = document.querySelectorAll('.tool-wrapper');
+let toolContainers = document.querySelectorAll('.tool-wrapper');
+
+resetAllTools = (fromCP) => {
     toolContainers.forEach(e => {
-        e.classList.remove("tool-wrapper-active")
+        if (!isDrawing && e.classList.contains('free-draw-toggle-icon')) e.classList.remove("tool-wrapper-active")
     });
-    isDrawing = false
+    if (!fromCP) isDrawing = false
 }
 
-
-let toolContainers = document.querySelectorAll('.tool-wrapper');
 toolContainers.forEach(e => {
     e.addEventListener('click', toggleToolState);
 });
@@ -114,6 +113,9 @@ setInterval(() => {
 // Toggle brush slider, increase or decrease brush width
 let brushToolSize = document.querySelector('.brush-size-tools')
 toggleBrushSlider = () => {
+    console.log('toggleBrush')
+    document.querySelector('#shapeSelector').classList.remove('tool-wrapper-active')
+    document.querySelector('.shapetools').style.display = 'none'
     brushToolSize.style.display === "flex" ?
         brushToolSize.style.display = "none" :
         brushToolSize.style.display = "flex"
@@ -178,6 +180,10 @@ createShape = (e) => {
 }
 
 showHideShapes = () => {
+    isDrawing = false
+    canvas.isDrawingMode = 0
+    document.querySelector('.free-draw-toggle-icon').classList.remove('tool-wrapper-active')
+    document.querySelector('.brush-size-tools').style.display = 'none'
     let shapeTools = document.getElementById('shapeTools')
     shapeTools.style.display === "flex" ?
         shapeTools.style.display = "none" :
@@ -195,8 +201,17 @@ shapeIcons.forEach((icon) => {
 })
 
 changeActiveShapeColor = (color) => {
-    if (canvas.getActiveObject() && canvas.getActiveObject().get('type') != 'path') {
-        canvas.getActiveObject().setColor(color)
+    if (canvas.getActiveObject() && canvas.getActiveObject().get('type') === 'path') {
+        canvas.getActiveObject().set({
+            stroke: color
+        });
+        console.log('Path was selected')
+    } else if (canvas.getActiveObject()) {
+        console.log(canvas.getActiveObject())
+        // canvas.getActiveObject().setColor(color)
+        // canvas.getActiveObject().setStroke(color);
+        // (canvas.getActiveObject() && canvas.getActiveObject().get('type') !== 'path')
+        console.log('Object was selected')
     }
     canvas.renderAll()
 }
@@ -210,11 +225,11 @@ picker.onChange = (color) => {
 }
 picker.onDone = () => {
     window.scrollTo(0, 0)
-    resetAllTools()
+    resetAllTools(true)
 }
 picker.onClose = () => {
     window.scrollTo(0, 0)
-    resetAllTools()
+    resetAllTools(true)
 }
 
 
