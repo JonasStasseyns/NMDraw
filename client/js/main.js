@@ -40,6 +40,8 @@ window.addEventListener('orientationchange', toggleOrientatonAlert)
 
 // toggle tool background color when active
 toggleToolState = (e) => {
+    if(e.target.classList.contains('spawn-emoji')) emojiOpen = !emojiOpen
+    console.log(emojiOpen)
     e.target.classList.toggle('tool-wrapper-active');
 }
 
@@ -344,15 +346,15 @@ redoAction = (e) => {
 // And if so, loads the thumbnails
 checkEmojiListContainer = (e) => {
     console.log(document.querySelector('.spawn-emoji'))
-    document.querySelector('.spawn-emoji').classList.add('tool-wrapper-active');
+    const eli = document.querySelector('.emoji-list-container')
     isDrawing = false
-    toolContainers.forEach(tool => {
-        if(!tool.classList.contains('.spawn-emoji')) tool.classList.remove('tool-wrapper-active')
-    })
+    if(emojiOpen){
+        eli.innerHTML === '' ? socket.emit('showEmojiList', true) : eli.style.display = 'flex'
+    }else{
+        eli.style.display = 'none'
+    }
     document.querySelector('.brush-size-tools').style.display = 'none'
     document.querySelector('.shapetools').style.display = 'none'
-    const eli = document.querySelector('.emoji-list-container')
-    eli.innerHTML === '' ? socket.emit('showEmojiList', true) : eli.style.display = 'flex'
 }
 
 // Receiving list of emoji thumbnails
@@ -379,6 +381,7 @@ socket.on('sendLoadedEmoji', (svg) => {
         });
         canvas.add(new fabric.Group(groupObjects, { left: window.innerWidth / 2, top: window.innerHeight / 2 }))
     })
+    emojiOpen = false
     canvas.renderAll()
     document.querySelector('.emoji-list-container').style.display = 'none'
     resetAllTools()
