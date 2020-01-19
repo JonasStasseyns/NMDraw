@@ -77,12 +77,10 @@
     }
     .spawn-emoji-tool {
         background-image: url(../icons/emoji-white.svg) !important;
-
     }
     .initial-brush-color {
         color: white;
     }
-
     .login-overlay {
         background-position: top 430px left 460px !important;
         background-repeat: no-repeat !important;
@@ -91,13 +89,17 @@
         background: #000 !important;
         color: #fff !important;
     }
-
     .login-input {
         background: #2C2C2C !important;
+        color: #fff !important;
     }
-
     login-btn {
         background-image: linear-gradient(to left, #1B179D 0%, #DC3A6C 100%);
+    }
+    ::placeholder {
+        font-weight: 100 !important;
+        color: rgb(255, 255, 255);
+        font-size: 1.3em;
     }
 }
 
@@ -172,7 +174,7 @@ html, body {
     top: 0;
     box-sizing: border-box;
     background-image: url(../images/bg-shape-dark-blue.svg);
-    background-position: top 430px left 460px;
+    background-position: top 16vh left 55vw;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -183,12 +185,12 @@ html, body {
 
 .login-sub-container h1 {
     margin-bottom: 2vh;
-    font-size: 6.5em;
+    font-size: 2em;
     font-weight: 500;
 }
 
 .login-sub-container p {
-    font-size: 3em;
+    font-size: 1.2em;
     margin-bottom: 7vh;
 }
 
@@ -203,13 +205,13 @@ html, body {
 
 .login-input {
     background: #efefef;
-    border-radius: 10px;
+    border-radius: 5px;
     outline: none;
     border: none;
     width: 80%;
-    height: 7vh;
+    height: 6vh;
     padding: 0% 10%;
-    font-size: 200%;
+    font-size: 0.9em;
     color: #1f1f1f;
     font-weight: 200;
     margin-bottom: 0px !important;
@@ -229,14 +231,13 @@ html, body {
 .login-btn {
     background-image: linear-gradient(to left, #1b179d 0%, #3a76dc 100%);
     color: white;
-    display: inline-block;
     width: 48%;
-    height: 7vh;
-    font-size: 250%;
+    height: 6vh;
+    font-size: 1.1em;
     font-weight: 200;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .logout-btn {
@@ -301,8 +302,8 @@ html, body {
 
 .shape-3 {
     position: fixed;
-    right: 10px;
-    top: -8%;
+    right: -7vh;
+    top: -22vh;
 }
 
 /* overlay menu */
@@ -520,7 +521,7 @@ html, body {
     justify-content: center;
     align-items: center;
     color: blue;
-    font-size: 220%;
+    font-size: 1em;
     position: absolute;
     z-index: 50;
     width: 100%;
@@ -545,7 +546,7 @@ html, body {
     justify-content: center;
     align-items: center;
     color: blue;
-    font-size: 220%;
+    font-size: 1em;
     position: absolute;
     z-index: 1000;
     width: 100vw;
@@ -596,6 +597,7 @@ html, body {
 }
 
 /* TEMP */
+
 .emoji-list-container {
     position: absolute;
     top: 2vh;
