@@ -50,7 +50,7 @@ resetAllTools = (fromCP) => {
         console.log(element)
         if (!isDrawing && !element.classList.contains('free-draw-toggle-icon')) {
             element.classList.remove("tool-wrapper-active")
-        }else if(isDrawing && element.classList.contains('activate-colorpicker-tool')){
+        } else if (isDrawing && element.classList.contains('activate-colorpicker-tool')) {
             element.classList.remove("tool-wrapper-active")
         }
     });
@@ -139,14 +139,6 @@ updateBrushValue = () => {
     canvas.freeDrawingBrush.width = parseInt(sliderValue)
 }
 slider.addEventListener('change', updateBrushValue)
-
-// Close brush width slider
-closeSlider = () => {
-    canvas.isDrawingMode = 0
-    brushToolSize.style.display = "none"
-    resetAllTools()
-}
-document.querySelector('.close-slider').addEventListener('click', closeSlider)
 
 // Create shape based on the selected shape and size
 createShape = (e) => {
@@ -343,12 +335,12 @@ redoAction = (e) => {
 // Function that checks whether or not the container is empty
 // And if so, loads the thumbnails
 checkEmojiListContainer = (e) => {
-    console.log(document.querySelector('.spawn-emoji'))
+    // console.log(document.querySelector('.spawn-emoji'))
     document.querySelector('.spawn-emoji').classList.add('tool-wrapper-active');
     isDrawing = false
-    toolContainers.forEach(tool => {
-        if(!tool.classList.contains('.spawn-emoji')) tool.classList.remove('tool-wrapper-active')
-    })
+    // toolContainers.forEach(tool => {
+    //     if(!tool.classList.contains('.spawn-emoji')) tool.classList.remove('tool-wrapper-active')
+    // })
     document.querySelector('.brush-size-tools').style.display = 'none'
     document.querySelector('.shapetools').style.display = 'none'
     const eli = document.querySelector('.emoji-list-container')
