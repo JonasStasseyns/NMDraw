@@ -193,7 +193,6 @@ showHideShapes = () => {
 
 // Event Listeners
 const shapeIcons = document.querySelectorAll('.shape-icon')
-// TODO Add shape selector evtlistener + shape select store
 document.querySelector('#shapeSelector').addEventListener('click', showHideShapes)
 
 shapeIcons.forEach((icon) => {
