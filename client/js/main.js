@@ -122,7 +122,9 @@ let brushToolSize = document.querySelector('.brush-size-tools')
 toggleBrushSlider = () => {
     console.log('toggleBrush')
     document.querySelector('#shapeSelector').classList.remove('tool-wrapper-active')
+    document.querySelector('.spawn-emoji').classList.remove('tool-wrapper-active')
     document.querySelector('.shapetools').style.display = 'none'
+    document.querySelector('.emoji-list-container').style.display = 'none'
     brushToolSize.style.display === "flex" ?
         brushToolSize.style.display = "none" :
         brushToolSize.style.display = "flex"
@@ -340,6 +342,10 @@ checkEmojiListContainer = (e) => {
     console.log(document.querySelector('.spawn-emoji'))
     const eli = document.querySelector('.emoji-list-container')
     isDrawing = false
+    canvas.isDrawingMode = 0
+    toolContainers.forEach((tool) => {
+        if(!tool.classList.contains('spawn-emoji')) tool.classList.remove('tool-wrapper-active')
+    })
     if (emojiOpen) {
         eli.innerHTML === '' ? socket.emit('showEmojiList', true) : eli.style.display = 'flex'
     } else {
