@@ -287,27 +287,6 @@ let undo = []
 let redo = []
 let alterCanvasState = false;
 
-// checkTaskStack = () => {
-//     let taskButtons = document.querySelectorAll('.alter-buttons-subwrapper')
-//     if (undo.length == 0 && redo.length == 0) {
-//         taskButtons.forEach(element => {
-//             element.style.display = 'none'
-//         });
-//         // console.log('Undo array' + undo)
-//         // console.log('Redo array' + redo)
-//     } else if (undo.length != 0 && redo.length == 0) {
-//         document.querySelector('#undoButton').style.display = 'flex'
-//         // console.log('Undo array' + undo)
-//     } else if (undo.length == 0 && redo.length != 0) {
-//         document.querySelector('#redoButton').style.display = 'flex'
-//         // console.log('Redo array' + redo)
-//     }
-// }
-
-// setInterval(() => {
-//     checkTaskStack()
-// }, 1000);
-
 stackCanvasChanges = () => {
     if (!alterCanvasState) {
         undo.push(JSON.stringify(canvas));
