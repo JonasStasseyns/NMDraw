@@ -16,11 +16,13 @@ socket.on('updateMonitor', (data) => {
         canvas.clear()
     }
     console.log(data)
-    fabric.loadSVGFromString(data, function(objects, options) {
-        const obj = fabric.util.groupSVGElements(objects, options)
-        obj.scaleToWidth(window.innerWidth);
-        canvas.add(obj).renderAll()
-    })
+    data.forEach((svg => {
+        fabric.loadSVGFromString(svg, (objects, options) => {
+            const obj = fabric.util.groupSVGElements(objects, options)
+            obj.scaleToWidth(window.innerWidth);
+            canvas.add(obj).renderAll()
+        })
+    }))
     init = false
 })
 

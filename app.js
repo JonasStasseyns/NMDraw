@@ -36,17 +36,25 @@ onConnection = (socket) => {
 
     // Main Drawing Socket
     socket.on('drawing', (data) => {
-        socket.broadcast.emit('updateMonitor', data)
+        const svgArray = []
+        userBase.forEach(user => {
+            if(user.id === socket.id) fs.writeFile('storage/' + user.name + '.svg', data, (er) => console.log(er))
+            tools.ImportSVG(`storage/${user.name}.svg`).then(svg => {
+                svgArray.push(svg.toString())
+            }).catch(err => console.log(err))
+        })
+        setTimeout(() => {
+            socket.broadcast.emit('updateMonitor', svgArray)
+        }, 500)
+
+
         // console.log(data)
         console.log('Drawing data received')
 
         // Complete Drawing to earliest player
-        userBase[0].name ? fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er) => console.log(er)) : console.log('No username was linked to this socket-id: ' + socket.id)
+        // userBase[0].name ? fs.writeFile('storage/' + userBase[0].name + '.svg', data, (er) => console.log(er)) : console.log('No username was linked to this socket-id: ' + socket.id)
 
-        // Everyone's own drawing to themselves
-        // userBase.forEach((user) => {
-        //     if(user.id === socket.id) fs.writeFile('storage/' + user.name + '.svg', data, (er) => console.log(er))
-        // })
+
     });
 
     // Validation socket
