@@ -208,7 +208,7 @@ changeActiveShapeColor = (color) => {
         console.log('Path was selected')
     } else if (canvas.getActiveObject()) {
         console.log(canvas.getActiveObject())
-        // canvas.getActiveObject().setColor(color)
+        canvas.getActiveObject().setColor(color)
         // canvas.getActiveObject().setStroke(color);
         // (canvas.getActiveObject() && canvas.getActiveObject().get('type') !== 'path')
         console.log('Object was selected')
@@ -344,7 +344,7 @@ checkEmojiListContainer = (e) => {
     isDrawing = false
     canvas.isDrawingMode = 0
     toolContainers.forEach((tool) => {
-        if(!tool.classList.contains('spawn-emoji')) tool.classList.remove('tool-wrapper-active')
+        if (!tool.classList.contains('spawn-emoji')) tool.classList.remove('tool-wrapper-active')
     })
     if (emojiOpen) {
         eli.innerHTML === '' ? socket.emit('showEmojiList', true) : eli.style.display = 'flex'
