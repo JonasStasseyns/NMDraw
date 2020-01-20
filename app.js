@@ -12,7 +12,7 @@ const server = app.listen(5000, () => {
 
 let networkName;
 let localIP = internalIp.v4.sync();
-console.log('IP-ADDRESS: ' + localIP)
+console.log('Address: ' + localIP + ':5000/monitor.html')
 
 app.use(express.static('client'));
 
