@@ -12,6 +12,7 @@ const server = app.listen(5000, () => {
 
 let networkName;
 let localIP = internalIp.v4.sync();
+console.log('IP-ADDRESS: ' + localIP)
 
 app.use(express.static('client'));
 
@@ -27,6 +28,7 @@ registerUserId = (name, id) => {
 
 detectSSid((error, ssidname) => {
     networkName = ssidname
+    console.log(networkName)
 });
 
 // Check on ownership system (in big test with monitor)

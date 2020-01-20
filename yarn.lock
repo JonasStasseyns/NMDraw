@@ -3530,13 +3530,6 @@ widest-line@^2.0.0:
   dependencies:
     string-width "^2.1.1"
 
-wifi-name@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/wifi-name/-/wifi-name-3.1.1.tgz#f3d9e97e2e716cf73c1840b744be9c591796519a"
-  integrity sha512-8BM51HTio1vYRQYbAovVNDHfRHDheJRIp7bsxVmWQEF0zL9XxA0QaklIxaPEtBf9VRCzFvkmVzoMG7A51hgoAg==
-  dependencies:
-    execa "^0.7.0"
-
 word-wrap@~1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
