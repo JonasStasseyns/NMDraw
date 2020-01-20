@@ -45,7 +45,7 @@ onConnection = (socket) => {
         })
         setTimeout(() => {
             socket.broadcast.emit('updateMonitor', svgArray)
-        }, 500)
+        }, 1000)
 
 
         // console.log(data)
