@@ -7,7 +7,7 @@
     "flush": "rm storage/*"
   },
   "dependencies": {
-    "express": "~4.16.1",
+    "express": "~4.18.2",
     "http-errors": "~1.6.3",
     "internal-ip": "^5.0.0",
     "modernizr": "^3.8.0",
